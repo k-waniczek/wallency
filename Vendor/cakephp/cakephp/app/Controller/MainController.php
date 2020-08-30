@@ -37,6 +37,17 @@ class MainController extends AppController {
  */
 	public $uses = array();
 
+	public $components = array('Cookie');
+
+	public function beforeFilter() {
+		$this->loadModel('Wallet');
+		$this->loadModel('User');
+		if($this->Session->read('loggedIn'))
+			$this->layout = 'loggedIn';
+		else 
+			$this->layout = 'default';
+	}
+
 /**
  * Displays a view
  *
@@ -45,8 +56,198 @@ class MainController extends AppController {
  * @throws NotFoundException When the view file could not be found
  *   or MissingViewException in debug mode.
  */
-	public function home () {
-        $this->Hash = $this->Components->load('Hash');
-        debug($this->Hash->hash("test"));
+
+	public function display() {
+		$path = func_get_args();
+
+		$count = count($path);
+		if (!$count) {
+			return $this->redirect('/');
+		}
+		if (in_array('..', $path, true) || in_array('.', $path, true)) {
+			throw new ForbiddenException();
+		}
+		$page = $subpage = $title_for_layout = null;
+
+		if (!empty($path[0])) {
+			$page = $path[0];
+		}
+		if (!empty($path[1])) {
+			$subpage = $path[1];
+		} 
+		if (!empty($path[$count - 1])) {
+			$title_for_layout = Inflector::humanize($path[$count - 1]);
+		}
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+		try {
+			$this->render(implode('/', $path));
+		} catch (MissingViewException $e) {
+			if (Configure::read('debug')) {
+				throw $e;
+			}
+			throw new NotFoundException();
+		}
 	}
+
+	public function home () {
+		if($this->Session->read('loggedIn')) {
+			$this->redirect('/wallet');
+		}
+	}
+
+	public function profile () {
+		// $wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		// $ch = curl_init();
+		// curl_setopt($ch, CURLOPT_URL, "https://api.ratesapi.io/api/latest?base=USD");
+		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		// $result = json_decode(curl_exec($ch),true);
+		// curl_close($ch);
+
+		// var_dump($result['rates']['USD']);
+		// echo "<hr>";
+		// debug($wallet);
+		// die;
+		// $this->WalletAmount = $this->Components->load('WalletAmount');
+		// debug($this->WalletAmount->walletAmount());
+		// die;
+	}
+
+	public function login () {
+
+	}
+
+	public function register () {
+		$this->set('currencies', Configure::read('currencies'));
+	}
+
+	public function termsOfService () {
+
+	}
+
+	public function privacyPolicy () {
+
+	}
+
+	public function about () {
+
+	}
+
+	public function contact () {
+
+	}
+
+	public function career () {
+
+	}
+
+	public function createRodoCookie () {
+		$this->Cookie->write('rodo_accepted', true, true, '6 months');
+		$this->Log('createRodoCookie');
+		$this->set('rodoCookie', $this->Cookie->read('rodo_accepted'));
+	}
+
+	public function wallet () {
+		if($this->Session->read('loggedIn')) {
+
+			$currencies = ['usd', 'eur', 'chf', 'pln', 'gbp', 'jpy', 'cad', 'rub', 'cny', 'czk', 'try', 'nok', 'huf'];
+			$cryptoCurrencies = ['bitcoin', 'ethereum', 'tether', 'XRP', 'litecoin', 'eos', 'tezos'];
+			$resources = ['oil', 'gold', 'copper', 'silver', 'palladium', 'platinum', 'nickel', 'aluminum'];
+
+			$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+
+			$this->set('wallet', $wallet);
+			$this->set('currencies', $currencies);
+			$this->set('cryptoCurrencies', $cryptoCurrencies);
+			$this->set('resources', $resources);
+
+		}
+	}
+
+	public function activate () {
+		$this->loadModel('User');
+		$uuid = $this->params->query['uuid'];
+		$user = $this->User->find('first', array('conditions' => array('UUID' => $uuid)));
+		
+		if($user['User']['verified'] == 0) {
+			$this->User->updateAll(array('verified' => 1),array('UUID' => $uuid));
+			$this->set('alreadyVerified', 0);
+		} else {
+			$this->set('alreadyVerified', 1);
+		}
+	}
+
+	public function deposit () {
+		$this->set('currencies', Configure::read('currencies'));
+	}
+
+	public function addMoney () {
+		$data = $this->request->data['Deposit'];
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		$amount = $wallet['Wallet'][$data['currencies']] + $data['amount'];
+		$this->Wallet->updateAll(array($data['currencies'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
+	}
+	
+	public function withdraw () {
+		$this->set('currencies', Configure::read('currencies'));
+	}
+
+	public function checkMoney () {
+		$this->autoRender = false;
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		return json_encode($wallet);
+	}
+
+	public function substractMoney () {
+		$data = $this->request->data['Withdraw'];
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		$amount = $wallet['Wallet'][$data['currencies']] - $data['amount'];
+		$this->Wallet->updateAll(array($data['currencies'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
+	}
+
+	public function rules () {
+		
+	}
+
+	public function changePasswordForm () {
+		
+	}
+
+	public function changePassword () {
+		$data = $this->request->data['changePassword'];
+		$user = $this->User->find('first', array('conditions' => array('password' => $data['currentPassword'])));
+
+		if(isset($user)) {
+			if($data['newPasswordConfirm'] == $data['newPassword']) {
+				$this->User->updateAll(array('password' => "'".$data['newPassword']."'"),array('password' => $data['currentPassword']));
+			}
+		}
+	}
+
+	public function exchangeForm () {
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		$this->set("wallet", $wallet['Wallet']);
+		$this->set('currencies', Configure::read('currencies'));
+	}
+
+	public function exchange () {
+		$this->autoRender = false;
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+
+		$exchange = $wallet['Wallet'][$this->params['url']['currencyToExchange']] - $this->params['url']['exchangeAmout'];
+		$buy = $wallet['Wallet'][$this->params['url']['currencyToBuy']] + $this->params['url']['buyAmount'];
+		$this->Wallet->updateAll(array($this->params['url']['currencyToExchange'] => $exchange, $this->params['url']['currencyToBuy'] => $buy),array('userUUID' => $this->Session->read('userUUID')));
+	}	
+
+	public function getWallet () {
+		$this->autoRender = false;
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		$this->Log(print_r($wallet, true));
+		$this->response->type('json');
+		$this->response->body(json_encode($wallet));
+		return $this->response;
+	}
+
+
 }

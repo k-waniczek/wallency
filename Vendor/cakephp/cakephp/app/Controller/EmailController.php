@@ -19,7 +19,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('Controller', 'Controller');
+App::uses('AppController', 'Controller');
 
 /**
  * Application Controller
@@ -30,6 +30,8 @@ App::uses('Controller', 'Controller');
  * @package		app.Controller
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller {
-    
+class EmailController extends AppController {
+    public function myview($uuid) {
+        $this->set('uuid', $uuid);
+    }
 }

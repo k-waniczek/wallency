@@ -1,0 +1,116 @@
+
+:root {
+    --screenshots-nav-height: 33px;
+}
+
+body {
+    background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: 0 -200px;
+    background-attachment: scroll;
+    background-color: #051721;
+}
+
+div.mainText {
+    text-align: center;
+}
+
+h1 {
+    margin-top: 100px;
+    color: #ffffff;
+    font-size: 50px;
+}
+
+.mainSiteText {
+    background-color: rgba(255, 255, 255, .25);
+    font-size: 17px;
+    color: #051721;
+    font-weight: light;
+    display: inline-block;
+    line-height: 30px;
+    padding: 10px;
+    -webkit-box-shadow: 10px 10px 59px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 59px -8px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 59px -8px rgba(0,0,0,0.75);
+    margin-top: 10px;
+}
+
+.screenshots {
+    height: 609px;
+    width: 1024px;
+    background-color: #333333;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 20px;
+}
+
+.screenshots .nav {
+    background-color: #214076;
+    height: var(--screenshots-nav-height);
+    border-radius: 20px 20px 0 0;
+}
+
+.screenshots .images {
+    height: 576px;
+    overflow: hidden;
+}
+
+.screenshots .nav .circle {
+    border-radius: 50%;
+    height: 12.5px;
+    width: 12.5px;
+    float: left;
+    margin-top: calc((var(--screenshots-nav-height) - 12.5px)/2);
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.screenshots .nav .circle:nth-of-type(1) {
+    margin-left: 20px;
+    background-color: rgb(231, 35, 35);
+}
+
+.screenshots .nav .circle:nth-of-type(2) {
+    background-color: rgb(214, 203, 46);
+}
+
+.screenshots .nav .circle:nth-of-type(3) {
+    background-color: rgb(44, 207, 44);
+}
+
+.img1, .img2, .img3 {
+    height: 576px;
+    width: 1024px;
+    border-radius: 0 0 20px 20px;
+    float: left;
+    transition: all 1s ease-out;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1s;
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+div.chart {
+    width: 50%;
+    margin: 100px auto auto auto;
+}
+
+/* canvas#myChart {
+    background-image: linear-gradient(to top, #6b98c2, #5e8bb8, #527dae, #4770a4, #3c639a);
+} */
+
+@-webkit-keyframes fade {
+    from {opacity: .5} 
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .5} 
+    to {opacity: 1}
+}

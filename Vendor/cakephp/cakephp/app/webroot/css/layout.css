@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --footer-height: 150px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', cursive;
+    height: 100%;
+    min-height: 100%;
+}
+
+nav {
+    background-color: #051721;
+    height: 75px;
+    padding: 0 50px 0 50px;
+}
+
+nav > * {
+    float: left;
+}
+
+nav div.menu {
+    height: 75px;
+}
+
+.menu {
+    margin: auto;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+ul > li {
+    float: left;
+    line-height: 75px;
+    margin: 0 10px 0 10px;
+    font-size: 16px;
+}
+
+ul > li > a {
+    color: #979797;
+    text-decoration: none;
+}
+
+.container {
+    height: 3000px;
+    text-align: center;
+}
+
+.registerForm > * {
+    text-align: center !important;
+}
+
+.logo {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+} 
+
+.logo > a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav > span {
+    line-height: 75px;
+}
+
+.registerAndLogin {
+    float: right;
+    text-align: right;
+    color: #ffffff;
+}
+
+.clear {
+    clear: both !important;
+}
+
+.registerAndLogin span a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #276b9c;
+    height: var(--footer-height);
+    width: 100%;
+    margin-top: calc(var(--footer-height) - var(--footer-height) * 2);
+    clear: both;
+    position: relative;
+    border-top: 1px solid #8a8a8a;
+}
+
+.footer .text {
+    height: 100%;
+    margin: auto;
+}
+
+.footer .menu {
+    text-align: left;
+}
+
+.footer .menu ul li {
+    color: white;
+}
+
+.footer .text .logo {
+    margin: 10px;
+    padding-right: 40px;
+    border-right: 1px solid #8a8a8a;
+}
+
+.footer .text span:not(.logo) {
+    color: #8a8a8a;
+    font-size: 13px;
+}
+
+.privacy-policy a {
+    color: #636161;
+    margin: 5px;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.privacy-policy {
+    float: right;
+}
+
+.RODOmodal {
+    width: 600px;
+    background-color: #0000ff;
+    height: 300px;
+    overflow-y: scroll;
+    text-align: left;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    border: 3px solid black;
+    padding: 10px;
+}
+
+.blur {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+}

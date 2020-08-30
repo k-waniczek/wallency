@@ -1,0 +1,82 @@
+body {
+	background-color: #0e2633;
+}
+
+.limiter {
+	width: 700px;
+	margin-top: 20px;
+    float: left;
+    height: 760px;
+}
+
+table {
+	border: none;
+	border-collapse: collapse;
+	background: white;
+	border-radius: 10px;
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+    position: relative;
+    height: 100%;
+}
+
+thead {
+	background-color: #2a4352;
+	color: white;
+}
+
+td,
+th {
+	padding: 7px 5px 7px 5px;
+	height: 40px;
+}
+
+tr:nth-child(even) {
+	background: #dfdfdf
+}
+
+.walletWorth {
+	background-color: #2a4352;
+	height: 100px;
+	width: 550px;
+	line-height: 100px;
+	float: left;
+	margin: 20px 0 0 20px;
+	border-radius: 10px;
+}
+
+.walletWorth select {
+	margin-right: 50px;
+	border: none;
+    outline: none;
+    border-radius: 10px;
+	padding: 5px 20px 5px 20px;
+	background-color: transparent;
+	border-bottom: 5px solid #dfdfdf;
+	-moz-appearance: button;
+	-webkit-appearance: button;
+    appearance: button;
+    background-color: #ffffff;
+}
+
+.someBox {
+    background-color: #2a4352;
+	height: 640px;
+	width: 550px;
+	line-height: 100px;
+	float: left;
+	margin: 20px 0 0 20px;
+	border-radius: 10px;
+}
+
+span#sum {
+    color: white;
+}
+
+.boxes {
+    margin: auto;
+    width: 1270px;
+    height: 760px;
+    padding: 0;
+}

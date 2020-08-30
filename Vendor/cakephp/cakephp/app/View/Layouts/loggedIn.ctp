@@ -19,18 +19,18 @@
 			<span class="logo col-fhd-2 col-hd-2"><a href="home">LOGO</a></span>
 			<div class="menu col-fhd-6 col-hd-6">
 				<ul>
-					<li><a href="home">Home</a></li>
-					<li><a href="about">About</a></li>
-					<li><a href="contact">Contact</a></li>
-					<li><a href="career">Career</a></li>
+					<li><a href="profile">Profile</a></li>
+					<li><a href="wallet">Wallet</a></li>
+					<li><a href="deposit">Deposit</a></li>
+					<li><a href="withdraw">Withdraw</a></li>
+					<li><a href="exchange-form">Exchange</a></li>
 				</ul>
 			</div>
 			<span class="registerAndLogin col-hd-2 col-fhd-2">
-				<span class="register"><a href="register">Register</a></span> 
-				| 
-				<span class="login"><a href="login">Login</a></span>
+				<span class="register"><a href="logout">Logout</a></span> 
 			</span>
 		</nav>
+		<div class="clear"></div>
 		<div class="container">
 			<?php echo $this->fetch('content');?>
 		</div>
@@ -38,10 +38,8 @@
 			<div class="text col-fhd-8 col-hd-8">
 				<div class="menu">
 					<ul>
-						<li>Home</li>
-						<li>About</li>
-						<li>Contact</li>
-						<li>Career</li>
+						<li>Profile</li>
+						<li>Wallet</li>
 					</ul>
 				</div><br />
 				<span class="logo col-fhd-2 col-hd-2">WALLENCY</span>
