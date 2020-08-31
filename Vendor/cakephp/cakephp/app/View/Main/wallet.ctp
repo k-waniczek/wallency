@@ -1,44 +1,45 @@
 <div class="boxes">
 <?php
 
-echo $this->Html->css('wallet');
+    echo $this->Html->css('wallet');
+    echo $this->Html->css('table');
 
-echo $this->fetch('meta');
-echo $this->fetch('css');
-echo $this->fetch('script');
+    echo $this->fetch('meta');
+    echo $this->fetch('css');
+    echo $this->fetch('script');
 
-echo "<div class='limiter'>";
-echo "<table>";
-echo "<thead><tr><th>Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
-for($i = 0; $i < count($currencies); $i++) {  
-    echo "<tr><td class='currency'>".$currencies[$i]."</td><td class='value'>".$wallet['Wallet'][$currencies[$i]]."</td><td class='base'></td></tr>";
-}
-echo "</table>";
-echo "</div>";
+    echo "<div class='limiter'>";
+    echo "<table>";
+    echo "<thead><tr><th>Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
+    foreach($currencies as $currency) { 
+        echo "<tr><td class='currency'>".$currency."</td><td class='value'>".$wallet['Wallet'][$currency]."</td><td class='base'></td></tr>";
+    }
+    echo "</table>";
+    echo "</div>";
 
-if(!empty($this->params['url'])) {
-    $currencyToExchange = $this->params['url']['currencyToExchange'];
-    $exchangeAmout = $this->params['url']['exchangeAmout'];
-    $currencyToBuy = $this->params['url']['currencyToBuy'];
-    $buyAmount = $this->params['url']['buyAmount'];
+    if(!empty($this->params['url'])) {
+        $currencyToExchange = $this->params['url']['currencyToExchange'];
+        $exchangeAmout = $this->params['url']['exchangeAmout'];
+        $currencyToBuy = $this->params['url']['currencyToBuy'];
+        $buyAmount = $this->params['url']['buyAmount'];
 
-    echo "<input type='hidden' id='hidden1' value='$currencyToExchange'>";
-    echo "<input type='hidden' id='hidden2' value='$exchangeAmout'>";
-    echo "<input type='hidden' id='hidden3' value='$currencyToBuy'>";
-    echo "<input type='hidden' id='hidden4' value='$buyAmount'>";
-}
+        echo "<input type='hidden' id='hidden1' value='$currencyToExchange'>";
+        echo "<input type='hidden' id='hidden2' value='$exchangeAmout'>";
+        echo "<input type='hidden' id='hidden3' value='$currencyToBuy'>";
+        echo "<input type='hidden' id='hidden4' value='$buyAmount'>";
+    }
 
-// echo "<table border='1'>";
-// for($i = 0; $i < count($cryptoCurrencies); $i++) {  
-//     echo "<tr><td>".$cryptoCurrencies[$i]."</td><td>".$wallet['Wallet'][$cryptoCurrencies[$i]]."</td></tr>";
-// }
-// echo "</table><br/>";
+    // echo "<table border='1'>";
+    // for($i = 0; $i < count($cryptoCurrencies); $i++) {  
+    //     echo "<tr><td>".$cryptoCurrencies[$i]."</td><td>".$wallet['Wallet'][$cryptoCurrencies[$i]]."</td></tr>";
+    // }
+    // echo "</table><br/>";
 
-// echo "<table border='1'>";
-// for($i = 0; $i < count($resources); $i++) {  
-//     echo "<tr><td>".$resources[$i]."</td><td>".$wallet['Wallet'][$resources[$i]]."</td></tr>";
-// }
-// echo "</table>";
+    // echo "<table border='1'>";
+    // for($i = 0; $i < count($resources); $i++) {  
+    //     echo "<tr><td>".$resources[$i]."</td><td>".$wallet['Wallet'][$resources[$i]]."</td></tr>";
+    // }
+    // echo "</table>";
 
 ?>
 
@@ -46,8 +47,8 @@ if(!empty($this->params['url'])) {
     <div class="walletWorth">
         <select id="baseValue">
         <?php
-            for($i = 0; $i < count($currencies); $i++) {  
-                echo "<option value='".$currencies[$i]."'>".$currencies[$i]."</option>";
+            foreach($currencies as $currency) {
+                echo "<option value='".$currency."'>".$currency."</option>";
             }
         ?>
         </select>
@@ -76,7 +77,7 @@ if(!empty($this->params['url'])) {
                 showConfirmButton: false,
                 timer: 5000,
                 timerProgressBar: true
-            })
+            });
         }
 
         var req = new XMLHttpRequest();
@@ -146,7 +147,7 @@ if(!empty($this->params['url'])) {
                 
                 index++;
             });
-            document.querySelector("#sum").innerHTML += (Math.round(sum * 100)/100)+" "+chosen;
+            document.querySelector("#sum").innerHTML += "<b>"+(Math.round(sum * 100)/100)+"</b> "+chosen;
         }
 
     });

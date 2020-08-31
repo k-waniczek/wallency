@@ -1,0 +1,38 @@
+.limiter {
+	width: 700px;
+	margin-top: 20px;
+    float: left;
+    height: 760px;
+}
+
+table {
+	border: none;
+	border-collapse: collapse;
+	border-radius: 2%;
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+    position: relative;
+	height: 100%;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+td,
+th {
+	padding: 7px 5px 7px 5px;
+	height: 40px;
+}
+
+tr:nth-child(even) {
+	background: white;
+}
+
+tr:nth-child(odd) {
+	background: #dfdfdf;
+}
+
+thead > tr {
+ 	background-color: #2a4352 !important;
+	color: white;
+}

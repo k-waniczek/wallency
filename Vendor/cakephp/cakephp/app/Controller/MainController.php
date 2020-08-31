@@ -97,15 +97,18 @@ class MainController extends AppController {
 	}
 
 	public function profile () {
-		// $wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
-		// $ch = curl_init();
-		// curl_setopt($ch, CURLOPT_URL, "https://api.ratesapi.io/api/latest?base=USD");
-		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://api.ratesapi.io/api/latest?base=".strtoupper($this->Session->read("baseCurrency")));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-		// $result = json_decode(curl_exec($ch),true);
-		// curl_close($ch);
+		$result = json_decode(curl_exec($ch),true);
+		curl_close($ch);
 
-		// var_dump($result['rates']['USD']);
+		$this->set('wallet', $wallet);
+		$this->set('currencies', Configure::read('currencies'));
+		$this->set('apiResult', $result);
+		// var_dump($result);
 		// echo "<hr>";
 		// debug($wallet);
 		// die;
@@ -151,14 +154,13 @@ class MainController extends AppController {
 	public function wallet () {
 		if($this->Session->read('loggedIn')) {
 
-			$currencies = ['usd', 'eur', 'chf', 'pln', 'gbp', 'jpy', 'cad', 'rub', 'cny', 'czk', 'try', 'nok', 'huf'];
 			$cryptoCurrencies = ['bitcoin', 'ethereum', 'tether', 'XRP', 'litecoin', 'eos', 'tezos'];
 			$resources = ['oil', 'gold', 'copper', 'silver', 'palladium', 'platinum', 'nickel', 'aluminum'];
 
 			$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
 
 			$this->set('wallet', $wallet);
-			$this->set('currencies', $currencies);
+			$this->set('currencies', Configure::read('currencies'));
 			$this->set('cryptoCurrencies', $cryptoCurrencies);
 			$this->set('resources', $resources);
 
@@ -247,6 +249,13 @@ class MainController extends AppController {
 		$this->response->type('json');
 		$this->response->body(json_encode($wallet));
 		return $this->response;
+	}
+
+	public function changeBaseCurrency () {
+		$this->User->updateAll(
+			array('base_currency' => "'".$this->params['url']['currency']."'"),
+			array('UUID' => $this->Session->read('userUUID'))
+		);
 	}
 
 

@@ -172,7 +172,8 @@ class UserController extends AppController {
 		$this->Session->write('loggedIn', true);
 		$this->Session->write('userName', $userData['User']['login']);
 		$this->Session->write('userUUID', $userData['User']['UUID']);
-		$this->redirect('/wallet');
+		$this->Session->write('baseCurrency', $userData['User']['base_currency']);
+		$this->redirect('/profile');
 	
 	}
 
