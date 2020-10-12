@@ -8,13 +8,30 @@
     echo $this->fetch('css');
     echo $this->fetch('script');
 
-    echo "<div class='limiter'>";
-    echo "<table>";
-    echo "<thead><tr><th>Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
-    foreach($currencies as $currency) { 
-        echo "<tr><td class='currency'>".$currency."</td><td class='value'>".$wallet['Wallet'][$currency]."</td><td class='base'></td></tr>";
-    }
-    echo "</table>";
+    echo "<div class='limiter glider-contain'>";
+        echo "<div class='glider'>";
+            echo "<table class='wallet' id='table1'>";
+            echo "<thead><tr><th>Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
+            foreach($currencies as $currency) { 
+                echo "<tr><td class='currency'>".$currency."<img src='https://www.countryflags.io/".substr($currency, 0, -1)."/shiny/64.png' class='flag'/></td><td class='value'>".(floor(floatval($wallet['Wallet'][$currency]) * 100) / 100)."</td><td class='base'></td></tr>";
+            }
+            echo "</table>";
+            echo "<table class='wallet' id='table2'>";
+            echo "<thead><tr><th>Crypto Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
+            foreach($cryptoCurrencies as $cryptoCurrency) { 
+                echo "<tr><td class='cryptoCurrency'>".$cryptoCurrency."</td><td class='cryptoValue'>".(floor(floatval($wallet['Wallet'][$cryptoCurrency]) * 100) / 100)."</td><td class='cryptoBase'></td></tr>";
+            }
+            echo "</table>";
+            echo "<table class='wallet' id='table3'>";
+            echo "<thead><tr><th>Resources</th><th>Value</th><th>Base currency</th></tr></thead>";
+            foreach($resources as $resource) { 
+                echo "<tr><td class='currency'>".$resource."</td><td class='value'>".(floor(floatval($wallet['Wallet'][$resource]) * 100) / 100)."</td><td class='base'></td></tr>";
+            }
+            echo "</table>";
+        echo "</div>";
+        echo "<button aria-label='Previous' class='glider-prev'>«</button>";
+        echo "<button aria-label='Next' class='glider-next'>»</button>";
+        echo "<div role='tablist' class='dots'></div>";
     echo "</div>";
 
     if(!empty($this->params['url'])) {
@@ -55,8 +72,32 @@
         <span id="sum">Your wallet is worth: </span>
     </div>
 
-    <div class="someBox">
-
+    <div class="currencyCalculator">
+        <div class="calculateFrom">
+            <select id="currencyFrom">
+            <?php
+                foreach($currencies as $currency) {
+                    echo "<option value='".$currency."'>".strtoupper($currency)."</option>";
+                }
+            ?>
+            </select>
+            <input type="number" id="calculateFrom">
+        </div>
+        <div class="changeAndRate">
+            <button class="change">⇅</button>
+            <span id="rate"></span>
+        </div> 
+        <div class="calculateTo">
+            <select id="currencyTo">
+            <?php
+                foreach($currencies as $currency) {
+                    echo "<option value='".$currency."'>".strtoupper($currency)."</option>";
+                }
+            ?>
+            </select>
+            <input type="number" id="calculateTo" disabled>
+        </div>
+        
     </div>
 </div>
 
@@ -80,6 +121,8 @@
             });
         }
 
+        // NORMAL CURRENCIES
+
         var req = new XMLHttpRequest();
         var response;
         var baseValues = [];
@@ -88,6 +131,11 @@
         var values = document.querySelectorAll(".value");
         var currencies = document.querySelectorAll(".currency");
         var finalValues = document.querySelectorAll(".base");
+        var changeBtn = document.querySelector("button.change");
+        var currencyFrom = document.querySelector("select#currencyFrom");
+        var currencyTo = document.querySelector("select#currencyTo");
+        var calculateFrom = document.querySelector("input#calculateFrom");
+        var calculateTo = document.querySelector("input#calculateTo");
         var sameIndex;
         var sum = 0;
         req.open('GET', 'https://api.ratesapi.io/api/latest?base=USD', false);
@@ -96,14 +144,26 @@
             response = JSON.parse(req.responseText).rates;
         }
 
-        calculateWalletSum()
+        calculateWalletSum();
+        setCalculationRate();
+        calculate()
 
         select.addEventListener('change', function () {
-            calculateWalletSum()
+            calculateWalletSum();
+        });
+
+        currencyFrom.addEventListener('change', function () {
+            setCalculationRate();
+            calculate()
+        });
+
+        currencyTo.addEventListener('change', function () {
+            setCalculationRate();
+            calculate()
         });
 
         currencies.forEach(function (currency, index) {
-            baseValues[index] = response[currency.innerHTML.toUpperCase()];
+            baseValues[index] = response[currency.textContent.toUpperCase()];
             index++;
         });
 
@@ -113,6 +173,18 @@
             } else {
                 finalValue.innerHTML = 0;
             }
+        });
+
+        changeBtn.addEventListener("click", function () {
+            var temp = currencyFrom.selectedIndex;
+            currencyFrom.selectedIndex = currencyTo.selectedIndex;
+            currencyTo.selectedIndex = temp;
+            setCalculationRate();
+            calculate()
+        });
+
+        calculateFrom.addEventListener('keyup', function(e) {
+            calculate();
         });
 
         function calculateWalletSum() {
@@ -126,7 +198,7 @@
             }
 
             currencies.forEach(function (currency, index) {
-                baseValues[index] = response[currency.innerHTML.toUpperCase()];
+                baseValues[index] = response[currency.textContent.toUpperCase()];
                 if(currency.innerHTML == chosen) {
                     sameIndex = index;
                 }
@@ -149,6 +221,63 @@
             });
             document.querySelector("#sum").innerHTML += "<b>"+(Math.round(sum * 100)/100)+"</b> "+chosen;
         }
+
+        function setCalculationRate() {
+            req.open('GET', 'https://api.ratesapi.io/api/latest?base='+currencyFrom.options[currencyFrom.selectedIndex].value.toUpperCase(), false);
+            req.send(null);
+            if (req.status == 200) {
+                response = JSON.parse(req.responseText).rates;
+                var rate = response[currencyTo.options[currencyTo.selectedIndex].value.toUpperCase()];
+                rate = Math.floor(rate * 10000) / 10000;
+                document.querySelector("span#rate").innerHTML = '1 ' + currencyFrom.options[currencyFrom.selectedIndex].value + ' = ' + rate.toString().replace('.', ',') + ' ' + currencyTo.options[currencyTo.selectedIndex].value;
+            }
+            return rate;
+            
+        }
+
+        function calculate() {
+            calculateTo.value = parseFloat(calculateFrom.value) * setCalculationRate();
+        }
+
+        // CRYPTO CURRENCIES
+
+        var req = new XMLHttpRequest();
+        var cryptoResponse;
+        var cryptoBaseValues = [];
+        var cryptoValues = document.querySelectorAll(".cryptoValue");
+        var cryptoCurrencies = ['BTC', 'ETH', 'USDT', 'XRP', 'LTC', 'EOS', 'XTZ'];
+        var cryptoFinalValues = document.querySelectorAll(".cryptoBase");
+        var sameIndex;
+
+        for(var i = 0; i < cryptoCurrencies.length; i++) {
+            req.open('GET', 'https://min-api.cryptocompare.com/data/v2/histominute?fsym='+cryptoCurrencies[i]+'&tsym=USD&limit=1&api_key=b76f05d7ae85a73e7992e1044fb1c4b3f07171bfe67a8e21026072f0ac0a26d9', false);
+            req.send(null);
+            if (req.status == 200) {
+                cryptoResponse = JSON.parse(req.responseText);
+                cryptoBaseValues[i] = cryptoResponse.Data.Data[1].close;
+            }
+        }
+
+        cryptoFinalValues.forEach(function (cryptoFinalValue, index) {
+            if(parseFloat(cryptoValues[index].innerHTML) > 0) {
+                cryptoFinalValue.innerHTML = Math.round(parseFloat(cryptoValues[index].innerHTML) * cryptoBaseValues[index] * 100) / 100;
+            } else {
+                cryptoFinalValue.innerHTML = 0;
+            }
+        });
+
+        changeBtn.addEventListener("click", function () {
+            var temp = currencyFrom.selectedIndex;
+            currencyFrom.selectedIndex = currencyTo.selectedIndex;
+            currencyTo.selectedIndex = temp;
+            setCalculationRate();
+            calculate()
+        });
+
+        calculateFrom.addEventListener('keyup', function(e) {
+            calculate();
+        });
+
 
     });
 

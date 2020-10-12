@@ -8,7 +8,7 @@
     echo $this->fetch('script');
 
     echo "<div class='limiter'>";
-    echo "<table>";
+    echo "<table class='wallet'>";
     echo "<thead><tr><th>Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
     $sum = 0;
     foreach($currencies as $currency) {

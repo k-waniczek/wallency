@@ -1,6 +1,20 @@
 <?php
 
-    echo $this->Html->css('withdraw');
+    echo "<div class='transferForm'>";
+    echo "<div class='overlay'></div>";
+    echo "<h2>Transfer</h2>";
+    echo $this->Form->create("transferMoney", array("url" => "transfer"));
+    echo "<div class='col'>";
+    echo $this->Form->input("amountToSend", array("type" => "number", "placeholder" => "Max: ", 'div' => false));
+    echo "<span class='focus-border'></span></div>";
+    echo "<div class='col'>";
+    echo $this->Form->input("recipientLogin", array("type" => "text", "placeholder" => "Recipient login", 'div' => false));
+    echo "<span class='focus-border'></span></div>";
+    echo $this->Form->input('currencyToSend', array('options' => $currencies, 'selected' => 'usd'));
+    echo $this->Form->end("Send", array("class" => "submitBtn"));
+    echo "</div>";
+
+    echo $this->Html->css('transferForm');
     echo $this->Html->css('form');
 
     echo $this->fetch('meta');
@@ -8,23 +22,12 @@
     echo $this->fetch('script');
 
 
-    echo "<div class='withdrawForm'>";
-    echo "<div class='overlay'></div>";
-    echo "<h2>Withdraw</h2>";
-    echo $this->Form->create("Withdraw", array("url" => "/substract-money"));
-    echo "<div class='col'>";
-    echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => 'Max', 'div' => false));
-    echo "<span class='focus-border'></span></div>";
-    echo $this->Form->input('currencies', array('options' => $currencies, 'selected' => 'usd'));
-    echo $this->Form->end("submit");
-    echo "</div>";
-
 ?>
 
 <script>
 
     var select = document.querySelector('select');
-    var amountInput = document.querySelector('#WithdrawAmount');
+    var amountInput = document.querySelector('#transferMoneyAmountToSend');
     var currency = 'usd';
     var response;
 
@@ -63,6 +66,5 @@
             amountInput.setAttribute('placeholder', 'Max '+response[currency]);
         }     
     });
-    
 
 </script>

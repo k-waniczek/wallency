@@ -1,0 +1,26 @@
+body {
+    background: url('../app/webroot/img/bg-pattern.jpg') center center fixed;
+}
+
+label {
+    color: #adadad;
+}
+
+h2 {
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2.5px #1b1b1b;
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 3;
+}
+
+.overlay {
+	background-color: rgba(54, 110, 145, 0.9);
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	position: absolute;
+	border-radius: 20px;
+}

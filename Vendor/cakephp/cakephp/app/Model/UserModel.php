@@ -19,7 +19,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('Model', 'Model');
+App::uses('AppModel', 'Model');
 
 /**
  * Application model for Cake.
@@ -29,50 +29,19 @@ App::uses('Model', 'Model');
  *
  * @package       app.Model
  */
-class UserModel extends Model {
-
-    public function beforeFilter() {
-		parent::beforeFilter();
-    }
+class UserModel extends AppModel {
     
     public $validate = array(
-        // 'login' => array(
-        //     'between' => array(
-        //         'rule' => array('lengthBetween', 4, 20),
-        //         'message' => 'Login needs to be between 4 to 20 characters.'
-        //     ),
-        //     'isUnique' => array(
-        //         'rule' => 'isUnique',
-        //         'message' => 'This username has already been taken.'
-        //     ),
-        //     'custom' => array(
-        //         'rule' => array('custom', '/[^\w-().#*]{1,}/'),
-        //         'message' => 'Your login can contain all letters and these special characters: - ( ) . # *.'
-        //     )
-        // ),
-        // 'password' => array(
-        //     'minLength' => array(
-        //         'rule' => array('minLength', '8'),
-        //         'message' => 'Your password needs to be minimum 8 characters long.'
-        //     ),
-        //     'custom' => array(
-        //         'rule' => array('custom', '/[A-Z\W_]{1,}/'),
-        //         'message' => 'Your password needs to have at least one big letter and one special character.'
-        //     )
-        // ),
-        // 'email' => 'email',
-        // 'birth_date' => array(
-        //     'rule' => 'date',
-        //     'message' => 'Enter a valid date.',
-        //     'allowEmpty' => true
-        // ),
-        // 'name' => array(
-        //     'rule' => array('minLength', 3),
-        //     'message' => 'Your name needs to be at least 3 letter long.'
-        // ),
-        'surname' => array(
-            'rule' => array('minLength', 3),
-            'message' => 'Your surname needs to be at least 3 letter long.'
+        'login' => array (
+          'alphaNumeric' => array(
+            'rule' => 'alphaNumeric',
+            'required' => true,
+            'message' => 'Letters and numbers only'
+          ),
+          'between' => array(
+              'rule' => array('lengthBetween', 3, 20),
+              'message' => 'Between 3 to 20 characters'
+          )
         )
     );
 }

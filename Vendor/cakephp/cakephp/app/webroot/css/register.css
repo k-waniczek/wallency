@@ -1,0 +1,123 @@
+/* Background pattern from Toptal Subtle Patterns */
+
+.container {
+	height: 1300px;
+	text-align: center;
+}
+
+.registerForm {
+	width: 500px;
+	height: 900px;
+	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
+	background-attachment: scroll;
+	position: relative;
+	margin: auto;
+	margin-top: 50px;
+    border-radius: 20px;
+    -webkit-box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
+    box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
+}
+
+div.ad1 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+    background-color: #fff;
+    height: 700px;
+    width: 200px;
+    font-size: 40px;
+    color: black;
+}
+
+div.ad2 {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0%, -50%);
+    background-color: #fff;
+    height: 700px;
+    width: 200px;
+    font-size: 40px;
+    color: black;
+}
+
+form {
+	position: absolute;
+	z-index: 3;
+	transform: translate(-50%, -50%);
+	top: 50%;
+    left: 50%;
+    width: 80%;
+    text-align: center;
+}
+
+div.col {
+    position: relative;
+    margin: 20px auto 20px auto;
+    width: 70%;
+}
+
+div.col input {
+	border: 0;
+	padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin-top: 10px;
+    background-color: transparent;
+}
+
+div.col input~.focus-border {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 2px;
+	background-color: #3399FF;
+	transition: 0.4s;
+}
+
+div.col input:focus~.focus-border {
+	width: 100%;
+	transition: 0.4s;
+	left: 0;
+}
+
+div.select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    outline: none;
+    background-color: transparent;
+    padding: 2px 5px 2px 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+div.submit input {
+    margin: 5px;
+    margin-top: 20px;
+    padding: 10px 45px 10px 45px;
+    border: none;
+    border-radius: 20px;
+    border: 1px solid #cccccc;
+    background-color: transparent;
+    color: #000;
+}
+
+i.fas {
+    position: absolute;
+    right: 10px;
+    top: 32px;
+}
+
+i.fa-check {
+    color: rgb(0, 211, 0);
+}
+
+i.fa-times {
+    color: red;
+}

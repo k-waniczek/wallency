@@ -1,5 +1,7 @@
+/* Background pattern from Toptal Subtle Patterns */
+
 body {
-    background-color: #0e2633;
+    background: url('../app/webroot/img/bg-pattern.jpg') center center fixed;
 }
 
 h1 {

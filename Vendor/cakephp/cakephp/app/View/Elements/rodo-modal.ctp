@@ -1,6 +1,5 @@
-<div class="RODOmodal">
-    The administrator of your data is Wallency.
-    <br/><br/>
+<div class="rodoModal">
+    <h2>The administrator of your data is Wallency.</h2>
     We may process your data, which may constitute personal data (in particular: IP address, browser and operating system data, and approximate location):
     - on the basis of our legitimate interests for statistical purposes and website management for the period until the end of these activities or effective objection;
     - on the basis of our legitimate interests for the purpose of direct marketing for the period until the completion of these activities or filing an effective objection, with your consent using the profiling for the period until its withdrawal (more about this consent below).

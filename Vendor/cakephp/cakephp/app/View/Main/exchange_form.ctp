@@ -1,11 +1,25 @@
 <?php
 
-echo $this->Form->create("exchangeMoney", array("url" => "exchange"));
-echo $this->Form->input("amountToBuy", array("type" => "number", "placeholder" => "Max: "));
-echo $this->Form->input('currencyToExchange', array('options' => $currencies, 'selected' => 'usd'));
-echo $this->Form->input('currencyToBuy', array('options' => $currencies, 'selected' => 'usd'));
+    echo "<div class='exchangeForm'>";
+    echo "<div class='overlay'></div>";
+    echo "<h2>Exchange</h2>";
+    echo $this->Form->create("exchangeMoney", array("url" => "exchange"));
+    echo "<div class='col'>";
+    echo $this->Form->input("amountToBuy", array("type" => "number", "placeholder" => "Max: ", 'div' => false));
+    echo "<span class='focus-border'></span></div>";
+    echo $this->Form->input('currencyToExchange', array('options' => $currencies, 'selected' => 'usd'));
+    echo $this->Form->input('currencyToBuy', array('options' => $currencies, 'selected' => 'usd'));
 
-echo $this->Form->end("submit", array("class" => "submitBtn"));
+    echo $this->Form->end("submit", array("class" => "submitBtn"));
+    echo "</div>";
+
+    echo $this->Html->css('exchange');
+    echo $this->Html->css('form');
+
+    echo $this->fetch('meta');
+    echo $this->fetch('css');
+    echo $this->fetch('script');
+
 
 ?>
 

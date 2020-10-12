@@ -90,10 +90,38 @@ class UserController extends AppController {
 		$data = $this->request->data['RegisterUser'];
 		$this->loadModel('Wallet');
 		$this->User->set($data);
-
 		$uuid = CakeText::uuid();
 
-		if($this->User->validates()) {
+		try {
+			$dateDiff = date_diff(new DateTime($data['birth_date']), new DateTime('NOW'));
+			$adult = $dateDiff->y >= 18 ? true : false;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+
+		// try {
+		// 	if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+		// 		$emailDomain = explode("@", $data['email']);
+		// 		if(filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]['target']), FILTER_VALIDATE_IP)) {
+		// 			$emailValid = true;
+		// 		} else {
+		// 			$emailValid = false;
+		// 		}
+		// 	} else {
+		// 		$emailValid = false;
+		// 	}
+		// } catch (Exception $e) {
+		// 	echo $e->getMessage();
+		// }
+
+		if($this->User->validates() && $adult) {
+			$this->User->save(array('id' => null, 'login' => $data['login'], 'name' => $data['name'], 'surname' => $data['surname'], 'password' => $data['password'], 'email' => $data['email'], 'birthdate' => $data['birth_date'] .= ' 00:00:00', 'UUID' => $uuid, 'base_currency' => $data['baseCurrency'], 'verified' => 0));
+
+			$log = $this->User->getDataSource()->getLog(false, false);
+			$this->Log($log);
+
+			$this->Wallet->validator()->remove('login');
+
 			$this->Wallet->save(array(
 				'id' => null,
 				'modified' => null,
@@ -128,9 +156,7 @@ class UserController extends AppController {
 				'nickel' => 0,
 				'aluminum' => 0
 			));
-	
-			$this->User->save(array('id' => null, 'login' => $data['login'], 'name' => $data['name'], 'surname' => $data['surname'], 'password' => $data['password'], 'email' => $data['email'], 'birthdate' => $data['birth_date'] .= ' 00:00:00', 'UUID' => $uuid, 'base_currency' => $data['baseCurrency'], 'verified' => 0));
-		
+			
 			$email = new CakeEmail('default');
 			$email->emailFormat('html')
 				->to($data['email'])                            

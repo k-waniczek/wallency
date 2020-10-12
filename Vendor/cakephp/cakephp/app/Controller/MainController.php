@@ -258,5 +258,58 @@ class MainController extends AppController {
 		);
 	}
 
+	public function transferForm() {
+		$this->set('currencies', Configure::read('currencies'));
+	}
 
+	public function transfer() {
+		$data = $this->request->data['transferMoney'];
+
+		$recipient = $this->User->find('first', array(
+			'joins' => array(
+				array(
+					'table' => 'wallets',
+					'alias' => 'Wallet',
+					'type' => 'INNER',
+					'conditions' => array(
+						'Wallet.userUUID = User.UUID'
+					)
+				)
+			),
+			'conditions' => array(
+				'login' => $data['recipientLogin']
+			),
+			'fields' => array('User.*', 'Wallet.*')
+		));
+
+		$sender = $this->User->find('first', array(
+			'joins' => array(
+				array(
+					'table' => 'wallets',
+					'alias' => 'Wallet',
+					'type' => 'INNER',
+					'conditions' => array(
+						'Wallet.userUUID = User.UUID'
+					)
+				)
+			),
+			'conditions' => array(
+				'UUID' => $this->Session->read('userUUID')
+			),
+			'fields' => array('User.*', 'Wallet.*')
+		));
+
+		if(!empty($sender) && !empty($recipient)) {
+			try  {
+				$amount = $sender['Wallet'][$data['currencyToSend']] - intval($data['amountToSend']);
+				$this->Wallet->updateAll(array($data['currencyToSend'] => $amount), array('userUUID' => $this->Session->read('userUUID')));
+				$amount = $recipient['Wallet'][$data['currencyToSend']] + intval($data['amountToSend']);
+				$this->Wallet->updateAll(array($data['currencyToSend'] => $amount), array('userUUID' => $recipient['User']['UUID']));
+			} catch (Exception $e) {
+				$this->Session->write("dbError", "Error ".$e->getCode()." occured");
+			}
+		} else {
+			$this->Session->write("dbError", "Recipient with such login was not found.");
+		}
+	}
 }

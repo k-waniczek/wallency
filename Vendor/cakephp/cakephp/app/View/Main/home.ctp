@@ -5,6 +5,7 @@
 
 
     echo $this->Html->css('home');
+    echo $this->Html->script('home');
 
     echo $this->fetch('meta');
     echo $this->fetch('css');
@@ -14,7 +15,7 @@
 
 <div class="mainText">
     <h1><strong>Wallency</strong></h1>
-    <span class="mainSiteText col-hd-4 col-fhd-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse, fugiat nesciunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+    <span class="mainSiteText col-hd-4 col-fhd-4 col-480p-6 col-360p-6 col-sd-8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse, fugiat nesciunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
 </div>
 
 <div class="screenshots">

@@ -19,7 +19,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('Model', 'Model');
+App::uses('AppModel', 'Model');
 
 /**
  * Application model for Cake.
@@ -29,6 +29,6 @@ App::uses('Model', 'Model');
  *
  * @package       app.Model
  */
-class UserModel extends Model {
+class WalletModel extends AppModel {
     
 }

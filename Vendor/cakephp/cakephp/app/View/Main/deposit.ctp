@@ -1,9 +1,21 @@
 <?php
+    echo "<div class='depositForm'>";
+    echo "<div class='overlay'></div>";
+    echo "<h2>Deposit</h2>";
+    echo $this->Form->create("Deposit", array("url" => "/add-money"));
+    echo "<div class='col'>";
+    echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => 'Max 500', 'div' => false));
+    echo "<span class='focus-border'></span></div>";
+    echo $this->Form->input('currencies', array('options' => $currencies));
+    echo $this->Form->end("submit");
+    echo "</div>";
 
-echo $this->Form->create("Deposit", array("url" => "/add-money"));
-echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => 'Max 500'));
-echo $this->Form->input('currencies', array('options' => $currencies));
-echo $this->Form->end("submit");
+    echo $this->Html->css('deposit');
+    echo $this->Html->css('form');
+
+    echo $this->fetch('meta');
+    echo $this->fetch('css');
+    echo $this->fetch('script');
 
 ?>
 

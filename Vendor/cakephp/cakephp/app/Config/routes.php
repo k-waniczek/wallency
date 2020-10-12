@@ -53,6 +53,9 @@
 	Router::connect('/exchange', array('controller' => 'main', 'action' => 'exchange'));
 	Router::connect('/get-wallet', array('controller' => 'main', 'action' => 'getWallet'));
 	Router::connect('/change-base-currency', array('controller' => 'main', 'action' => 'changeBaseCurrency'));
+	Router::connect('/transfer-form', array('controller' => 'main', 'action' => 'transferForm'));
+	Router::connect('/transfer', array('controller' => 'main', 'action' => 'transfer'));
+	Router::connect('/privacy-policy', array('controller' => 'main', 'action' => 'privacyPolicy'));
 
 	Router::connect('/register-user', array('controller' => 'user', 'action' => 'registerUser'));
 	Router::connect('/login-user', array('controller' => 'user', 'action' => 'loginUser'));

@@ -50,11 +50,6 @@ ul > li > a {
     text-decoration: none;
 }
 
-.container {
-    height: 3000px;
-    text-align: center;
-}
-
 .registerForm > * {
     text-align: center !important;
 }
@@ -136,19 +131,20 @@ nav > span {
     float: right;
 }
 
-.RODOmodal {
+.rodoModal {
     width: 600px;
-    background-color: #0000ff;
     height: 300px;
     overflow-y: scroll;
     text-align: left;
     position: absolute;
-    left: 50%;
+    right: 0;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
     z-index: 10000;
-    border: 3px solid black;
-    padding: 10px;
+    padding: 20px;
+    background-color:#d2a9bbbb;
+    line-height: 30px;
+    border-radius: 30px;
 }
 
 .blur {

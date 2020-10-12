@@ -7,6 +7,9 @@
 		echo $this->Html->css('layout');
 		echo $this->Html->script('https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js');
 		echo $this->Html->script('https://cdn.jsdelivr.net/npm/sweetalert2@9');
+		echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.14.0/css/all.css' integrity='sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc' crossorigin='anonymous'>";
+		echo $this->Html->script("glider");
+		echo $this->Html->css("glider");
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -24,6 +27,7 @@
 					<li><a href="deposit">Deposit</a></li>
 					<li><a href="withdraw">Withdraw</a></li>
 					<li><a href="exchange-form">Exchange</a></li>
+					<li><a href="transfer-form">Transfer</a></li>
 				</ul>
 			</div>
 			<span class="registerAndLogin col-hd-2 col-fhd-2">
@@ -46,7 +50,7 @@
 				<span>Copyright &copy; <?= date('Y')?> Wallency.
 				Wallency was created by Kamil Waniczek.</span>
 				<span class="privacy-policy">
-					<a href="app/webroot/files/privacyPolicy.pdf" target="_blank">Privacy Policy</a>
+					<a href="privacy-policy" target="_blank">Privacy Policy</a>
 					<a href="terms-of-service">Terms of Service</a>
 				</span>
 			</div>	
