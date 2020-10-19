@@ -28,6 +28,7 @@
 					<li><a href="withdraw">Withdraw</a></li>
 					<li><a href="exchange-form">Exchange</a></li>
 					<li><a href="transfer-form">Transfer</a></li>
+					<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
 				</ul>
 			</div>
 			<span class="registerAndLogin col-hd-2 col-fhd-2">

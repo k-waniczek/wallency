@@ -18,17 +18,29 @@
 </head>
 <body>
 	<div class="blur">
+		<div class="slideMenu">
+			<span class="close">x</span>
+			<ul>
+				<li><a href="home">Home</a></li>
+				<li><a href="about">About</a></li>
+				<li><a href="contact">Contact</a></li>
+				<li><a href="career">Career</a></li>
+				<li><a href="register">Register</a></li>
+				<li><a href="login">Login</a></li>
+			</ul>
+		</div>
 		<nav>
-			<span class="logo col-fhd-2 col-hd-2 col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-2"><a href="home">LOGO</a></span>
-			<div class="menu col-fhd-6 col-hd-6 col-480p-6 col-360p-6 col-sd-6">
+			<span class="logo col-fhd-2 col-hd-2 col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-1"><a href="home">LOGO</a></span>
+			<div class="menu col-fhd-6 col-hd-6 col-480p-6 col-360p-6 col-sd-9">
 				<ul>
 					<li><a href="home">Home</a></li>
 					<li><a href="about">About</a></li>
 					<li><a href="contact">Contact</a></li>
 					<li><a href="career">Career</a></li>
+					<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
 				</ul>
 			</div>
-			<span class="registerAndLogin col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-2">
+			<span class="registerAndLogin col-fhd-2 col-hd-2 col-480p-2 col-360p-2">
 				<span class="register"><a href="register">Register</a></span> 
 				| 
 				<span class="login"><a href="login">Login</a></span>

@@ -9,7 +9,7 @@
 
 ?>
 
-<div class="loginForm">
+<div class="loginForm col-8k-3 col-4k-3 col-wqhd-3 col-fhd-3 col-hd-3 col-480p-5 col-360p-8 col-sd-10">
     <div class="overlay"></div>
     <h2>Login Form</h2>
     <?php

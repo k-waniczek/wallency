@@ -19,6 +19,14 @@ table.wallet {
 	float: left;
 }
 
+button.glider-next {
+	right: 10px;
+}
+
+button.glider-prev {
+	left: 10px;
+}
+
 td,
 th {
 	padding: 0px 5px 0px 5px;

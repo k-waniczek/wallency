@@ -64,13 +64,34 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		});
 	}
 
-	new Glider(document.querySelector('.glider'), {
-		slidesToShow: 1,
-		dots: '#dots',
-		arrows: {
-			prev: '.glider-prev',
-			next: '.glider-next'
+	// new Glider(document.querySelector('.glider'), {
+	// 	slidesToShow: 1,
+	// 	dots: '#dots',
+	// 	arrows: {
+	// 		prev: '.glider-prev',
+	// 		next: '.glider-next'
+	// 	}
+	// });
+
+	var hamburgerIcon = document.querySelector("i.fa-bars");
+	var slideMenu = document.querySelector("div.slideMenu");
+	var closeIcon = document.querySelector("span.close");
+	var shown = false;
+
+	hamburgerIcon.addEventListener("click", function() {
+		if(!shown) {
+			slideMenu.style.right = "0";
+			shown = true;
+		} else {
+			slideMenu.style.right = "-70%";
+			shown = false;
 		}
-	})
+		
+	});
+
+	closeIcon.addEventListener("click", function() {
+		slideMenu.style.right = "-70%";
+		shown = false;
+	});
 	
 });
