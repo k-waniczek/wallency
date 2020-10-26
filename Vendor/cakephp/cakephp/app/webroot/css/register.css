@@ -107,7 +107,7 @@ div.submit input {
     color: #000;
 }
 
-i.fas {
+i.fa-check, i.fa-times {
     position: absolute;
     right: 10px;
     top: 32px;

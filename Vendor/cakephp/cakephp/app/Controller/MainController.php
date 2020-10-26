@@ -165,6 +165,11 @@ class MainController extends AppController {
 			$this->set('resources', $resources);
 
 		}
+
+		App::uses('HttpSocket', 'Network/Http');
+		$httpSocket = new HttpSocket();
+		$response = $httpSocket->get('https://www.bankier.pl/surowce/notowania');
+		$this->set('response', htmlentities($response));
 	}
 
 	public function activate () {

@@ -64,15 +64,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		});
 	}
 
-	// new Glider(document.querySelector('.glider'), {
-	// 	slidesToShow: 1,
-	// 	dots: '#dots',
-	// 	arrows: {
-	// 		prev: '.glider-prev',
-	// 		next: '.glider-next'
-	// 	}
-	// });
-
 	var hamburgerIcon = document.querySelector("i.fa-bars");
 	var slideMenu = document.querySelector("div.slideMenu");
 	var closeIcon = document.querySelector("span.close");

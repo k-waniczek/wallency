@@ -1,5 +1,4 @@
 .limiter {
-	width: 700px;
 	margin-top: 20px;
     float: left;
     height: 760px;
@@ -8,15 +7,25 @@
 table.wallet {
 	border: none;
 	border-collapse: collapse;
-	border-radius: 2%;
 	overflow: hidden;
 	width: 100%;
 	margin: 0 auto;
     position: relative;
-	height: 100% !important;
 	font-weight: bolder;
 	font-size: 20px;
 	float: left;
+}
+
+table#table1 {
+	border-radius: 2% 0 2% 2%;
+}
+
+table#table2 {	
+	border-radius: 0;
+}
+
+table#table3 {	
+	border-radius: 0 2% 2% 2%;
 }
 
 button.glider-next {
@@ -47,3 +56,4 @@ thead > tr {
  	background-color: #2a4352 !important;
 	color: white;
 }
+

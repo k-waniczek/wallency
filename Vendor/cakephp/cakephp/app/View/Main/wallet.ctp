@@ -1,14 +1,15 @@
-<div class="boxes">
+<div class="boxes col-8k-8 col-4k-8 col-wqhd-8 col-fhd-8 col-hd-8 col-480p-9 col-360p-10 col-sd-10">
 <?php
 
     echo $this->Html->css('wallet');
+    echo $this->Html->script('wallet');
     echo $this->Html->css('table');
 
     echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
 
-    echo "<div class='limiter glider-contain'>";
+    echo "<div class='limiter glider-contain col-8k-5 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-5 col-480p-10 col-360p-10 col-sd-10'>";
         echo "<div class='glider'>";
             echo "<table class='wallet' id='table1'>";
             echo "<thead><tr><th>Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
@@ -61,7 +62,7 @@
 ?>
 
 
-    <div class="walletWorth">
+    <div class="walletWorth col-8k-4 col-4k-4 col-wqhd-4 col-fhd-4 col-hd-4 col-480p-10 col-360p-10 col-sd-10">
         <select id="baseValue">
         <?php
             foreach($currencies as $currency) {
@@ -72,7 +73,7 @@
         <span id="sum">Your wallet is worth: </span>
     </div>
 
-    <div class="currencyCalculator">
+    <div class="currencyCalculator col-8k-4 col-4k-4 col-wqhd-4 col-fhd-4 col-hd-4 col-480p-10 col-360p-10 col-sd-10">
         <div class="calculateFrom">
             <select id="currencyFrom">
             <?php
@@ -100,7 +101,6 @@
         
     </div>
 </div>
-
 
 <script>
     window.addEventListener('DOMContentLoaded', (event) => {
@@ -176,11 +176,11 @@
         });
 
         changeBtn.addEventListener("click", function () {
-            var temp = currencyFrom.selectedIndex;
-            currencyFrom.selectedIndex = currencyTo.selectedIndex;
-            currencyTo.selectedIndex = temp;
+            var temp = document.querySelector("select#currencyFrom").selectedIndex;
+            document.querySelector("select#currencyFrom").selectedIndex = document.querySelector("select#currencyTo").selectedIndex;
+            document.querySelector("select#currencyTo").selectedIndex = temp;
             setCalculationRate();
-            calculate()
+            calculate();
         });
 
         calculateFrom.addEventListener('keyup', function(e) {
@@ -278,6 +278,15 @@
             calculate();
         });
 
+        //RESOURCES
+
+        var req = new XMLHttpRequest();
+        var resourceResponse;
+        var resourceBaseValues = [];
+        var resourceValues = document.querySelectorAll(".resourceValue");
+        var resourceFinalValues = document.querySelectorAll(".resourceBase");
+        var sameIndex;
+        
 
     });
 

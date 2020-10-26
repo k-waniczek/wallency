@@ -14,8 +14,8 @@ body {
 	height: 100px;
 	width: 550px;
 	line-height: 100px;
-	float: left;
-	margin: 20px 0 0 20px;
+	float: right;
+	margin: 20px 0 0 0;
 	border-radius: 10px;
 }
 
@@ -37,8 +37,8 @@ body {
     background-color: #2a4352;
 	height: 640px;
 	width: 550px;
-	float: left;
-	margin: 20px 0 0 20px;
+	float: right;
+	margin: 20px 0 0 0;
 	border-radius: 10px;
 }
 
@@ -133,3 +133,23 @@ span#rate {
 	margin-left: -30px;
 	float: right;
 }
+
+@media only screen and (min-width: 854px) and (max-width: 1279px) {
+	.currencyCalculator {
+		margin-bottom: 50px;
+	}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 853px) {
+	.currencyCalculator {
+		margin-bottom: 50px;
+	}
+}
+
+
+@media only screen and (max-width: 479px) {
+	.currencyCalculator {
+		margin-bottom: 50px;
+	}
+}
+

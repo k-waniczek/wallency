@@ -8,7 +8,7 @@
     echo $this->fetch('script');
 
 
-    echo "<div class='withdrawForm'>";
+    echo "<div class='withdrawForm col-8k-3 col-4k-3 col-wqhd-3 col-fhd-3 col-hd-3 col-480p-6 col-360p-8 col-sd-9'>";
     echo "<div class='overlay'></div>";
     echo "<h2>Withdraw</h2>";
     echo $this->Form->create("Withdraw", array("url" => "/substract-money"));

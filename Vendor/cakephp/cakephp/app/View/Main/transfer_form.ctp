@@ -1,6 +1,6 @@
 <?php
 
-    echo "<div class='transferForm'>";
+    echo "<div class='transferForm col-8k-3 col-4k-3 col-wqhd-3 col-fhd-3 col-hd-3 col-480p-6 col-360p-8 col-sd-9'>";
     echo "<div class='overlay'></div>";
     echo "<h2>Transfer</h2>";
     echo $this->Form->create("transferMoney", array("url" => "transfer"));
