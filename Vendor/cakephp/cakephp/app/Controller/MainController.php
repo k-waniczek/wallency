@@ -169,7 +169,9 @@ class MainController extends AppController {
 		App::uses('HttpSocket', 'Network/Http');
 		$httpSocket = new HttpSocket();
 		$response = $httpSocket->get('https://www.bankier.pl/surowce/notowania');
-		$this->set('response', htmlentities($response));
+		$html = file_get_contents('https://stackoverflow.com/questions/ask');
+		$this->set('response', str_replace('\'', '"', str_replace("\n", '', htmlentities($response))));
+		
 	}
 
 	public function activate () {

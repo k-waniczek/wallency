@@ -26,7 +26,7 @@
             echo "<table class='wallet' id='table3'>";
             echo "<thead><tr><th>Resources</th><th>Value</th><th>Base currency</th></tr></thead>";
             foreach($resources as $resource) { 
-                echo "<tr><td class='currency'>".$resource."</td><td class='value'>".(floor(floatval($wallet['Wallet'][$resource]) * 100) / 100)."</td><td class='base'></td></tr>";
+                echo "<tr><td class='resource'>".$resource."</td><td class='resourceValue'>".(floor(floatval($wallet['Wallet'][$resource]) * 100) / 100)."</td><td class='resourceBase'></td></tr>";
             }
             echo "</table>";
         echo "</div>";
@@ -138,18 +138,27 @@
         var calculateTo = document.querySelector("input#calculateTo");
         var sameIndex;
         var sum = 0;
-        req.open('GET', 'https://api.ratesapi.io/api/latest?base=USD', false);
+        var cryptoResponse;
+        var cryptoBaseValues = [];
+        var cryptoValues = document.querySelectorAll(".cryptoValue");
+        var cryptoCurrencies = ['BTC', 'ETH', 'USDT', 'XRP', 'LTC', 'EOS', 'XTZ'];
+        var cryptoFinalValues = document.querySelectorAll(".cryptoBase");
+        var resourceValues = document.querySelectorAll(".resourceValue");
+        var resourceFinalValues = document.querySelectorAll(".resourceBase");
+
+        req.open('GET', 'https://api.ratesapi.io/api/latest?base='+select.options[select.selectedIndex].value.toUpperCase(), false);
         req.send(null);
         if (req.status == 200) {
             response = JSON.parse(req.responseText).rates;
         }
 
-        calculateWalletSum();
+        calculateCurrencies();
         setCalculationRate();
         calculate()
 
         select.addEventListener('change', function () {
-            calculateWalletSum();
+            calculateWallet();
+            calculateCurrencies();
         });
 
         currencyFrom.addEventListener('change', function () {
@@ -187,10 +196,9 @@
             calculate();
         });
 
-        function calculateWalletSum() {
-            document.querySelector("#sum").innerHTML = 'Your wallet is worth: ';
-            sum = 0;
-            chosen = select.options[select.selectedIndex].value;
+        function calculateCurrencies () {
+            //CURRENCIES
+            var chosen = select.options[select.selectedIndex].value;
             req.open('GET', 'https://api.ratesapi.io/api/latest?base='+chosen.toUpperCase(), false);
             req.send(null);
             if (req.status == 200) {
@@ -209,17 +217,60 @@
 
                 if(index == sameIndex) {
                     finalValue.innerHTML = Math.round(parseFloat(values[index].innerHTML) * 100) / 100;
-                    sum += Math.round(parseFloat(values[index].innerHTML) * 100) / 100;
                 } else if(parseFloat(values[index].innerHTML) > 0) {
                     finalValue.innerHTML = Math.round(parseFloat(values[index].innerHTML) / baseValues[index] * 100) / 100;
-                    sum += Math.round(parseFloat(values[index].innerHTML) / baseValues[index] * 100) / 100;
                 } else {
                     finalValue.innerHTML = 0;
                 }
-                
                 index++;
             });
-            document.querySelector("#sum").innerHTML += "<b>"+(Math.round(sum * 100)/100)+"</b> "+chosen;
+
+            //CRYPTO
+
+            for(var i = 0; i < cryptoCurrencies.length; i++) {
+                req.open('GET', 'https://min-api.cryptocompare.com/data/v2/histominute?fsym='+cryptoCurrencies[i]+'&tsym='+chosen.toUpperCase()+'&limit=1&api_key=b76f05d7ae85a73e7992e1044fb1c4b3f07171bfe67a8e21026072f0ac0a26d9', false);
+                req.send(null);
+                if (req.status == 200) {
+                    cryptoResponse = JSON.parse(req.responseText);
+                    cryptoBaseValues[i] = cryptoResponse.Data.Data[1].close;
+                }
+            }
+
+            cryptoFinalValues.forEach(function (cryptoFinalValue, index) {
+                if(parseFloat(cryptoValues[index].innerHTML) > 0) {
+                    cryptoFinalValue.innerHTML = Math.round(parseFloat(cryptoValues[index].innerHTML) * cryptoBaseValues[index] * 100) / 100;
+                } else {
+                    cryptoFinalValue.innerHTML = 0;
+                }
+            });
+
+            //RESOURCES
+
+            req.open('GET', 'https://api.ratesapi.io/api/latest?base=USD', false);
+            req.send(null);
+            if (req.status == 200) {
+                resourcesResponse = JSON.parse(req.responseText).rates;
+            }
+
+            var div = document.createElement("div");
+            var proxy = 'https://cors-anywhere.herokuapp.com/';
+
+            req.open('GET', proxy + 'https://www.bankier.pl/surowce/notowania', false);
+            req.send(null);
+            if (req.status == 200) {
+                div.innerHTML = req.responseText;
+            }
+
+            for(var i = 0; i < 8; i++) {
+                if(resourcesResponse[chosen.toUpperCase()] >= 1) {
+                    resourceFinalValues[i].innerHTML = parseFloat(resourceValues[i].innerHTML) * Math.round(parseFloat(div.getElementsByClassName("colKurs change")[i].innerHTML.trim().replace(",", ".").replace("&nbsp;", "")) * resourcesResponse[chosen.toUpperCase()] * 100) / 100;
+                } else {
+                    resourceFinalValues[i].innerHTML = parseFloat(resourceValues[i].innerHTML) * Math.round(parseFloat(div.getElementsByClassName("colKurs change")[i].innerHTML.trim().replace(",", ".").replace("&nbsp;", "")) / resourcesResponse[chosen.toUpperCase()] * 100) / 100;
+                }   
+                    
+            }
+
+            calculateWallet();
         }
 
         function setCalculationRate() {
@@ -239,55 +290,26 @@
             calculateTo.value = parseFloat(calculateFrom.value) * setCalculationRate();
         }
 
-        // CRYPTO CURRENCIES
-
-        var req = new XMLHttpRequest();
-        var cryptoResponse;
-        var cryptoBaseValues = [];
-        var cryptoValues = document.querySelectorAll(".cryptoValue");
-        var cryptoCurrencies = ['BTC', 'ETH', 'USDT', 'XRP', 'LTC', 'EOS', 'XTZ'];
-        var cryptoFinalValues = document.querySelectorAll(".cryptoBase");
-        var sameIndex;
-
-        for(var i = 0; i < cryptoCurrencies.length; i++) {
-            req.open('GET', 'https://min-api.cryptocompare.com/data/v2/histominute?fsym='+cryptoCurrencies[i]+'&tsym=USD&limit=1&api_key=b76f05d7ae85a73e7992e1044fb1c4b3f07171bfe67a8e21026072f0ac0a26d9', false);
-            req.send(null);
-            if (req.status == 200) {
-                cryptoResponse = JSON.parse(req.responseText);
-                cryptoBaseValues[i] = cryptoResponse.Data.Data[1].close;
-            }
-        }
-
-        cryptoFinalValues.forEach(function (cryptoFinalValue, index) {
-            if(parseFloat(cryptoValues[index].innerHTML) > 0) {
-                cryptoFinalValue.innerHTML = Math.round(parseFloat(cryptoValues[index].innerHTML) * cryptoBaseValues[index] * 100) / 100;
-            } else {
-                cryptoFinalValue.innerHTML = 0;
-            }
-        });
-
-        changeBtn.addEventListener("click", function () {
-            var temp = currencyFrom.selectedIndex;
-            currencyFrom.selectedIndex = currencyTo.selectedIndex;
-            currencyTo.selectedIndex = temp;
-            setCalculationRate();
-            calculate()
-        });
-
-        calculateFrom.addEventListener('keyup', function(e) {
-            calculate();
-        });
-
-        //RESOURCES
-
-        var req = new XMLHttpRequest();
-        var resourceResponse;
-        var resourceBaseValues = [];
-        var resourceValues = document.querySelectorAll(".resourceValue");
-        var resourceFinalValues = document.querySelectorAll(".resourceBase");
-        var sameIndex;
+        function calculateWallet () {
+            var sum = 0;
+            document.querySelectorAll(".base").forEach(function(base) {
+                sum += parseFloat(base.textContent.trim());
+            })
         
+            document.querySelectorAll(".cryptoBase").forEach(function(cryptoBase) {
+                console.log(cryptoBase.textContent.toString().trim());
+                sum += parseFloat(cryptoBase.textContent.trim());
+            })
+            console.log(sum);
+            document.querySelectorAll(".resourceBase").forEach(function(resourceBase) {
+                sum += parseFloat(resourceBase.textContent.trim());
+            })
 
+            document.querySelector("#sum").innerHTML += "<b>"+(Math.round(sum * 100)/100).toLocaleString()+"</b> "+select.options[select.selectedIndex].value;
+        }
+        
     });
+
+    
 
 </script>
