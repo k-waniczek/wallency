@@ -154,7 +154,7 @@ class MainController extends AppController {
 	public function wallet () {
 		if($this->Session->read('loggedIn')) {
 
-			$cryptoCurrencies = ['bitcoin', 'ethereum', 'tether', 'XRP', 'litecoin', 'eos', 'tezos'];
+			$cryptoCurrencies = ['bitcoin', 'ethereum', 'lumen', 'XRP', 'litecoin', 'eos', 'Yearn-finance'];
 			$resources = ['oil', 'gold', 'copper', 'silver', 'palladium', 'platinum', 'nickel', 'aluminum'];
 
 			$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
