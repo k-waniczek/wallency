@@ -42,6 +42,8 @@ class MainController extends AppController {
 	public function beforeFilter() {
 		$this->loadModel('Wallet');
 		$this->loadModel('User');
+		$this->loadModel('History');
+		$this->History->validator()->remove('login');
 		if($this->Session->read('loggedIn'))
 			$this->layout = 'loggedIn';
 		else 
@@ -196,6 +198,16 @@ class MainController extends AppController {
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
 		$amount = $wallet['Wallet'][$data['currencies']] + $data['amount'];
 		$this->Wallet->updateAll(array($data['currencies'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
+		$this->History->save(array(
+			'id' => null,
+			'type' => 'deposit',
+			'currency_plus' => $data['currencies'],
+			'currency_minus' => '',
+			'money_on_plus' => $data['amount'],
+			'money_on_minus' => 0,
+			'transaction_date' => date('Y-m-d H:i:s'),
+			'wallet_id' => $wallet['Wallet']['id']
+		));
 	}
 	
 	public function withdraw () {
@@ -213,6 +225,16 @@ class MainController extends AppController {
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
 		$amount = $wallet['Wallet'][$data['currencies']] - $data['amount'];
 		$this->Wallet->updateAll(array($data['currencies'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
+		$this->History->save(array(
+			'id' => null,
+			'type' => 'withdraw',
+			'currency_plus' => '',
+			'currency_minus' => $data['currencies'],
+			'money_on_plus' => 0,
+			'money_on_minus' => $data['amount'],
+			'transaction_date' => date('Y-m-d H:i:s'),
+			'wallet_id' => $wallet['Wallet']['id']
+		));
 	}
 
 	public function rules () {
@@ -247,6 +269,16 @@ class MainController extends AppController {
 		$exchange = $wallet['Wallet'][$this->params['url']['currencyToExchange']] - $this->params['url']['exchangeAmout'];
 		$buy = $wallet['Wallet'][$this->params['url']['currencyToBuy']] + $this->params['url']['buyAmount'];
 		$this->Wallet->updateAll(array($this->params['url']['currencyToExchange'] => $exchange, $this->params['url']['currencyToBuy'] => $buy),array('userUUID' => $this->Session->read('userUUID')));
+		$this->History->save(array(
+			'id' => null,
+			'type' => 'exchange',
+			'currency_plus' => $this->params['url']['currencyToBuy'],
+			'currency_minus' => $this->params['url']['currencyToExchange'],
+			'money_on_plus' => $this->params['url']['buyAmount'],
+			'money_on_minus' => $this->params['url']['exchangeAmout'],
+			'transaction_date' => date('Y-m-d H:i:s'),
+			'wallet_id' => $wallet['Wallet']['id']
+		));
 	}	
 
 	public function getWallet () {
@@ -318,5 +350,34 @@ class MainController extends AppController {
 		} else {
 			$this->Session->write("dbError", "Recipient with such login was not found.");
 		}
+		$this->History->save(array(
+			'id' => null,
+			'type' => 'transfer',
+			'currency_plus' => '',
+			'currency_minus' => $data['currencyToSend'],
+			'money_on_plus' => 0,
+			'money_on_minus' => $data['amountToSend'],
+			'transaction_date' => date('Y-m-d H:i:s'),
+			'wallet_id' => $sender['Wallet']['id']
+		));
+	}
+
+	public function history () {
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		$history = $this->History->find('all', array('conditions' => array('wallet_id' => $wallet['Wallet']['id']), 'order' => array('transaction_date' => 'desc'), 'limit' => 8));
+		$this->set('history', $history);
+		$historyCount = $this->History->find('count', array('conditions' => array('wallet_id' => $wallet['Wallet']['id'])));
+		$this->set('rowCount', $historyCount);
+	}
+
+	public function getHistoryRows () {
+		$this->autoRender = false;
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		$history = $this->History->find('all', array('conditions' => array('wallet_id' => $wallet['Wallet']['id']), 'limit' => 8, 'offset' => (intval($this->params['limit']) - 1) * 8, 'order' => array('transaction_date' => 'desc')));
+		return json_encode($history);
+	}
+
+	public function faq () {
+		
 	}
 }

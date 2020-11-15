@@ -1,21 +1,42 @@
 .limiter {
 	margin-top: 20px;
     float: left;
-    height: 760px;
+	height: 760px;
+	position: relative;
 }
 
-table.wallet {
+table.wallet, table.walletHistory {
 	border: none;
 	border-collapse: collapse;
 	overflow: hidden;
 	width: 100%;
 	margin: 0 auto;
-    position: relative;
 	font-weight: bolder;
 	font-size: 20px;
 	float: left;
 }
 
+.limiterHistory {
+	height: 500px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+
+table.walletHistory {
+	border-radius: 15px;
+	position: relative;
+	width: 100%;
+}
+
+table.walletHistory tr th:nth-of-type(1) {
+	width: 150px;
+}
+
+table.walletHistory tr th:nth-of-type(4) {
+	width: 300px;
+}
 table#table1 {
 	border-radius: 2% 0 2% 2%;
 }

@@ -27,6 +27,8 @@
 				<li><a href="withdraw">Withdraw</a></li>
 				<li><a href="exchange-form">Exchange</a></li>
 				<li><a href="transfer-form">Transfer</a></li>
+				<li><a href="history">History</a></li>
+				<li><a href="faq">FaQ</a></li>
 				<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
 			</ul>
 		</div>
@@ -40,6 +42,8 @@
 					<li><a href="withdraw">Withdraw</a></li>
 					<li><a href="exchange-form">Exchange</a></li>
 					<li><a href="transfer-form">Transfer</a></li>
+					<li><a href="history">History</a></li>
+					<li><a href="faq">FaQ</a></li>
 					<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
 				</ul>
 			</div>

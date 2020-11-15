@@ -48,9 +48,11 @@
     }     
 
     amountInput.addEventListener('keyup', function () {
-        if(amountInput.value < 0 || amountInput.value == '' || amountInput.value > response[currency]) {
-        document.querySelector('div.submit input').setAttribute('disabled', true);
+        if(amountInput.value <= 0 || amountInput.value == '' || amountInput.value > parseInt(response[currency])) {
+            console.log('disabled');
+            document.querySelector('div.submit input').setAttribute('disabled', true);
         } else {
+            console.log('not disabled');
             document.querySelector('div.submit input').removeAttribute('disabled');
         }
     });

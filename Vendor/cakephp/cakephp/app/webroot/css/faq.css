@@ -1,0 +1,8 @@
+body {
+    background: url('../app/webroot/img/bg-pattern.jpg') center center fixed;
+}
+
+.container {
+    height: 858px;
+    color: white;
+} 

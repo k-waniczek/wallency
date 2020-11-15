@@ -56,6 +56,9 @@
 	Router::connect('/transfer-form', array('controller' => 'main', 'action' => 'transferForm'));
 	Router::connect('/transfer', array('controller' => 'main', 'action' => 'transfer'));
 	Router::connect('/privacy-policy', array('controller' => 'main', 'action' => 'privacyPolicy'));
+	Router::connect('/history', array('controller' => 'main', 'action' => 'history'));
+	Router::connect('/get-history-rows/:limit', array('controller' => 'main', 'action' => 'getHistoryRows'));
+	Router::connect('/faq', array('controller' => 'main', 'action' => 'faq'));
 
 	Router::connect('/register-user', array('controller' => 'user', 'action' => 'registerUser'));
 	Router::connect('/login-user', array('controller' => 'user', 'action' => 'loginUser'));
