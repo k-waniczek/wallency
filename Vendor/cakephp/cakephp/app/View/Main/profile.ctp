@@ -108,4 +108,56 @@
         }
     });
 
+    var currencies = ['USD', 'EUR', 'CHF', 'PLN', 'GBP', 'JPY', 'CAD', 'RUB', 'CNY', 'CZK', 'TRY', 'NOK', 'HUF'];
+    var currentRates = "<?php echo(str_replace('"', '\'', json_encode($apiResult))); ?>";
+    currentRates = JSON.parse(currentRates.replaceAll('\'', '"'));
+
+    var date = new Date();
+    date.setDate(date.getDate()-2);
+    var weekend;
+    if(date.getDay() == 6 || date.getDay() == 0) {
+        weekend = true;
+    } else {
+        weekend = false;
+    }
+
+    function historyApiCall() {
+        req.open('GET', 'https://api.ratesapi.io/api/history?start_at='+date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()+'&end_at='+date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()+'&base='+select.options[select.selectedIndex].value.toUpperCase(), false);
+        req.send(null);
+        if (req.status == 200) {
+            response = JSON.parse(req.responseText);
+        }
+        return response;
+    } 
+
+    var req = new XMLHttpRequest();
+    var start = new Date(date.getFullYear(), 0, 0);
+    var diff = date - start;
+    var oneDay = 1000 * 60 * 60 * 24;
+    var day = Math.floor(diff / oneDay);
+    if(day % 2 == 0 && weekend == false) {
+        historyRates = historyApiCall();
+        compare();
+    } else {
+        date.setDate(date.getDate()-2);
+        historyRates = historyApiCall();
+        compare();
+    }
+
+    function compare() {
+        var historyRate;
+        var lastRate;
+        var percent = 0;
+        for(var i = 0; i < currencies.length; i++) {
+            historyRate = (historyRates.rates[date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()][currencies[i]] == undefined) ? 1 : historyRates.rates[date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()][currencies[i]];
+            lastRate = (currentRates.rates[currencies[i]] == undefined) ? 1 : currentRates.rates[currencies[i]];
+            if(lastRate < historyRate * 0.97 || lastRate > historyRate * 1.03) {
+                percent = (lastRate / historyRate) * 100 - 100;
+                req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/send_currency_change_notification/'+currencies[i]+'/'+Math.round(percent * 100) / 100+'/', false);
+                req.send(null);
+            }
+        }
+
+    }
+
 </script>

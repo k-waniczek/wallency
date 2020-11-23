@@ -7,7 +7,7 @@
     echo $this->fetch('css');
     echo $this->fetch('script');
 
-    echo "<div class='limiterHistory'>";
+    echo "<div class='limiterHistory col-8k-5 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-5 col-480p-7 col-360p-7 col-sd-8'>";
     echo "<table class='walletHistory'>";
     echo "<thead><tr><th>Type</th><th>Money on plus</th><th>Money on minus</th><th>Transaction date</th></tr></thead>";
     for($i = 0; $i < count($history); $i++) {

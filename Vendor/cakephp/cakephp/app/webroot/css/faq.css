@@ -3,6 +3,31 @@ body {
 }
 
 .container {
-    height: 858px;
+    height: 824px;
     color: white;
 } 
+
+.question {
+    font-weight: 1000;
+}
+
+.answer {
+    display: block;
+    margin-top: 20px;
+}
+
+p {
+    height: 100px;
+    width: calc(50% - 20px);
+    float: left;
+    padding: 10px;
+    margin: 0;
+}
+
+.main {
+    background-color: #2a4352;
+    margin: auto;
+    margin-top: 50px;
+    height: 600px;
+    border-radius: 20px;
+}

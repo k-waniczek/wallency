@@ -5,3 +5,22 @@ body {
 .container {
     height: 874px;
 } 
+
+@media only screen and (min-width: 900px) and (max-width: 1000px) {
+    .container {
+        height: 1200px;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 900px) {
+    .container {
+        height: 1300px;
+    }
+}
+
+@media only screen and (min-width:438px) and (max-width: 699px) {
+    .container {
+        height: 1400px;
+    }
+}
+

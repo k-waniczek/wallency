@@ -7,7 +7,7 @@
     echo $this->fetch('script');
 ?>
 
-<div class="main">
+<div class="main col-8k-8 col-4k-8 col-wqhd-8 col-fhd-8 col-hd-8 col-480p-9 col-360-10 col-sd-10">
     <p>
         <span class="question">Q: What currencies are available in this wallet?</span><br/>
         <span class="answer">A: Main currencies in our wallet are: US Dollar, Euro, Swiss franc, PLN, British pound, Yen, Canadian Dollar, Russian ruble, Yuan, Czech crown, Turkish Lira, Norwegian crown, Forint.</span>
