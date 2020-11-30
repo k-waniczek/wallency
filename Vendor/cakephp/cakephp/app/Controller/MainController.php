@@ -48,6 +48,11 @@ class MainController extends AppController {
 			$this->layout = 'loggedIn';
 		else 
 			$this->layout = 'default';
+		Configure::write('Config.language', $this->Session->read('language'));
+		$locale = $this->Session->read('language');
+        if ($locale && file_exists(APP . 'View' . DS . $locale . DS . $this->viewPath . DS . $this->view . $this->ext)) {
+            $this->viewPath = $locale . DS . $this->viewPath;
+        }
 	}
 
 /**
@@ -196,12 +201,12 @@ class MainController extends AppController {
 	public function addMoney () {
 		$data = $this->request->data['Deposit'];
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
-		$amount = $wallet['Wallet'][$data['currencies']] + $data['amount'];
-		$this->Wallet->updateAll(array($data['currencies'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
+		$amount = $wallet['Wallet'][$data['currency']] + $data['amount'];
+		$this->Wallet->updateAll(array($data['currency'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
 		$this->History->save(array(
 			'id' => null,
 			'type' => 'deposit',
-			'currency_plus' => $data['currencies'],
+			'currency_plus' => $data['currency'],
 			'currency_minus' => '',
 			'money_on_plus' => $data['amount'],
 			'money_on_minus' => 0,
@@ -223,13 +228,13 @@ class MainController extends AppController {
 	public function substractMoney () {
 		$data = $this->request->data['Withdraw'];
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
-		$amount = $wallet['Wallet'][$data['currencies']] - $data['amount'];
-		$this->Wallet->updateAll(array($data['currencies'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
+		$amount = $wallet['Wallet'][$data['currency']] - $data['amount'];
+		$this->Wallet->updateAll(array($data['currency'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
 		$this->History->save(array(
 			'id' => null,
 			'type' => 'withdraw',
 			'currency_plus' => '',
-			'currency_minus' => $data['currencies'],
+			'currency_minus' => $data['currency'],
 			'money_on_plus' => 0,
 			'money_on_minus' => $data['amount'],
 			'transaction_date' => date('Y-m-d H:i:s'),
@@ -379,5 +384,9 @@ class MainController extends AppController {
 
 	public function faq () {
 		
+	}
+
+	public function changeLanguage() {
+		$this->Session->write('language', $this->params['lang']);
 	}
 }

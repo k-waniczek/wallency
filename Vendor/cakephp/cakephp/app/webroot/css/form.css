@@ -3,7 +3,8 @@ body {
 }
 
 label {
-    color: #adadad;
+	color: #adadad;
+	text-align: left;
 }
 
 h2 {

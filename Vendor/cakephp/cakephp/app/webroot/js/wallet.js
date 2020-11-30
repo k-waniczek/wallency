@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     new Glider(document.querySelector('.glider'), {
         slidesToShow: 1,
-        dots: '#dots',
+        scrollLock: true,
         arrows: {
             prev: '.glider-prev',
             next: '.glider-next'

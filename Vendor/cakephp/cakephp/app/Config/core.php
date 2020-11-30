@@ -36,7 +36,6 @@
  */
 	Configure::write('debug', 2);
 	Configure::write('currencies', array('usd' => 'usd', 'eur' => 'eur', 'chf' => 'chf', 'pln' => 'pln', 'gbp' => 'gbp', 'jpy' => 'jpy', 'cad' => 'cad', 'rub' => 'rub', 'cny' => 'cny', 'czk' => 'czk', 'try' => 'try', 'nok' => 'nok', 'huf' => 'huf'));
-
 /**
  * Configure the Error handler used to handle errors for your application. By default
  * ErrorHandler::handleError() is used. It will display errors using Debugger, when debug > 0

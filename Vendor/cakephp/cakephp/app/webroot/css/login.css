@@ -18,44 +18,29 @@
     box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
 }
 
-div.ad1 {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(0%, -50%);
-    background-color: #fff;
-    height: 700px;
-    width: 200px;
-    font-size: 40px;
-    color: black;
-}
-
-div.ad2 {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(0%, -50%);
-    background-color: #fff;
-    height: 700px;
-    width: 200px;
-    font-size: 40px;
-    color: black;
-}
-
 form {
 	position: absolute;
 	z-index: 3;
 	transform: translate(-50%, -50%);
-	top: 50%;
+	top: 57%;
     left: 50%;
     width: 80%;
     text-align: center;
 }
 
+.fa-eye {
+	position: absolute;
+	right: 8px;
+	top: 28px;
+	color: white;
+	cursor: pointer;
+}
+
 div.col {
     position: relative;
-    margin: 20px auto 20px auto;
+    margin: 20px auto 50px auto;
     width: 70%;
+    text-align: left;
 }
 
 div.col input {
@@ -63,7 +48,6 @@ div.col input {
 	padding: 7px 0;
     border-bottom: 1px solid #ccc;
     width: 100%;
-    margin-top: 10px;
     background-color: transparent;
 }
 

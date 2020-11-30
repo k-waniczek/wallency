@@ -2,15 +2,15 @@
 
     echo "<div class='exchangeForm col-8k-3 col-4k-3 col-wqhd-3 col-fhd-3 col-hd-3 col-480p-6 col-360p-8 col-sd-9'>";
     echo "<div class='overlay'></div>";
-    echo "<h2>Exchange</h2>";
+    echo "<h2>".__('exchange')."</h2>";
     echo $this->Form->create("exchangeMoney", array("url" => "exchange"));
     echo "<div class='col'>";
-    echo $this->Form->input("amountToBuy", array("type" => "number", "placeholder" => "Max: ", 'div' => false));
+    echo $this->Form->input("amountToBuy", array("type" => "number", "placeholder" => __('max_exchange_amount'), 'div' => false));
     echo "<span class='focus-border'></span></div>";
     echo $this->Form->input('currencyToExchange', array('options' => $currencies, 'selected' => 'usd'));
     echo $this->Form->input('currencyToBuy', array('options' => $currencies, 'selected' => 'usd'));
 
-    echo $this->Form->end("submit", array("class" => "submitBtn"));
+    echo $this->Form->end(__('exchange'), array("class" => "submitBtn"));
     echo "</div>";
 
     echo $this->Html->css('exchange');
@@ -70,7 +70,7 @@
                 value = JSON.parse(req.responseText).Wallet[chosenCurrency];
             }
 
-            amountInput.setAttribute("placeholder", "Max: "+Math.floor(parseFloat(value) * rate * 1) / 1)
+            amountInput.setAttribute("placeholder", "<?php echo __('max_exchange_amount');?>"+Math.floor(parseFloat(value) * rate * 1) / 1)
             amountInput.setAttribute("max", +Math.floor(parseFloat(value) * rate * 1) / 1)
 
             return rate;

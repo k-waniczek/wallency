@@ -10,20 +10,20 @@
 
     echo "<div class='withdrawForm col-8k-3 col-4k-3 col-wqhd-3 col-fhd-3 col-hd-3 col-480p-6 col-360p-8 col-sd-9'>";
     echo "<div class='overlay'></div>";
-    echo "<h2>Withdraw</h2>";
+    echo "<h2>".__('withdraw')."</h2>";
     echo $this->Form->create("Withdraw", array("url" => "/substract-money"));
     echo "<div class='col'>";
-    echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => 'Max', 'div' => false));
+    echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => __('max_withdraw_amount'), 'div' => false));
     echo "<span class='focus-border'></span></div>";
-    echo $this->Form->input('currencies', array('options' => $currencies, 'selected' => 'usd'));
-    echo $this->Form->end("submit");
+    echo $this->Form->input('currency', array('options' => $currencies, 'selected' => 'usd'));
+    echo $this->Form->end(__('withdraw'));
     echo "</div>";
 
 ?>
 
 <script>
 
-    var select = document.querySelector('select');
+    var select = document.querySelector('select#WithdrawCurrency');
     var amountInput = document.querySelector('#WithdrawAmount');
     var currency = 'usd';
     var response;
@@ -41,7 +41,7 @@
     if (req.status == 200) {
         response = JSON.parse(req.responseText).Wallet;
         amountInput.setAttribute('max', response[currency]);
-        amountInput.setAttribute('placeholder', 'Max '+response[currency]);
+        amountInput.setAttribute('placeholder', "<?php echo __('max_withdraw_amount');?>"+response[currency]);
     }     
 
     amountInput.addEventListener('keyup', function () {
@@ -60,7 +60,7 @@
         if (req.status == 200) {
             response = JSON.parse(req.responseText).Wallet;
             amountInput.setAttribute('max', response[currency]);
-            amountInput.setAttribute('placeholder', 'Max '+response[currency]);
+            amountInput.setAttribute('placeholder', 'Max amount you can withdraw is '+response[currency]);
         }     
     });
     

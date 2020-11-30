@@ -151,13 +151,12 @@
         for(var i = 0; i < currencies.length; i++) {
             historyRate = (historyRates.rates[date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()][currencies[i]] == undefined) ? 1 : historyRates.rates[date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()][currencies[i]];
             lastRate = (currentRates.rates[currencies[i]] == undefined) ? 1 : currentRates.rates[currencies[i]];
-            if(lastRate < historyRate * 0.97 || lastRate > historyRate * 1.03) {
+            if(lastRate < historyRate * 0.995 || lastRate > historyRate * 1.005) {
                 percent = (lastRate / historyRate) * 100 - 100;
                 req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/send_currency_change_notification/'+currencies[i]+'/'+Math.round(percent * 100) / 100+'/', false);
                 req.send(null);
             }
         }
-
     }
 
 </script>

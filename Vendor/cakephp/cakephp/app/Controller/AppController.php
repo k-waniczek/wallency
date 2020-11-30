@@ -31,5 +31,12 @@ App::uses('Controller', 'Controller');
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    
+    public function beforeFilter() {
+        Configure::write('Config.language', $this->Session->read('language'));
+        $locale = $this->Session->read('language');
+        if ($locale && file_exists(APP . 'View' . DS . $locale . DS . $this->viewPath . DS . $this->view . $this->ext)) {
+            // e.g. use /app/View/fra/Pages/tos.ctp instead of /app/View/Pages/tos.ctp
+            $this->viewPath = $locale . DS . $this->viewPath;
+        }
+    }
 }

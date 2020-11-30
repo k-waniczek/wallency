@@ -11,7 +11,7 @@
 ?>
 <div class="registerForm col-8k-3 col-4k-3 col-wqhd-3 col-fhd-3 col-hd-3 col-480p-5 col-360p-8 col-sd-10">
     <div class="overlay"></div>
-    <h2>Registration Form</h2>
+    <h2><?php echo __('registration_form');?></h2>
         <?php
 
             echo $this->Form->create("RegisterUser", array("url" => "/register-user"));?>
@@ -34,13 +34,13 @@
             <?=$this->Form->input("repeatPassword", array('type' => 'password', 'div' => false, "minlength" => "8", "maxlength" => "30", "size" => "30"));?>
             <span class='focus-border'></span></div>
             <div class='col' id="birthDate">
-            <?=$this->Form->input('birth_date', array('type' => 'text', 'placeholder' => 'e.g. 2005-06-23', 'div' => false));?>
+            <?=$this->Form->input('birth_date', array('type' => 'text', 'placeholder' => 'e.g. 1999-06-23', 'div' => false));?>
             <span class='focus-border'></span></div>
             <?=$this->Form->input('baseCurrency', array('options' => $currencies, 'selected' => 'usd'));?>
         <?php
 
             $this->Form->input('baseCurrency', array('options' => $currencies));
-            echo $this->Form->end("Register");
+            echo $this->Form->end(__('register'));
 
         ?>
 </div>

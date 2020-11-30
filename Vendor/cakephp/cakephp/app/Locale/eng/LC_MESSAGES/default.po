@@ -1,0 +1,185 @@
+msgid "home"
+msgstr "Home"
+
+msgid "about"
+msgstr "About"
+
+msgid "contact"
+msgstr "Contact"
+
+msgid "career"
+msgstr "Career"
+
+msgid "register"
+msgstr "Register"
+
+msgid "login"
+msgstr "Login"
+
+msgid "btc_value"
+msgstr "Bitcoin value in USD"
+
+msgid "copyright"
+msgstr "Copyright"
+
+msgid "copyright_rest"
+msgstr "was created by Kamil Waniczek"
+
+msgid "privacy_policy"
+msgstr "Privacy Policy"
+
+msgid "terms_of_service"
+msgstr "Terms of Service"
+
+msgid "profile"
+msgstr "Profile"
+
+msgid "wallet"
+msgstr "Wallet"
+
+msgid "deposit"
+msgstr "Deposit"
+
+msgid "withdraw"
+msgstr "Withdraw"
+
+msgid "exchange"
+msgstr "Exchange"
+
+msgid "transfer"
+msgstr "Transfer"
+
+msgid "history"
+msgstr "History"
+
+msgid "currency"
+msgstr "Currency"
+
+msgid "value"
+msgstr "Value"
+
+msgid "base_currency"
+msgstr "Base currency"
+
+msgid "login"
+msgstr "Login"
+
+msgid "register"
+msgstr "Register"
+
+msgid "registration_form"
+msgstr "Register form"
+
+msgid "login_form"
+msgstr "Login form"
+
+msgid "logout"
+msgstr "Logout"
+
+msgid "crypto_currency"
+msgstr "Crypto currency"
+
+msgid "resources"
+msgstr "Resources"
+
+msgid "question1"
+msgstr "What currencies are available in this wallet?"
+
+msgid "question2"
+msgstr "How can I charge my wallet?"
+
+msgid "question3"
+msgstr "Is there an option to change language of this site?"
+
+msgid "question4"
+msgstr "Do you need an account to use this wallet?"
+
+msgid "question5"
+msgstr "What web browsers are compatible with this website?"
+
+msgid "question6"
+msgstr "How often currencies rates are updated?"
+
+msgid "question7"
+msgstr "Is there a standalone application for download?"
+
+msgid "question8"
+msgstr "Is there a newsletter?"
+
+msgid "question9"
+msgstr "Do you use my email after registration to send offers and spam?"
+
+msgid "question10"
+msgstr "Can I use the wallet if I am below 18 yers old?"
+
+msgid "answer1"
+msgstr "Main currencies in our wallet are: US Dollar, Euro, Swiss franc, PLN, British pound, Yen, Canadian Dollar, Russian ruble, Yuan, Czech crown, Turkish Lira, Norwegian crown, Forint."
+
+msgid "answer2"
+msgstr "For now you can just 'add' money to your account, we do not support any banking services at the moment."
+
+msgid "answer3"
+msgstr "Currently we do not have this option, but we are working on it."
+
+msgid "answer4"
+msgstr "Yes you need to create an account to use our wallet."
+
+msgid "answer5"
+msgstr "Currently compatible web browser are Google Chrome and Firefox (safari and opera we'll be added as soon as possible)."
+
+msgid "answer6"
+msgstr "Currencies are updated every 2 or 3 days, because we are using free api, crypto currencies are updated every 1 minute and resources are updated every 2 days."
+
+msgid "answer7"
+msgstr "No, there isn't one."
+
+msgid "answer8"
+msgstr "No, we do not have a newsletter."
+
+msgid "answer9"
+msgstr "No, we only use users email when they need to verify their account, forgot their password and in future for sending information of big change in currencies rates."
+
+msgid "answer10"
+msgstr "No, you have to be 18 or older to use our wallet."
+
+msgid "deposit"
+msgstr "Deposit"
+
+msgid "max_deposit_amount"
+msgstr "Max amount you can deposit is 500"
+
+msgid "withdraw"
+msgstr "Withdraw"
+
+msgid "exchange"
+msgstr "Exchange"
+
+msgid "max_exchange_amount"
+msgstr "Max amount you can exchange is "
+
+msgid "max_withdraw_amount"
+msgstr "Max amount you can withdraw is "
+
+msgid "transfer"
+msgstr "Transfer"
+
+msgid "send"
+msgstr "Send"
+
+msgid "recipient_login"
+msgstr "Recipient login"
+
+msgid "max_transfer_amount"
+msgstr "Max amount you can send is "
+
+msgid "type"
+msgstr "Type"
+
+msgid "money_on_plus"
+msgstr "Money on plus"
+
+msgid "money_on_minus"
+msgstr "Money on minus"
+
+msgid "transaction_date"
+msgstr "Transaction date"

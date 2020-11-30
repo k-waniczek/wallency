@@ -9,18 +9,26 @@ body {
 
 .question {
     font-weight: 1000;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
 }
 
 .answer {
     display: block;
     margin-top: 20px;
+    transform: scaleY(0);
+    overflow-y: hidden;
+    transition: all .2s ease-in-out;
+    color: rgb(228, 228, 228);
 }
 
 p {
     height: 100px;
-    width: calc(50% - 20px);
+    width: calc(50% - 40px);
     float: left;
-    padding: 10px;
+    padding: 10px 20px;
     margin: 0;
 }
 
@@ -30,4 +38,10 @@ p {
     margin-top: 50px;
     height: 600px;
     border-radius: 20px;
+}
+
+.fa-chevron-down {
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
 }

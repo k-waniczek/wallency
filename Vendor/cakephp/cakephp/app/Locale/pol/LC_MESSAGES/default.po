@@ -1,0 +1,185 @@
+msgid "home"
+msgstr "Strona główna"
+
+msgid "about"
+msgstr "O nas"
+
+msgid "contact"
+msgstr "Kontakt"
+
+msgid "career"
+msgstr "Kariera"
+
+msgid "register"
+msgstr "Rejestracja"
+
+msgid "login"
+msgstr "Logowanie"
+
+msgid "btc_value"
+msgstr "Wartość BitCoina w dolarach amerykańskich"
+
+msgid "copyright"
+msgstr "Prawa autorskie"
+
+msgid "copyright_rest"
+msgstr "zostało stworzone przez Kamila Waniczka"
+
+msgid "privacy_policy"
+msgstr "Polityka Prywatności"
+
+msgid "terms_of_service"
+msgstr "Zasady Użytkowania"
+
+msgid "profile"
+msgstr "Profil"
+
+msgid "wallet"
+msgstr "Portfel"
+
+msgid "deposit"
+msgstr "Wpłać"
+
+msgid "withdraw"
+msgstr "Wypłać"
+
+msgid "exchange"
+msgstr "Wymień"
+
+msgid "transfer"
+msgstr "Przelew"
+
+msgid "history"
+msgstr "Historia"
+
+msgid "currency"
+msgstr "Waluta"
+
+msgid "value"
+msgstr "Wartość"
+
+msgid "base_currency"
+msgstr "Główna waluta"
+
+msgid "login"
+msgstr "Zaloguj się"
+
+msgid "register"
+msgstr "Zarejestruj się"
+
+msgid "registration_form"
+msgstr "Formularz rejestracji"
+
+msgid "login_form"
+msgstr "Formularz logowania"
+
+msgid "logout"
+msgstr "Wyloguj się"
+
+msgid "crypto_currency"
+msgstr "Kryptowaluta"
+
+msgid "resources"
+msgstr "Surowce"
+
+msgid "question1"
+msgstr "Jakie waluty są dostępne w portfelu?"
+
+msgid "question2"
+msgstr "Jak mogę doładować mój portfel?"
+
+msgid "question3"
+msgstr "Czy jest opcja zmiany języka na stronie?"
+
+msgid "question4"
+msgstr "Czy trzeba założyc konto do używania portfela?"
+
+msgid "question5"
+msgstr "Jakie przeglądarki internetowe są kompatybilne z ta stroną?"
+
+msgid "question6"
+msgstr "Jak często odświeżane sa kursy walut?"
+
+msgid "question7"
+msgstr "Czy istnieje osobna aplikacja do pobrania?"
+
+msgid "question8"
+msgstr "Czy strona posiada newsletter?"
+
+msgid "question9"
+msgstr "Czy mój email będzie używany do wysyłania reklam lub spamu?"
+
+msgid "question10"
+msgstr "Czy mogę korzystać z portfela jeśli nie jestem pełnoletni?"
+
+msgid "answer1"
+msgstr "Główne waluty w naszym portfelu to: Dolar amerykaśki, Euro, Frank szwajcarski, Polskie złote, Funty brytyjskie, Jeny, Dolary kanadyjskie, Ruble rosyjskie, Juany, Korony czeskie, Liry tureckie, Korony norweskie oraz Forinty."
+
+msgid "answer2"
+msgstr "Na ten czas można 'dodać' pieniądze do swojego konta, nie wspieramy jeszcze żadnych usług bankowych."
+
+msgid "answer3"
+msgstr "Tak można, są dostepne języki polski i angielski."
+
+msgid "answer4"
+msgstr "Tak, trzeba założyć konto, żeby korzystać z portfela."
+
+msgid "answer5"
+msgstr "Na ten czas, kompatybilne przeglądarki to Chrome i Firefox (Safari oraz Opera będą dodane jeśli będzie możliwe)."
+
+msgid "answer6"
+msgstr "Waluty są odświeżane co 2, 3 dni, ponieważ używamy darmowego API, kryptowaluty są odświeżane co 1 minutę a surowce co 2 dni."
+
+msgid "answer7"
+msgstr "Nie, strona nie posiada osobnej aplikacji."
+
+msgid "answer8"
+msgstr "Nie, nie posiadamy newslettera."
+
+msgid "answer9"
+msgstr "Nie, używamy emaila użytkownika wtedy gdy musi zweryfikować konto po rejestracji, zapomni hasła oraz do wysyłania powiadomień o dużych spadkach walut, jeśli użytkownik wyrazi na to zgodę."
+
+msgid "answer10"
+msgstr "Nie, trzeba być pełnoletnim żeby używać portfela."
+
+msgid "deposit"
+msgstr "Wpłata"
+
+msgid "max_deposit_amount"
+msgstr "Możesz wpłacić maksymalnie 500"
+
+msgid "withdraw"
+msgstr "Wypłata"
+
+msgid "exchange"
+msgstr "Wymiana"
+
+msgid "max_exchange_amount"
+msgstr "Możesz wymienić maksymalnie "
+
+msgid "max_withdraw_amount"
+msgstr "Możesz wypłacić maksymalnie "
+
+msgid "transfer"
+msgstr "Przelew"
+
+msgid "send"
+msgstr "Wyślij"
+
+msgid "recipient_login"
+msgstr "Login odbiorcy"
+
+msgid "max_transfer_amount"
+msgstr "Możesz przelać maksymalnie "
+
+msgid "type"
+msgstr "Typ"
+
+msgid "money_on_plus"
+msgstr "Pieniądze zyskane"
+
+msgid "money_on_minus"
+msgstr "Pieniądze stracone"
+
+msgid "transaction_date"
+msgstr "Data transakcji"

@@ -33,17 +33,21 @@
 			<span class="logo col-fhd-2 col-hd-2 col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-1"><a href="home">LOGO</a></span>
 			<div class="menu col-fhd-6 col-hd-6 col-480p-6 col-360p-6 col-sd-9">
 				<ul>
-					<li><a href="home">Home</a></li>
-					<li><a href="about">About</a></li>
-					<li><a href="contact">Contact</a></li>
-					<li><a href="career">Career</a></li>
+					<li><a href="home"><?php echo __('home');?></a></li>
+					<li><a href="about"><?php echo __('about');?></a></li>
+					<li><a href="contact"><?php echo __('contact');?></a></li>
+					<li><a href="career"><?php echo __('career');?></a></li>
 					<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
+					<select id="langSelect">
+						<option value="eng">eng</option>
+						<option value="pol">pol</option>
+					</select>
 				</ul>
 			</div>
 			<span class="registerAndLogin col-fhd-2 col-hd-2 col-480p-2 col-360p-2">
-				<span class="register"><a href="register">Register</a></span> 
+				<span class="register"><a href="register"><?php echo __('register');?></a></span> 
 				| 
-				<span class="login"><a href="login">Login</a></span>
+				<span class="login"><a href="login"><?php echo __('login');?></a></span>
 			</span>
 		</nav>
 		<div class="container">
@@ -53,18 +57,18 @@
 			<div class="text col-fhd-8 col-hd-8 col-480p-8 col-360p-8 col-sd-8">
 				<div class="menu">
 					<ul>
-						<li>Home</li>
-						<li>About</li>
-						<li>Contact</li>
-						<li>Career</li>
+						<li><?php echo __('home');?></li>
+						<li><?php echo __('about');?></li>
+						<li><?php echo __('contact');?></li>
+						<li><?php echo __('career');?></li>
 					</ul>
 				</div><br />
 				<span class="logo col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-2">WALLENCY</span>
-				<span>Copyright &copy; <?= date('Y')?> Wallency.
-				Wallency was created by Kamil Waniczek.</span>
+				<span><?php echo __('copyright');?> &copy; <?= date('Y')?> Wallency.
+				Wallency <?php echo __('copyright_rest');?>.</span>
 				<span class="privacy-policy">
-					<a href="privacy-policy" target="_blank">Privacy Policy</a>
-					<a href="terms-of-service">Terms of Service</a>
+					<a href="privacy-policy" target="_blank"><?php echo __('privacy_policy');?></a>
+					<a href="terms-of-service"><?php echo __('terms_of_service');?></a>
 				</span>
 			</div>	
 		</div>

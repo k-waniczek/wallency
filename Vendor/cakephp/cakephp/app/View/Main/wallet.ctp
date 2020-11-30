@@ -12,19 +12,19 @@
     echo "<div class='limiter glider-contain col-8k-5 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-5 col-480p-10 col-360p-10 col-sd-10'>";
         echo "<div class='glider'>";
             echo "<table class='wallet' id='table1'>";
-            echo "<thead><tr><th>Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
+            echo "<thead><tr><th>".__('currency')."</th><th>".__('value')."</th><th>".__('base_currency')."</th></tr></thead>";
             foreach($currencies as $currency) { 
-                echo "<tr><td class='currency'>".$currency."".$this->Html->image("flag-".$currency.".png", array('alt' => "flag-".$currency, 'class' => 'flag'))."</td><td class='value'>".(floor(floatval($wallet['Wallet'][$currency]) * 100) / 100)."</td><td class='base'></td></tr>";
+                echo "<tr><td class='currency'>".strtoupper($currency)."".$this->Html->image("flag-".$currency.".png", array('alt' => "flag-".$currency, 'class' => 'flag'))."</td><td class='value'>".(floor(floatval($wallet['Wallet'][$currency]) * 100) / 100)."</td><td class='base'></td></tr>";
             }
             echo "</table>";
             echo "<table class='wallet' id='table2'>";
-            echo "<thead><tr><th>Crypto Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
+            echo "<thead><tr><th>".__('crypto_currency')."</th><th>".__('value')."</th><th>".__('base_currency')."</th></tr></thead>";
             foreach($cryptoCurrencies as $cryptoCurrency) { 
                 echo "<tr><td class='cryptoCurrency'>".$cryptoCurrency."</td><td class='cryptoValue'>".(floor(floatval($wallet['Wallet'][$cryptoCurrency]) * 100) / 100)."</td><td class='cryptoBase'></td></tr>";
             }
             echo "</table>";
             echo "<table class='wallet' id='table3'>";
-            echo "<thead><tr><th>Resources</th><th>Value</th><th>Base currency</th></tr></thead>";
+            echo "<thead><tr><th>".__('resources')."</th><th>".__('value')."</th><th>".__('base_currency')."</th></tr></thead>";
             foreach($resources as $resource) { 
                 echo "<tr><td class='resource'>".$resource."</td><td class='resourceValue'>".(floor(floatval($wallet['Wallet'][$resource]) * 100) / 100)."</td><td class='resourceBase'></td></tr>";
             }
@@ -66,7 +66,7 @@
         <select id="baseValue">
         <?php
             foreach($currencies as $currency) {
-                echo "<option value='".$currency."'>".$currency."</option>";
+                echo "<option value='".$currency."'>".strtoupper($currency)."</option>";
             }
         ?>
         </select>

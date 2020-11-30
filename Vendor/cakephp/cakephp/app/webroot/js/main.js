@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-
 	// var submitBtn = document.querySelector("div.submitRegister > input");
 	// var inputs = document.querySelectorAll("#RegisterUserRegisterForm input");
 
@@ -33,7 +32,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	request.onreadystatechange = function () {
 		if (request.readyState === 4) {
 			if (request.status === 200) {
-				console.log(request.responseText);
+				
 			} else {
 				console.log('error');
 			}
@@ -83,6 +82,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	closeIcon.addEventListener("click", function() {
 		slideMenu.style.right = "-70%";
 		shown = false;
+	});
+
+	var req = new XMLHttpRequest();
+	document.querySelector('select#langSelect').addEventListener('change', function() {
+		req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/change-language/'+this.options[this.selectedIndex].value, false);
+        req.send(null);
+        if(req.status == 200) {
+            window.location.reload();
+        }
 	});
 	
 });

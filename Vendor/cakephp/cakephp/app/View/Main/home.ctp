@@ -100,7 +100,7 @@
         "data": {
             "labels": labels,
             "datasets": [{
-            "label": "Bitcoin value in USD",
+            "label": "<?php echo __('btc_value');?>",
             "data": data,
             "fill": false,
             "borderColor": "rgb(255, 255, 255)",
