@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    height: 824px;
+    height: calc(100vh - 226px);
     color: white;
 } 
 
@@ -35,7 +35,8 @@ p {
 .main {
     background-color: #2a4352;
     margin: auto;
-    margin-top: 50px;
+    position: relative;
+    top: 50px;
     height: 600px;
     border-radius: 20px;
 }

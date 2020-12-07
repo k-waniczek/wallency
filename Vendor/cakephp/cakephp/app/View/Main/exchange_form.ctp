@@ -5,10 +5,10 @@
     echo "<h2>".__('exchange')."</h2>";
     echo $this->Form->create("exchangeMoney", array("url" => "exchange"));
     echo "<div class='col'>";
-    echo $this->Form->input("amountToBuy", array("type" => "number", "placeholder" => __('max_exchange_amount'), 'div' => false));
+    echo $this->Form->input("amountToBuy", array("type" => "number", "placeholder" => __('max_exchange_amount'), 'div' => false, 'label' => __('amount_to_buy')));
     echo "<span class='focus-border'></span></div>";
-    echo $this->Form->input('currencyToExchange', array('options' => $currencies, 'selected' => 'usd'));
-    echo $this->Form->input('currencyToBuy', array('options' => $currencies, 'selected' => 'usd'));
+    echo $this->Form->input('currencyToExchange', array('options' => $currencies, 'selected' => 'usd', 'label' => __('currency_to_exchange')));
+    echo $this->Form->input('currencyToBuy', array('options' => $currencies, 'selected' => 'usd', 'label' => __('currency_to_buy')));
 
     echo $this->Form->end(__('exchange'), array("class" => "submitBtn"));
     echo "</div>";

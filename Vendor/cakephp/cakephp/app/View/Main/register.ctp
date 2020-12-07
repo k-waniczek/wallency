@@ -19,24 +19,24 @@
             <?=$this->Form->input("login", array('div' => false, "maxlength" => "16", "size" => "16"));?>
             <span class='focus-border'></span></div>
             <div class='col' id="name">
-            <?=$this->Form->input("name", array('div' => false, "minlength" => "3", "maxlength" => "30", "size" => "30"));?>
+            <?=$this->Form->input("name", array('div' => false, "minlength" => "3", "maxlength" => "30", "size" => "30", 'label' => __('name')));?>
             <span class='focus-border'></span></div>
             <div class='col' id="surname">
-            <?=$this->Form->input("surname", array('div' => false, "minlength" => "3", "maxlength" => "30", "size" => "30"));?>
+            <?=$this->Form->input("surname", array('div' => false, "minlength" => "3", "maxlength" => "30", "size" => "30", 'label' => __('surname')));?>
             <span class='focus-border'></span></div>
             <div class='col' id="email">
             <?=$this->Form->input("email", array('div' => false));?>
             <span class='focus-border'></span></div>
             <div class='col' id="password">
-            <?=$this->Form->input("password", array('div' => false, "minlength" => "8", "maxlength" => "30", "size" => "30"));?>
+            <?=$this->Form->input("password", array('div' => false, "minlength" => "8", "maxlength" => "30", "size" => "30", 'label' => __('password')));?>
             <span class='focus-border'></span></div>
             <div class='col' id="repeatPassword">
-            <?=$this->Form->input("repeatPassword", array('type' => 'password', 'div' => false, "minlength" => "8", "maxlength" => "30", "size" => "30"));?>
+            <?=$this->Form->input("repeatPassword", array('type' => 'password', 'div' => false, "minlength" => "8", "maxlength" => "30", "size" => "30", 'label' => __('repeat_password')));?>
             <span class='focus-border'></span></div>
             <div class='col' id="birthDate">
-            <?=$this->Form->input('birth_date', array('type' => 'text', 'placeholder' => 'e.g. 1999-06-23', 'div' => false));?>
+            <?=$this->Form->input('birth_date', array('type' => 'text', 'placeholder' => 'e.g. 1999-06-23', 'div' => false, 'label' => __('birthdate')));?>
             <span class='focus-border'></span></div>
-            <?=$this->Form->input('baseCurrency', array('options' => $currencies, 'selected' => 'usd'));?>
+            <?=$this->Form->input('baseCurrency', array('options' => $currencies, 'selected' => 'usd', 'label' => __('base_currency')));?>
         <?php
 
             $this->Form->input('baseCurrency', array('options' => $currencies));

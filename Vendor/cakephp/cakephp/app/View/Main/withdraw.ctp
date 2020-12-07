@@ -13,9 +13,9 @@
     echo "<h2>".__('withdraw')."</h2>";
     echo $this->Form->create("Withdraw", array("url" => "/substract-money"));
     echo "<div class='col'>";
-    echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => __('max_withdraw_amount'), 'div' => false));
+    echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => __('max_withdraw_amount'), 'div' => false, 'label' => __('amount')));
     echo "<span class='focus-border'></span></div>";
-    echo $this->Form->input('currency', array('options' => $currencies, 'selected' => 'usd'));
+    echo $this->Form->input('currency', array('options' => $currencies, 'selected' => 'usd', 'label' => __('currency')));
     echo $this->Form->end(__('withdraw'));
     echo "</div>";
 

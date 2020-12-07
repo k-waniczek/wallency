@@ -1,17 +1,17 @@
 /* Background pattern from Toptal Subtle Patterns */
 
 .container {
-	height: 687px;
+	height: calc(100vh - 226px);
 	text-align: center;
 }
 
 .transferForm {
-	height: 500px;
+	height: 550px;
 	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
 	background-attachment: scroll;
 	position: relative;
 	margin: auto;
-	margin-top: 150px;
+	top: 100px;
     border-radius: 20px;
     -webkit-box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
@@ -32,6 +32,10 @@ div.col {
     position: relative;
     margin: 20px auto 20px auto;
     width: 70%;
+}
+
+div.col label {
+    float: left;
 }
 
 div.col input {

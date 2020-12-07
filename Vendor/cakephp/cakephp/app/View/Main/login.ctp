@@ -17,10 +17,10 @@
 
         echo $this->Form->create("LoginUser", array("url" => "/login-user"));
         echo "<div class='col'>";
-        echo $this->Form->input("loginOrEmail", array('div' => false));
+        echo $this->Form->input("loginOrEmail", array('div' => false, 'label' => __('login_or_email')));
         echo "<span class='focus-border'></span></div>";
         echo "<div class='col'>";
-        echo $this->Form->input("password", array('div' => false));
+        echo $this->Form->input("password", array('div' => false, 'label' => __('password')));
         echo "<i class='fas fa-eye'></i>";
         echo "<span class='focus-border'></span></div>";
         

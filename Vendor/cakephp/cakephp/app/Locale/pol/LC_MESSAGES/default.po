@@ -176,10 +176,67 @@ msgid "type"
 msgstr "Typ"
 
 msgid "money_on_plus"
-msgstr "Pieniądze zyskane"
+msgstr "Pieniądze dodane"
 
 msgid "money_on_minus"
-msgstr "Pieniądze stracone"
+msgstr "Pieniądze odjęte"
 
 msgid "transaction_date"
 msgstr "Data transakcji"
+
+msgid "login_or_email"
+msgstr "Login lub email"
+
+msgid "password"
+msgstr "Hasło"
+
+msgid "name"
+msgstr "Imię"
+
+msgid "surname"
+msgstr "Nazwisko"
+
+msgid "repeat_password"
+msgstr "Powtórz hasło"
+
+msgid "birthdate"
+msgstr "Data urodzenia"
+
+msgid "base_currency"
+msgstr "Główna waluta"
+
+msgid "amount"
+msgstr "Ilość"
+
+msgid "amount_to_buy"
+msgstr "Ilosć do kupienia"
+
+msgid "currency_to_exchange"
+msgstr "Waluta do wymiany"
+
+msgid "currency_to_buy"
+msgstr "Waluta do kupienia"
+
+msgid "amount_to_send"
+msgstr "Ilość do wysłania"
+
+msgid "currency_to_send"
+msgstr "Waluta do wysłania"
+
+msgid "users_list"
+msgstr "Lista użytkowników"
+
+msgid "home_text"
+msgstr "Nasz portfel ma atrakcyjne kurys walut, nie potzrba zakładać konta walutowego w banku oraz szybkie transakcje."
+
+msgid "contact_form"
+msgstr "Formularz kontaktowy"
+
+msgid "your_email"
+msgstr "Twój email"
+
+msgid "your_name"
+msgstr "Twoje imię"
+
+msgid "message"
+msgstr "Wiadomość"

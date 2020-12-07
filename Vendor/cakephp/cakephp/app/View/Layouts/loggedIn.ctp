@@ -33,7 +33,7 @@
 			</ul>
 		</div>
 		<nav>
-			<span class="logo col-fhd-2 col-hd-2 col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-1"><a href="home">LOGO</a></span>
+			<span class="logo col-fhd-2 col-hd-2 col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-1"><a href="home"><?php echo $this->Html->image('wallet.png', array('alt' => 'Logo', 'class' => 'logoImg'));?></a></span>
 			<div class="menu col-fhd-6 col-hd-6 col-480p-6 col-360p-6 col-sd-9">
 				<ul>
 					<li><a href="profile"><?php echo __('profile');?></a></li>

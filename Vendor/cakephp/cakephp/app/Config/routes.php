@@ -60,6 +60,7 @@
 	Router::connect('/get-history-rows/:limit', array('controller' => 'main', 'action' => 'getHistoryRows'));
 	Router::connect('/faq', array('controller' => 'main', 'action' => 'faq'));
 	Router::connect('/change-language/:lang', array('controller' => 'main', 'action' => 'changeLanguage'));
+	Router::connect('/send-email', array('controller' => 'main', 'action' => 'sendEmail'));
 
 	Router::connect('/send_currency_change_notification/:currency/:percent/', array('controller' => 'notification', 'action' => 'sendCurrencyChangeNotification'));
 

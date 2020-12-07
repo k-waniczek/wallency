@@ -5,12 +5,16 @@
     echo "<h2>".__('transfer')."</h2>";
     echo $this->Form->create("transferMoney", array("url" => "transfer"));
     echo "<div class='col'>";
-    echo $this->Form->input("amountToSend", array("type" => "number", "placeholder" => __('max_transfer_amount'), 'div' => false));
+    echo $this->Form->input("amountToSend", array("type" => "number", "placeholder" => __('max_transfer_amount'), 'div' => false, 'label' => __('amount_to_send')));
     echo "<span class='focus-border'></span></div>";
     echo "<div class='col'>";
-    echo $this->Form->input("recipientLogin", array("type" => "text", "placeholder" => __('recipient_login'), 'div' => false));
+    echo $this->Form->input("recipientLogin", array("type" => "text", "placeholder" => __('recipient_login'), 'div' => false, 'label' => __('recipient_login')));
     echo "<span class='focus-border'></span></div>";
-    echo $this->Form->input('currencyToSend', array('options' => $currencies, 'selected' => 'usd'));
+    echo $this->Form->input('currencyToSend', array('options' => $currencies, 'selected' => 'usd', 'label' => __('currency_to_send')));
+    for($i = 0; $i < count($usersList); $i++) {
+        $usersList[$i] = $usersList[$i]['User']['name']." ".$usersList[$i]['User']['surname']." - ".$usersList[$i]['User']['login'];
+    }
+    echo $this->Form->input('usersList', array('options' => $usersList, 'label' => __('users_list')));
     echo $this->Form->end(__('send'), array("class" => "submitBtn"));
     echo "</div>";
 
@@ -27,9 +31,14 @@
 <script>
 
     var select = document.querySelector('select#transferMoneyCurrencyToSend');
+    var usersSelect = document.querySelector('select#transferMoneyUsersList')
     var amountInput = document.querySelector('#transferMoneyAmountToSend');
     var currency = 'usd';
     var response;
+
+    usersSelect.addEventListener('change', function () {
+        document.querySelector("#transferMoneyRecipientLogin").setAttribute('value', this.options[this.selectedIndex].innerText.replace(/[^-\r\n]+-\h*/, '').replace(" ", ""));
+    });
 
     amountInput.value = '';
 
@@ -48,7 +57,7 @@
     }     
 
     amountInput.addEventListener('keyup', function () {
-        if(amountInput.value <= 0 || amountInput.value == '' || amountInput.value > parseInt(response[currency])) {
+        if(amountInput.value < 0 || amountInput.value == '' || amountInput.value > parseInt(response[currency])) {
             console.log('disabled');
             document.querySelector('div.submit input').setAttribute('disabled', true);
         } else {
@@ -70,3 +79,8 @@
     });
 
 </script>
+<?php
+if($this->Session->read('transferError') === true) {
+echo "<script>Swal.fire({icon: 'error',text: 'You cannot transfer money to yourself!',showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
+$_SESSION['transferError'] = false;
+}?>

@@ -144,12 +144,16 @@
         compare();
     }
 
+    function pad(number) {
+        return number<10? '0'+number:''+number;
+    }
+
     function compare() {
         var historyRate;
         var lastRate;
         var percent = 0;
         for(var i = 0; i < currencies.length; i++) {
-            historyRate = (historyRates.rates[date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()][currencies[i]] == undefined) ? 1 : historyRates.rates[date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()][currencies[i]];
+            historyRate = (typeof(historyRates.rates[date.getUTCFullYear()+'-'+pad(date.getUTCMonth()+1)+'-'+pad(date.getUTCDate())][currencies[i]]) == undefined) ? 1 : historyRates.rates[date.getUTCFullYear()+'-'+pad(date.getUTCMonth()+1)+'-'+pad(date.getUTCDate())][currencies[i]];
             lastRate = (currentRates.rates[currencies[i]] == undefined) ? 1 : currentRates.rates[currencies[i]];
             if(lastRate < historyRate * 0.995 || lastRate > historyRate * 1.005) {
                 percent = (lastRate / historyRate) * 100 - 100;

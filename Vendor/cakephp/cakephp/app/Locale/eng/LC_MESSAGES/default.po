@@ -183,3 +183,60 @@ msgstr "Money on minus"
 
 msgid "transaction_date"
 msgstr "Transaction date"
+
+msgid "login_or_email"
+msgstr "Login or email"
+
+msgid "password"
+msgstr "Password"
+
+msgid "name"
+msgstr "Name"
+
+msgid "surname"
+msgstr "Surname"
+
+msgid "repeat_password"
+msgstr "Repeat password"
+
+msgid "birthdate"
+msgstr "Birthdate"
+
+msgid "base_currency"
+msgstr "Base currency"
+
+msgid "amount"
+msgstr "Amount"
+
+msgid "amount_to_buy"
+msgstr "Amount to buy"
+
+msgid "currency_to_exchange"
+msgstr "Currency to exchange"
+
+msgid "currency_to_buy"
+msgstr "Currency to buy"
+
+msgid "amount_to_send"
+msgstr "Amount to send"
+
+msgid "currency_to_send"
+msgstr "Currency to send"
+
+msgid "users_list"
+msgstr "Users list"
+
+msgid "home_text"
+msgstr "Our wallet has attractive currency rates, no need to have foreign currency accounts at banks and quick transactions."
+
+msgid "contact_form"
+msgstr "Contact form"
+
+msgid "your_email"
+msgstr "Your email"
+
+msgid "your_name"
+msgstr "Your name"
+
+msgid "message"
+msgstr "Message"

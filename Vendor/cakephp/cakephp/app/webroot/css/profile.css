@@ -4,6 +4,11 @@ body {
     background: url('../app/webroot/img/bg-pattern.jpg') center center fixed;
 }
 
+.container {
+    height: calc(100vh - 226px);
+    margin-bottom: 150px;
+}
+
 h1 {
     width: 300px;
     display: inline-block;

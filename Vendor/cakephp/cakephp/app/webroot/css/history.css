@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    height: 874px;
+    height: calc(100vh - 226px);
 } 
 
 @media only screen and (min-width: 900px) and (max-width: 1000px) {

@@ -86,7 +86,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
 
         currencies.forEach(function (currency, index) {
-            baseValues[index] = response[currency.textContent.toUpperCase()];
+            baseValues[index] = (typeof(response[currency.textContent.toUpperCase()]) == 'undefined') ? 1 : response[currency.textContent.toUpperCase()];
             if(currency.textContent == chosen) {
                 sameIndex = index;
             }

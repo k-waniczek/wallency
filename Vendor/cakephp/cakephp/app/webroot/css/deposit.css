@@ -1,8 +1,8 @@
 /* Background pattern from Toptal Subtle Patterns */
 
 .container {
-	height: 687px;
-	text-align: center;
+    text-align: center;
+    height: calc(100vh - 226px);
 }
 
 .depositForm {
@@ -10,36 +10,12 @@
 	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
 	background-attachment: scroll;
 	position: relative;
-	margin: auto;
-	margin-top: 150px;
+    margin: auto;
+    top: 150px;
     border-radius: 20px;
     -webkit-box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
     box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
-}
-
-div.ad1 {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(0%, -50%);
-    background-color: #fff;
-    height: 700px;
-    width: 200px;
-    font-size: 40px;
-    color: black;
-}
-
-div.ad2 {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(0%, -50%);
-    background-color: #fff;
-    height: 700px;
-    width: 200px;
-    font-size: 40px;
-    color: black;
 }
 
 form {
@@ -50,6 +26,10 @@ form {
     left: 50%;
     width: 80%;
     text-align: center;
+}
+
+div.col label {
+    float: left;
 }
 
 div.col {

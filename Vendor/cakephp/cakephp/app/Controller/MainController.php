@@ -43,6 +43,7 @@ class MainController extends AppController {
 		$this->loadModel('Wallet');
 		$this->loadModel('User');
 		$this->loadModel('History');
+		App::uses('CakeEmail', 'Network/Email');
 		$this->History->validator()->remove('login');
 		if($this->Session->read('loggedIn'))
 			$this->layout = 'loggedIn';
@@ -303,11 +304,18 @@ class MainController extends AppController {
 	}
 
 	public function transferForm() {
+		$usersList = $this->User->find('all', array('fields' => array('login', 'name', 'surname')));
+		$this->set('usersList', $usersList);
 		$this->set('currencies', Configure::read('currencies'));
 	}
 
 	public function transfer() {
 		$data = $this->request->data['transferMoney'];
+
+		if($data['recipientLogin'] == $this->Session->read('userName')) {
+			$this->Session->write('transferError', true);
+			$this->redirect('/transfer-form');
+		}
 
 		$recipient = $this->User->find('first', array(
 			'joins' => array(
@@ -388,5 +396,16 @@ class MainController extends AppController {
 
 	public function changeLanguage() {
 		$this->Session->write('language', $this->params['lang']);
+	}
+
+	public function sendEmail () {
+		$data = $this->request['data']['Contact'];
+		$email = new CakeEmail('default');
+		$email->emailFormat('html')
+			->to('kamil.wan05@gmail.com')                            
+			->from(array($data['emailFrom']))
+			->subject('Message from wallency')
+			->send(htmlspecialchars($data['message']).'<br/>Message from '.htmlspecialchars($data['senderName']));
+			
 	}
 }

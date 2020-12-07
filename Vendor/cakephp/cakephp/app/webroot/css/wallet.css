@@ -5,8 +5,9 @@ body {
 }
 
 .container {
-	height: 1100px;
 	text-align: center;
+	clear: both;
+	margin-bottom: 100px;
 }
 
 .walletWorth {
@@ -75,14 +76,11 @@ div.calculateFrom select, div.calculateTo select {
 	border: none;
 	appearance: none;
 	cursor: pointer;
-	background-color: transparent;
+	background-color: #49687c;
 	transition: all .5s ease-in-out;
 	border-radius: 5px;
 }
 
-div.calculateFrom select:hover, div.calculateTo select:hover {
-	background-color: #49687c;
-}
 
 input#calculateFrom, input#calculateTo {
 	background-color: transparent;

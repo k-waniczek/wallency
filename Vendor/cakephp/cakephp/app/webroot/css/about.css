@@ -1,0 +1,9 @@
+.container {
+    text-align: center;
+    height: calc(100vh - 226px);
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}

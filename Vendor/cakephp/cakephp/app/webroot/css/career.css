@@ -1,0 +1,59 @@
+.container {
+    text-align: center;
+	clear: both;
+	margin-bottom: 100px;
+}
+
+div.offer {
+    width: 80%;
+    height: 200px;
+    background-color: #386cfa;
+    border-radius: 50px;
+    color: white;
+    margin: 40px auto;
+    overflow-y: hidden;
+    transition: all .4s ease-out;
+}
+
+div.main {
+    height: 200px;
+    line-height: 200px;
+    width: 100%;
+}
+
+div.description {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+}
+
+div.description span {
+    text-align: left; 
+    padding: 40px;
+}
+
+div.offer div.main img {
+    float: left;
+    margin-left: 40px;
+}
+div.offer div.main div {
+    width: 400px;
+    height: 100%;
+    float: left;
+}
+
+.jobTitle, .sallary, .place {
+    line-height: calc(200px / 3);
+    float: left;
+    height: calc(200px / 3);
+    width: 100%;
+}
+
+.technologies {
+    width: auto;
+    height: 50px;
+    padding: 8px;
+    background-color: rgb(119, 144, 255);
+    margin: 5px;
+    border-radius: 20px;
+}

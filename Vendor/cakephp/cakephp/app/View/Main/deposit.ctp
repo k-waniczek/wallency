@@ -4,9 +4,9 @@
     echo "<h2>".__('deposit')."</h2>";
     echo $this->Form->create("Deposit", array("url" => "/add-money"));
     echo "<div class='col'>";
-    echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => __('max_deposit_amount'), 'div' => false));
+    echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => __('max_deposit_amount'), 'div' => false, 'label' => __('amount')));
     echo "<span class='focus-border'></span></div>";
-    echo $this->Form->input('currency', array('options' => $currencies));
+    echo $this->Form->input('currency', array('options' => $currencies, 'label' => __('currency')));
     echo $this->Form->end(__('deposit'));
     echo "</div>";
 
