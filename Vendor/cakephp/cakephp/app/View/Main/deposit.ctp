@@ -7,7 +7,7 @@
     echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => __('max_deposit_amount'), 'div' => false, 'label' => __('amount')));
     echo "<span class='focus-border'></span></div>";
     echo $this->Form->input('currency', array('options' => $currencies, 'label' => __('currency')));
-    echo $this->Form->end(__('deposit'));
+    echo $this->Form->end(__('deposit_btn'));
     echo "</div>";
 
     echo $this->Html->css('deposit');

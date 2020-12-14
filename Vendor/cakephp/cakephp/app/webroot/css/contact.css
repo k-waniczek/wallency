@@ -5,7 +5,7 @@
 }
 
 .contactForm {
-	height: 650px;
+	height: 700px;
 	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
 	background-attachment: scroll;
 	position: relative;
@@ -19,6 +19,10 @@
 
 div.submit input {
 	cursor: pointer;
+}
+
+div.g-recaptcha {
+	display: inline-block;
 }
 
 form {

@@ -1,23 +1,10 @@
 <?php
 
     echo $this->Html->css('profile');
-    echo $this->Html->css('table');
 
     echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
-
-    echo "<div class='limiter'>";
-    echo "<table class='wallet'>";
-    echo "<thead><tr><th>Currency</th><th>Value</th><th>Base currency</th></tr></thead>";
-    $sum = 0;
-    foreach($currencies as $currency) {
-        $amount = ($currency == $this->Session->read("baseCurrency")) ? $wallet['Wallet'][$currency] : round(($wallet['Wallet'][$currency]) / $apiResult['rates'][strtoupper($currency)], 2);
-        echo "<tr><td class='currency'>".$currency."</td><td class='value'>".$wallet['Wallet'][$currency]."</td><td class='base'>".$amount."</td></tr>";
-        $sum += $amount;
-    }
-    echo "</table>";
-    echo "</div>";
 
 ?>
 
@@ -33,7 +20,6 @@
             }
         ?>
     </select><br/>
-    <span id="walletSum">Your wallet is worth: <?=$sum." ".$this->Session->read("baseCurrency");?> </span>
 </div>
 <canvas id="canvas" width="375" height="375" style="float: right;"></canvas>
 <script>

@@ -98,99 +98,121 @@ class UserController extends AppController {
 		$this->User->set($data);
 		$uuid = CakeText::uuid();
 
-		try {
-			$dateDiff = date_diff(new DateTime($data['birth_date']), new DateTime('NOW'));
-			$adult = $dateDiff->y >= 18 ? true : false;
-		} catch (Exception $e) {
-			echo $e->getMessage();
-		}
+		$response = $this->request['data'];
+		$privatekey = "6Ld7zQMaAAAAACtEa7wfbJODYKNU09FxI8aazRLP";
+		$url = 'https://www.google.com/recaptcha/api/siteverify';
+		$dataCaptcha = array('secret' => $privatekey, 'response' => $response['g-recaptcha-response']);
 
-		// try {
-		// 	if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-		// 		$emailDomain = explode("@", $data['email']);
-		// 		if(filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]['target']), FILTER_VALIDATE_IP)) {
-		// 			$emailValid = true;
-		// 		} else {
-		// 			$emailValid = false;
-		// 		}
-		// 	} else {
-		// 		$emailValid = false;
-		// 	}
-		// } catch (Exception $e) {
-		// 	echo $e->getMessage();
-		// }
+		$options = array(
+			'http' => array(
+				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method'  => 'POST',
+				'content' => http_build_query($dataCaptcha),
+			),
+		);
 
-		if($this->User->validates() && $adult) {
-			$this->User->save(array('id' => null, 'login' => $data['login'], 'name' => $data['name'], 'surname' => $data['surname'], 'password' => $data['password'], 'email' => $data['email'], 'birthdate' => $data['birth_date'] .= ' 00:00:00', 'UUID' => $uuid, 'base_currency' => $data['baseCurrency'], 'verified' => 0));
+		// We could also use curl to send the API request
+		$context  = stream_context_create($options);
+		$json_result = file_get_contents($url, false, $context);
+		$result = json_decode($json_result);
+		
+		if($result->success) {
+			try {
+				$dateDiff = date_diff(new DateTime($data['birth_date']), new DateTime('NOW'));
+				$adult = $dateDiff->y >= 18 ? true : false;
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
 
-			$log = $this->User->getDataSource()->getLog(false, false);
-			$this->Log($log);
+			try {
+				if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+					$emailDomain = explode("@", $data['email']);
+					if(filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]['target']), FILTER_VALIDATE_IP)) {
+						$emailValid = true;
+					} else {
+						$emailValid = false;
+					}
+				} else {
+					$emailValid = false;
+				}
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
 
-			$this->Wallet->validator()->remove('login');
-
-			$this->Wallet->save(array(
-				'id' => null,
-				'modified' => null,
-				'created' => null,
-				'userUUID' => $uuid,
-				'usd' => 0,
-				'eur' => 500,
-				'chf' => 0,
-				'pln' => 0,
-				'gbp' => 0,
-				'jpy' => 0,
-				'cad' => 0,
-				'rub' => 0,
-				'cny' => 0,
-				'czk' => 0,
-				'try' => 0,
-				'nok' => 0,
-				'huf' => 0,
-				'bitcoin' => 0,
-				'ethereum' => 0,
-				'lumen' => 0,
-				'XRP' => 0,
-				'litecoin' => 0,
-				'eos' => 0,
-				'Yearn-finance' => 0,
-				'oil' => 0,
-				'gold' => 0,
-				'copper' => 0,
-				'silver' => 0,
-				'palladium' => 0,
-				'platinum' => 0,
-				'nickel' => 0,
-				'aluminum' => 0
-			));
-			
-			$email = new CakeEmail('default');
-			$email->emailFormat('html')
-				->to($data['email'])                            
-				->from(array('frezi12345cr@gmail.com' => 'wallency'))
-				->viewVars(array('uuid' => $uuid))
-				->template('myview', 'mytemplate')
-				->attachments(array(
-					array(         
-						'file' => ROOT.'/app/webroot/img/wallency-email.jpg',
-						'mimetype' => 'image/jpg',
-						'contentId' => 'background'
-					),
-					array(         
-						'file' => ROOT.'/app/webroot/img/icon-email.jpg',
-						'mimetype' => 'image/jpg',
-						'contentId' => 'icon'
-					)
-				))
-				->subject('subject')
-				->send();
+			if($this->User->validates() && $adult) {
+				$this->User->save(array('id' => null, 'login' => $data['login'], 'name' => $data['name'], 'surname' => $data['surname'], 'password' => $data['password'], 'email' => $data['email'], 'birthdate' => $data['birth_date'] .= ' 00:00:00', 'UUID' => $uuid, 'base_currency' => $data['baseCurrency'], 'verified' => 0));
+				$this->Wallet->validator()->remove('login');
+				$this->Wallet->save(array(
+					'id' => null,
+					'modified' => null,
+					'created' => null,
+					'userUUID' => $uuid,
+					'usd' => 0,
+					'eur' => 500,
+					'chf' => 0,
+					'pln' => 0,
+					'gbp' => 0,
+					'jpy' => 0,
+					'cad' => 0,
+					'rub' => 0,
+					'cny' => 0,
+					'czk' => 0,
+					'try' => 0,
+					'nok' => 0,
+					'huf' => 0,
+					'bitcoin' => 0,
+					'ethereum' => 0,
+					'lumen' => 0,
+					'XRP' => 0,
+					'litecoin' => 0,
+					'eos' => 0,
+					'Yearn-finance' => 0,
+					'oil' => 0,
+					'gold' => 0,
+					'copper' => 0,
+					'silver' => 0,
+					'palladium' => 0,
+					'platinum' => 0,
+					'nickel' => 0,
+					'aluminum' => 0
+				));
+				
+				$email = new CakeEmail('default');
+				$email->emailFormat('html')
+					->to($data['email'])                            
+					->from(array('frezi12345cr@gmail.com' => 'wallency'))
+					->viewVars(array('uuid' => $uuid))
+					->template('myview', 'mytemplate')
+					->attachments(array(
+						array(         
+							'file' => ROOT.'/app/webroot/img/wallency-email.jpg',
+							'mimetype' => 'image/jpg',
+							'contentId' => 'background'
+						),
+						array(         
+							'file' => ROOT.'/app/webroot/img/icon-email.jpg',
+							'mimetype' => 'image/jpg',
+							'contentId' => 'icon'
+						)
+					))
+					->subject('subject')
+					->send();
+				$this->redirect('/login');
+			} else {
+				$this->log(print_r($this->User->validationErrors, true), 'validation');
+			}
 		} else {
-			$this->log(print_r($this->User->validationErrors, true), 'validation');
+			$this->Session->write('captchaError', true);
+			$this->redirect('/register');
 		}
 	}
 
 	public function loginUser () {
 		$data = $this->request->data['LoginUser'];
+		$this->loadModel('Wallet');
 		$userData = $this->User->find('first', array('conditions' => array('login' => $data['loginOrEmail'], 'password' => $data['password'])));
+
+		$walletId = $this->Wallet->find('first', array('conditions' => array('userUUID' => $userData['User']['UUID']), 'fields' => 'id'));
 
 		if(empty($userData)) {
 			$userData = $this->User->find('first', array('conditions' => array('email' => $data['loginOrEmail'], 'password' => $data['password'])));
@@ -204,8 +226,9 @@ class UserController extends AppController {
 		$this->Session->write('loggedIn', true);
 		$this->Session->write('userName', $userData['User']['login']);
 		$this->Session->write('userUUID', $userData['User']['UUID']);
+		$this->Session->write('walletId', $walletId['Wallet']['id']);
 		$this->Session->write('baseCurrency', $userData['User']['base_currency']);
-		$this->redirect('/profile');
+		$this->redirect('/wallet');
 	
 	}
 

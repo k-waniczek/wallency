@@ -240,3 +240,42 @@ msgstr "Your name"
 
 msgid "message"
 msgstr "Message"
+
+msgid "currency_calculator"
+msgstr "Currency rates calculator"
+
+msgid "deposit_btn"
+msgstr "Deposit"
+
+msgid "withdraw_btn"
+msgstr "Withdraw"
+
+msgid "exchange_btn"
+msgstr "Exchange"
+
+msgid "oil"
+msgstr "oil"
+
+msgid "gold"
+msgstr "gold"
+
+msgid "copper"
+msgstr "copper"
+
+msgid "silver"
+msgstr "silver"
+
+msgid "palladium"
+msgstr "palladium"
+
+msgid "platinum"
+msgstr "platinum"
+
+msgid "nickel"
+msgstr "nickel"
+
+msgid "aluminum"
+msgstr "aluminum"
+
+msgid "isAdult"
+msgstr "Are you 18 years old or older and do you accept terms of service?"

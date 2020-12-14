@@ -29,6 +29,6 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class HistoryModel extends AppModel {
-    
+class TransactionHistoryModel extends AppModel {
+
 }

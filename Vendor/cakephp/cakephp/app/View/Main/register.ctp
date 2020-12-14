@@ -36,11 +36,19 @@
             <div class='col' id="birthDate">
             <?=$this->Form->input('birth_date', array('type' => 'text', 'placeholder' => 'e.g. 1999-06-23', 'div' => false, 'label' => __('birthdate')));?>
             <span class='focus-border'></span></div>
+            <div class='checkboxCol'>
+            <?=$this->Form->input('isAdult', array('type' => 'checkbox', 'div' => false, 'label' => __('isAdult')));?>
+            </div>
             <?=$this->Form->input('baseCurrency', array('options' => $currencies, 'selected' => 'usd', 'label' => __('base_currency')));?>
-        <?php
+            <?php
+                echo "<div class='g-recaptcha' data-sitekey='6Ld7zQMaAAAAAFu1crTri9PJWOyi8ZBndtlHcYk2'></div>";
+                $this->Form->input('baseCurrency', array('options' => $currencies));
+                echo $this->Form->end(__('register'));
 
-            $this->Form->input('baseCurrency', array('options' => $currencies));
-            echo $this->Form->end(__('register'));
-
-        ?>
+            ?>
 </div>
+<?php
+if($this->Session->read('captchaError') === true) {
+echo "<script>Swal.fire({icon: 'error',text: 'Please confirm that you are not a bot, by verifying reCaptcha!',showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
+$_SESSION['captchaError'] = false;
+}?>

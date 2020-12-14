@@ -10,7 +10,7 @@
     echo $this->Form->input('currencyToExchange', array('options' => $currencies, 'selected' => 'usd', 'label' => __('currency_to_exchange')));
     echo $this->Form->input('currencyToBuy', array('options' => $currencies, 'selected' => 'usd', 'label' => __('currency_to_buy')));
 
-    echo $this->Form->end(__('exchange'), array("class" => "submitBtn"));
+    echo $this->Form->end(__('exchange_btn'), array("class" => "submitBtn"));
     echo "</div>";
 
     echo $this->Html->css('exchange');

@@ -42,9 +42,9 @@ class MainController extends AppController {
 	public function beforeFilter() {
 		$this->loadModel('Wallet');
 		$this->loadModel('User');
-		$this->loadModel('History');
+		$this->loadModel('TransactionHistory');
 		App::uses('CakeEmail', 'Network/Email');
-		$this->History->validator()->remove('login');
+		$this->TransactionHistory->validator()->remove('login');
 		if($this->Session->read('loggedIn'))
 			$this->layout = 'loggedIn';
 		else 
@@ -116,13 +116,6 @@ class MainController extends AppController {
 		$this->set('wallet', $wallet);
 		$this->set('currencies', Configure::read('currencies'));
 		$this->set('apiResult', $result);
-		// var_dump($result);
-		// echo "<hr>";
-		// debug($wallet);
-		// die;
-		// $this->WalletAmount = $this->Components->load('WalletAmount');
-		// debug($this->WalletAmount->walletAmount());
-		// die;
 	}
 
 	public function login () {
@@ -204,7 +197,7 @@ class MainController extends AppController {
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
 		$amount = $wallet['Wallet'][$data['currency']] + $data['amount'];
 		$this->Wallet->updateAll(array($data['currency'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
-		$this->History->save(array(
+		$this->TransactionHistory->save(array(
 			'id' => null,
 			'type' => 'deposit',
 			'currency_plus' => $data['currency'],
@@ -231,7 +224,7 @@ class MainController extends AppController {
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
 		$amount = $wallet['Wallet'][$data['currency']] - $data['amount'];
 		$this->Wallet->updateAll(array($data['currency'] => $amount),array('userUUID' => $this->Session->read('userUUID')));
-		$this->History->save(array(
+		$this->TransactionHistory->save(array(
 			'id' => null,
 			'type' => 'withdraw',
 			'currency_plus' => '',
@@ -275,7 +268,7 @@ class MainController extends AppController {
 		$exchange = $wallet['Wallet'][$this->params['url']['currencyToExchange']] - $this->params['url']['exchangeAmout'];
 		$buy = $wallet['Wallet'][$this->params['url']['currencyToBuy']] + $this->params['url']['buyAmount'];
 		$this->Wallet->updateAll(array($this->params['url']['currencyToExchange'] => $exchange, $this->params['url']['currencyToBuy'] => $buy),array('userUUID' => $this->Session->read('userUUID')));
-		$this->History->save(array(
+		$this->TransactionHistory->save(array(
 			'id' => null,
 			'type' => 'exchange',
 			'currency_plus' => $this->params['url']['currencyToBuy'],
@@ -363,7 +356,7 @@ class MainController extends AppController {
 		} else {
 			$this->Session->write("dbError", "Recipient with such login was not found.");
 		}
-		$this->History->save(array(
+		$this->TransactionHistory->save(array(
 			'id' => null,
 			'type' => 'transfer',
 			'currency_plus' => '',
@@ -377,16 +370,16 @@ class MainController extends AppController {
 
 	public function history () {
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
-		$history = $this->History->find('all', array('conditions' => array('wallet_id' => $wallet['Wallet']['id']), 'order' => array('transaction_date' => 'desc'), 'limit' => 8));
+		$history = $this->TransactionHistory->find('all', array('conditions' => array('wallet_id' => $wallet['Wallet']['id']), 'order' => array('transaction_date' => 'desc'), 'limit' => 8));
 		$this->set('history', $history);
-		$historyCount = $this->History->find('count', array('conditions' => array('wallet_id' => $wallet['Wallet']['id'])));
+		$historyCount = $this->TransactionHistory->find('count', array('conditions' => array('wallet_id' => $wallet['Wallet']['id'])));
 		$this->set('rowCount', $historyCount);
 	}
 
 	public function getHistoryRows () {
 		$this->autoRender = false;
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
-		$history = $this->History->find('all', array('conditions' => array('wallet_id' => $wallet['Wallet']['id']), 'limit' => 8, 'offset' => (intval($this->params['limit']) - 1) * 8, 'order' => array('transaction_date' => 'desc')));
+		$history = $this->TransactionHistory->find('all', array('conditions' => array('wallet_id' => $wallet['Wallet']['id']), 'limit' => 8, 'offset' => (intval($this->params['limit']) - 1) * 8, 'order' => array('transaction_date' => 'desc')));
 		return json_encode($history);
 	}
 
@@ -399,13 +392,40 @@ class MainController extends AppController {
 	}
 
 	public function sendEmail () {
-		$data = $this->request['data']['Contact'];
-		$email = new CakeEmail('default');
-		$email->emailFormat('html')
-			->to('kamil.wan05@gmail.com')                            
-			->from(array($data['emailFrom']))
-			->subject('Message from wallency')
-			->send(htmlspecialchars($data['message']).'<br/>Message from '.htmlspecialchars($data['senderName']));
-			
+		$response = $this->request['data'];
+		$privatekey = "6Ld7zQMaAAAAACtEa7wfbJODYKNU09FxI8aazRLP";
+		$url = 'https://www.google.com/recaptcha/api/siteverify';
+		$data = array('secret' => $privatekey, 'response' => $response['g-recaptcha-response']);
+
+		$options = array(
+			'http' => array(
+				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method'  => 'POST',
+				'content' => http_build_query($data),
+			),
+		);
+
+		// We could also use curl to send the API request
+		$context  = stream_context_create($options);
+		$json_result = file_get_contents($url, false, $context);
+		$result = json_decode($json_result);
+		
+		if(!$result->success) {
+			$this->Session->write('captchaError', true);
+			$this->redirect('/contact');
+		} else {
+			$email = new CakeEmail('default');
+			$email->emailFormat('html')
+				->to('kamil.wan05@gmail.com')                            
+				->from(array($response['Contact']['emailFrom']))
+				->subject('Message from wallency')
+				->send(htmlspecialchars($response['Contact']['message']).'<br/>Message from '.htmlspecialchars($response['Contact']['senderName'])." - ".htmlspecialchars($response['Contact']['emailFrom']));
+		}
+	}
+
+	public function addToTransactionHistory() {
+		$this->loadModel('History');
+		$this->History->validator()->remove('login');
+		$this->History->save(array('id' => null, 'wallet_id' => $this->Session->read('walletId'), 'sum' => floor($this->params['sum']), 'date' => date('Y-m-d')));
 	}
 }

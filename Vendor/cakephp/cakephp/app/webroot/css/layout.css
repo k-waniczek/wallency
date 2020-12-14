@@ -20,6 +20,22 @@ nav {
     padding: 0 50px 0 50px;
 }
 
+#langSelect {
+	float: left;
+	padding: 7px;
+    font-size: 15px;
+    height: 36px;
+	outline: none;
+	border: none;
+	appearance: none;
+	cursor: pointer;
+	background-color: #49687c;
+    border-radius: 5px;
+    margin-top: 18px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
 .logoImg {
     width: 50px;
     vertical-align: middle;

@@ -13,7 +13,7 @@
 
 ?>
 
-<div class="mainText">
+<div id="mainText">
     <h1><strong>Wallency</strong></h1>
     <span class="mainSiteText col-hd-4 col-fhd-4 col-480p-6 col-360p-6 col-sd-8"><?php echo __('home_text');?></span>
 </div>

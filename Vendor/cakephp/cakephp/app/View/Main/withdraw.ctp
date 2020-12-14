@@ -16,7 +16,7 @@
     echo $this->Form->input("amount", array('type' => 'number', 'max' => 500, 'placeholder' => __('max_withdraw_amount'), 'div' => false, 'label' => __('amount')));
     echo "<span class='focus-border'></span></div>";
     echo $this->Form->input('currency', array('options' => $currencies, 'selected' => 'usd', 'label' => __('currency')));
-    echo $this->Form->end(__('withdraw'));
+    echo $this->Form->end(__('withdraw_btn'));
     echo "</div>";
 
 ?>

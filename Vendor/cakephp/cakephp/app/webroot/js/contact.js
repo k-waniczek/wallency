@@ -10,18 +10,24 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function checkMessageLength () {
         msgLen.textContent = textArea.value.length + "/200";
-        if(textArea.value.length > 200) {
-            msgLen.style.color = 'red';
-            msgLen.style.animation = 'shake 0.25s';
-            setTimeout(function() {
-                msgLen.style.animation = '';
-            }, 250);
-            document.querySelector('div.submit input').setAttribute('disabled', 'true');
+        if(textArea.value.length > 170 && textArea.value.length < 200) {
+            applyAnimation('yellow');
+        } else if (textArea.value.length == 200) {
+            applyAnimation('red');
         } else {
             msgLen.style.color = 'rgb(0, 211, 0)';
             msgLen.style.animation = '';
             document.querySelector('div.submit input').removeAttribute('disabled');
         }
+    }
+
+    function applyAnimation (color) {
+        msgLen.style.color = color;
+        msgLen.style.animation = 'shake 0.25s';
+        setTimeout(function() {
+            msgLen.style.animation = '';
+        }, 250);
+        document.querySelector('div.submit input').setAttribute('disabled', 'true');
     }
 
 });

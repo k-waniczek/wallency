@@ -10,6 +10,7 @@
 		echo "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.14.0/css/all.css' integrity='sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc' crossorigin='anonymous'>";
 		echo $this->Html->script("glider");
 		echo $this->Html->css("glider");
+		echo $this->Html->script('https://www.google.com/recaptcha/api.js');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -39,8 +40,15 @@
 					<li><a href="career"><?php echo __('career');?></a></li>
 					<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
 					<select id="langSelect">
-						<option value="eng">eng</option>
-						<option value="pol">pol</option>
+						<?php
+							if($this->Session->read('language') == 'eng') {
+								echo '<option value="eng">eng</option>';
+								echo '<option value="pol">pol</option>';
+							} else {
+								echo '<option value="pol">pol</option>';
+								echo '<option value="eng">eng</option>';
+							}
+						?>
 					</select>
 				</ul>
 			</div>
@@ -57,10 +65,10 @@
 			<div class="text col-fhd-8 col-hd-8 col-480p-8 col-360p-8 col-sd-8">
 				<div class="menu">
 					<ul>
-						<li><?php echo __('home');?></li>
-						<li><?php echo __('about');?></li>
-						<li><?php echo __('contact');?></li>
-						<li><?php echo __('career');?></li>
+						<li><a href="home"><?php echo __('home');?></a></li>
+						<li><a href="about"><?php echo __('about');?></a></li>
+						<li><a href="contact"><?php echo __('contact');?></a></li>
+						<li><a href="career"><?php echo __('career');?></a></li>
 					</ul>
 				</div><br />
 				<span class="logo col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-2">WALLENCY</span>

@@ -227,7 +227,7 @@ msgid "users_list"
 msgstr "Lista użytkowników"
 
 msgid "home_text"
-msgstr "Nasz portfel ma atrakcyjne kurys walut, nie potzrba zakładać konta walutowego w banku oraz szybkie transakcje."
+msgstr "Nasz portfel ma atrakcyjne kursy walut, nie potrzeba zakładać konta walutowego w banku oraz szybkie transakcje."
 
 msgid "contact_form"
 msgstr "Formularz kontaktowy"
@@ -240,3 +240,42 @@ msgstr "Twoje imię"
 
 msgid "message"
 msgstr "Wiadomość"
+
+msgid "currency_calculator"
+msgstr "Kalkulator kursów walut"
+
+msgid "deposit_btn"
+msgstr "Wpłać"
+
+msgid "withdraw_btn"
+msgstr "Wypłać"
+
+msgid "exchange_btn"
+msgstr "Wymień"
+
+msgid "oil"
+msgstr "ropa"
+
+msgid "gold"
+msgstr "złoto"
+
+msgid "copper"
+msgstr "miedź"
+
+msgid "silver"
+msgstr "srebro"
+
+msgid "palladium"
+msgstr "pallad"
+
+msgid "platinum"
+msgstr "platyna"
+
+msgid "nickel"
+msgstr "nikiel"
+
+msgid "aluminum"
+msgstr "aluminium"
+
+msgid "isAdult"
+msgstr "Czy masz 18 lat lub więcej oraz czy akceptujesz regulamin?"

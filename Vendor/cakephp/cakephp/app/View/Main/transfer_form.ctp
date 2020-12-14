@@ -7,17 +7,17 @@
     echo "<div class='col'>";
     echo $this->Form->input("amountToSend", array("type" => "number", "placeholder" => __('max_transfer_amount'), 'div' => false, 'label' => __('amount_to_send')));
     echo "<span class='focus-border'></span></div>";
-    echo "<div class='col'>";
-    echo $this->Form->input("recipientLogin", array("type" => "text", "placeholder" => __('recipient_login'), 'div' => false, 'label' => __('recipient_login')));
-    echo "<span class='focus-border'></span></div>";
-    echo $this->Form->input('currencyToSend', array('options' => $currencies, 'selected' => 'usd', 'label' => __('currency_to_send')));
     for($i = 0; $i < count($usersList); $i++) {
         $usersList[$i] = $usersList[$i]['User']['name']." ".$usersList[$i]['User']['surname']." - ".$usersList[$i]['User']['login'];
     }
     echo $this->Form->input('usersList', array('options' => $usersList, 'label' => __('users_list')));
+    echo "<div class='col'>";
+    echo $this->Form->input("recipientLogin", array("type" => "text", "placeholder" => __('recipient_login'), 'div' => false, 'label' => __('recipient_login')));
+    echo "<span class='focus-border'></span></div>";
+    echo $this->Form->input('currencyToSend', array('options' => $currencies, 'selected' => 'usd', 'label' => __('currency_to_send')));
+    
     echo $this->Form->end(__('send'), array("class" => "submitBtn"));
     echo "</div>";
-
     echo $this->Html->css('transferForm');
     echo $this->Html->css('form');
 
@@ -58,10 +58,8 @@
 
     amountInput.addEventListener('keyup', function () {
         if(amountInput.value < 0 || amountInput.value == '' || amountInput.value > parseInt(response[currency])) {
-            console.log('disabled');
             document.querySelector('div.submit input').setAttribute('disabled', true);
         } else {
-            console.log('not disabled');
             document.querySelector('div.submit input').removeAttribute('disabled');
         }
     });

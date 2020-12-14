@@ -6,7 +6,7 @@
 }
 
 .registerForm {
-	height: 900px;
+	height: 1000px;
 	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
 	background-attachment: scroll;
 	position: relative;
@@ -26,6 +26,17 @@ form {
     left: 50%;
     width: 80%;
     text-align: center;
+}
+
+input[type=checkbox] {
+    background-color: transparent;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+div.g-recaptcha {
+	display: inline-block;
 }
 
 div.col {

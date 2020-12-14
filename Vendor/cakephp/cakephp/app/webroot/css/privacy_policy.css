@@ -1,0 +1,14 @@
+.container {
+	text-align: center;
+	clear: both;
+	margin-bottom: 100px;
+}
+
+p {
+    padding: 20px;
+    width: 80%;
+    margin: 20px auto 20px auto;
+    height: auto;
+    background-color: #2a4352;
+    border-radius: 20px;
+}

@@ -2,7 +2,7 @@
 
 .container {
     text-align: center;
-    height: calc(100vh - 226px);
+    height: calc(100vh - 256px);
 }
 
 .loginForm {
@@ -31,7 +31,7 @@ form {
 .fa-eye {
 	position: absolute;
 	right: 8px;
-	top: 28px;
+	top: 25px;
 	color: white;
 	cursor: pointer;
 }

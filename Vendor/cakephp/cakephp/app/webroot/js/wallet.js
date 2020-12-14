@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var values = document.querySelectorAll(".value");
     var currencies = document.querySelectorAll(".currency");
     var finalValues = document.querySelectorAll(".base");
-    var changeBtn = document.querySelector("button.change");
+    var changeBtn = document.querySelector("button#change");
     var currencyFrom = document.querySelector("select#currencyFrom");
     var currencyTo = document.querySelector("select#currencyTo");
     var calculateFrom = document.querySelector("input#calculateFrom");
@@ -178,7 +178,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
         document.querySelectorAll(".resourceBase").forEach(function(resourceBase) {
             sum += parseFloat(resourceBase.textContent.trim());
         })
-        document.querySelector("#sum").innerHTML = "Your wallet is worth: <b>"+(Math.round(parseFloat(sum) * 100) / 100).toLocaleString()+"</b> "+select.options[select.selectedIndex].value;
+        document.querySelector("#sum").innerHTML = lang.wallet_worth + "<b>"+(Math.round(parseFloat(sum) * 100) / 100).toLocaleString()+"</b> "+select.options[select.selectedIndex].value;
+        req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/add-to-transaction-history/'+sum, false);
+        req.send(null);
+        if(req.status == 200) {
+            console.log('History saved to db!');
+        }
     }
     
 });

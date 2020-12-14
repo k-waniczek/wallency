@@ -3,6 +3,7 @@
     echo $this->Html->css('contact');
     echo $this->Html->script('contact');
     echo $this->Html->css('form');
+    echo "<script src='https://www.google.com/recaptcha/api.js' async defer></script>";
 
     echo $this->fetch('meta');
     echo $this->fetch('css');
@@ -24,9 +25,15 @@
         echo "<span class='focus-border'></span></div>";
         echo "<div class='col'>";
         echo "<span class='messageLength'></span>";
-        echo $this->Form->input("message", array('div' => false, 'type' => 'textarea', 'rows' => 6, 'label' => __('message')));
+        echo $this->Form->input("message", array('div' => false, 'type' => 'textarea', 'rows' => 6, 'label' => __('message'), 'maxlength' => 200));
         echo "<span class='focus-border'></span></div>";
+        echo "<div class='g-recaptcha' data-sitekey='6Ld7zQMaAAAAAFu1crTri9PJWOyi8ZBndtlHcYk2'></div>";
         
         echo $this->Form->end(__('send'));
     ?>
 </div>
+<?php
+if($this->Session->read('captchaError') === true) {
+echo "<script>Swal.fire({icon: 'error',text: 'Please confirm that you are not a bot, by verifying reCaptcha!',showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
+$_SESSION['captchaError'] = false;
+}?>

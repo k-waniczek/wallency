@@ -3,8 +3,32 @@ body {
 }
 
 .container {
-    height: calc(100vh - 226px);
+    height: calc(100vh - 256px);
 } 
+
+.buttons {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 15%;
+    left: 50%;
+}
+
+.btn {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 50px;
+    outline: none;
+    border: none;
+    background-color: #2a4352;
+    color: white;
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #49687c;
+}
 
 @media only screen and (min-width: 900px) and (max-width: 1000px) {
     .container {

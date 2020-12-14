@@ -8,7 +8,7 @@
     echo $this->fetch('script');
 ?>
 
-<div class="main col-8k-8 col-4k-8 col-wqhd-8 col-fhd-8 col-hd-8 col-480p-9 col-360-10 col-sd-10">
+<div class="main col-8k-5 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-5 col-480p-9 col-360-10 col-sd-10">
     <p>
         <span class="question">Q: <?php echo __('question1');?><i class="fas fa-chevron-down" data-question="1"></i></span><br/>
         <span class="answer" id="answer1" data-shown="false">A: <?php echo __('answer1');?></span>

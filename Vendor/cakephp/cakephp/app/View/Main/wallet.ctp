@@ -5,6 +5,12 @@
     echo $this->Html->script('wallet');
     echo $this->Html->css('table');
 
+    if($this->Session->read('language') == 'eng'){
+        $this->Html->script('lang.en', array('inline' => false));
+    }else{ 
+        $this->Html->script('lang.pl', array('inline' => false));
+    }    
+
     echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
@@ -20,13 +26,13 @@
             echo "<table class='wallet' id='table2'>";
             echo "<thead><tr><th>".__('crypto_currency')."</th><th>".__('value')."</th><th>".__('base_currency')."</th></tr></thead>";
             foreach($cryptoCurrencies as $cryptoCurrency) { 
-                echo "<tr><td class='cryptoCurrency'>".$cryptoCurrency."</td><td class='cryptoValue'>".(floor(floatval($wallet['Wallet'][$cryptoCurrency]) * 100) / 100)."</td><td class='cryptoBase'></td></tr>";
+                echo "<tr><td class='cryptoCurrency'>".ucfirst($cryptoCurrency)."</td><td class='cryptoValue'>".(floor(floatval($wallet['Wallet'][$cryptoCurrency]) * 100) / 100)."</td><td class='cryptoBase'></td></tr>";
             }
             echo "</table>";
             echo "<table class='wallet' id='table3'>";
             echo "<thead><tr><th>".__('resources')."</th><th>".__('value')."</th><th>".__('base_currency')."</th></tr></thead>";
             foreach($resources as $resource) { 
-                echo "<tr><td class='resource'>".$resource."</td><td class='resourceValue'>".(floor(floatval($wallet['Wallet'][$resource]) * 100) / 100)."</td><td class='resourceBase'></td></tr>";
+                echo "<tr><td class='resource'>".ucfirst(__($resource))."</td><td class='resourceValue'>".(floor(floatval($wallet['Wallet'][$resource]) * 100) / 100)."</td><td class='resourceBase'></td></tr>";
             }
             echo "</table>";
         echo "</div>";
@@ -74,6 +80,7 @@
     </div>
 
     <div class="currencyCalculator col-8k-4 col-4k-4 col-wqhd-4 col-fhd-4 col-hd-4 col-480p-10 col-360p-10 col-sd-10">
+        <h1><?php echo __('currency_calculator');?></h1>
         <div class="calculateFrom">
             <select id="currencyFrom">
             <?php
@@ -84,8 +91,8 @@
             </select>
             <input type="number" id="calculateFrom">
         </div>
-        <div class="changeAndRate">
-            <button class="change">⇅</button>
+        <div id="changeAndRate">
+            <button id="change">⇅</button>
             <span id="rate"></span>
         </div> 
         <div class="calculateTo">

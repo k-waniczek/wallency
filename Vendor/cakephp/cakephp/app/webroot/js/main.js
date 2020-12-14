@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			if (request.status === 200) {
 				
 			} else {
-				console.log('error');
+				
 			}
 		}
 	}
@@ -85,6 +85,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	});
 
 	var req = new XMLHttpRequest();
+
 	document.querySelector('select#langSelect').addEventListener('change', function() {
 		req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/change-language/'+this.options[this.selectedIndex].value, false);
         req.send(null);
