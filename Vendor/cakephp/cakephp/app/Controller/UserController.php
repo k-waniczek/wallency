@@ -140,7 +140,7 @@ class UserController extends AppController {
 			}
 
 			if($this->User->validates() && $adult) {
-				$this->User->save(array('id' => null, 'login' => $data['login'], 'name' => $data['name'], 'surname' => $data['surname'], 'password' => $data['password'], 'email' => $data['email'], 'birthdate' => $data['birth_date'] .= ' 00:00:00', 'UUID' => $uuid, 'base_currency' => $data['baseCurrency'], 'verified' => 0));
+				$this->User->save(array('id' => null, 'login' => $data['login'], 'name' => $data['name'], 'surname' => $data['surname'], 'password' => hash("SHA384", md5($data['password'])), 'email' => $data['email'], 'birthdate' => $data['birth_date'] .= ' 00:00:00', 'UUID' => $uuid, 'base_currency' => $data['baseCurrency'], 'verified' => 0));
 				$this->Wallet->validator()->remove('login');
 				$this->Wallet->save(array(
 					'id' => null,
@@ -210,7 +210,11 @@ class UserController extends AppController {
 	public function loginUser () {
 		$data = $this->request->data['LoginUser'];
 		$this->loadModel('Wallet');
-		$userData = $this->User->find('first', array('conditions' => array('login' => $data['loginOrEmail'], 'password' => $data['password'])));
+		$userData = $this->User->find('first', array('conditions' => array('login' => $data['loginOrEmail'], 'password' => hash("SHA384", md5($data['password'])))));
+		if($userData['User']['verified'] == 0) {
+			$this->Session->write('verificationError', true);
+			$this->redirect('/login');
+		}
 
 		$walletId = $this->Wallet->find('first', array('conditions' => array('userUUID' => $userData['User']['UUID']), 'fields' => 'id'));
 

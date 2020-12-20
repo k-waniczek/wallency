@@ -279,3 +279,15 @@ msgstr "aluminium"
 
 msgid "isAdult"
 msgstr "Czy masz 18 lat lub więcej oraz czy akceptujesz regulamin?"
+
+msgid "hello"
+msgstr "Cześć"
+
+msgid "change_password"
+msgstr "Zmień hasło"
+
+msgid "change_base_currency"
+msgstr "Zmień walutę główną"
+
+msgid "about_text"
+msgstr "Jestem Kamil Waniczek i mam 15 lat. Programowania zacząłem się uczyć jak miałem 11 lat z poradników na YouTube. Najpierw programowałem proste programy w C++. Później przerzuciłem się na HTML, CSS, JavaScript i PHP, żeby programować strony internetowe. Kilka z moich projektów to między innymi: książka telefoniczna, gra memory, strona do chatowania oraz inne mniejsze strony."

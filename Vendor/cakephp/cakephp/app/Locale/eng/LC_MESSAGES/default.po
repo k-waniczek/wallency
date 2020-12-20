@@ -279,3 +279,15 @@ msgstr "aluminum"
 
 msgid "isAdult"
 msgstr "Are you 18 years old or older and do you accept terms of service?"
+
+msgid "hello"
+msgstr "Hello"
+
+msgid "change_password"
+msgstr "Change password"
+
+msgid "change_base_currency"
+msgstr "Change your base currency"
+
+msgid "about_text"
+msgstr "I am Kamil Waniczek and I am 15 years old. I started learning programming when I was 11 years old from YouTube tutorials. First, I programmed simple programs in C ++. Later I switched to HTML, CSS, JavaScript, and PHP to program websites. Some of my projects include: phone book, memory game, chat website and other small websites."

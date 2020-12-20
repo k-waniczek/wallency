@@ -103,8 +103,8 @@
             "label": "<?php echo __('btc_value');?>",
             "data": data,
             "fill": false,
-            "borderColor": "rgb(255, 255, 255)",
-            "lineTension": 0
+            "borderColor": (data[data.length-1] >= data[data.length-2]) ? "#00ff00" : "#ff0000",
+            "lineTension": 0.5
             }]
         },
         "options": {

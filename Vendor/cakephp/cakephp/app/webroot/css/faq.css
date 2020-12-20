@@ -3,9 +3,8 @@ body {
 }
 
 .container {
-    text-align: center;
-	clear: both;
-	margin-bottom: 120px;
+    height: auto;
+    margin-bottom: 266px;
 }
 
 .question {
@@ -15,6 +14,7 @@ body {
     padding-bottom: 5px;
     border-bottom: 1px solid white;
     text-align: left;
+    color: white;
 }
 
 .answer {
@@ -28,18 +28,19 @@ body {
 }
 
 p {
-    height: 100px;
-    width: 90%;
-    padding: 10px 20px;
+    height: 24px;
+    width: 95%;
+    padding: 10px 10px;
     margin: auto;
+    transition: all .5s ease-in-out;
 }
 
 .main {
     background-color: #2a4352;
     margin: auto;
     position: relative;
-    top: 50px;
-    height: 1200px;
+    top: 100px;
+    height: auto;
     border-radius: 20px;
 }
 

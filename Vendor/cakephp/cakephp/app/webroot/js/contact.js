@@ -27,7 +27,6 @@ window.addEventListener('DOMContentLoaded', function () {
         setTimeout(function() {
             msgLen.style.animation = '';
         }, 250);
-        document.querySelector('div.submit input').setAttribute('disabled', 'true');
     }
 
 });

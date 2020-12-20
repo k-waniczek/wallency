@@ -105,7 +105,10 @@ class MainController extends AppController {
 	}
 
 	public function profile () {
+		$this->loadModel('History');
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		$history = $this->History->find('all', array('conditions' => array('wallet_id' => $wallet['Wallet']['id'])));
+		$this->set('history', $history);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://api.ratesapi.io/api/latest?base=".strtoupper($this->Session->read("baseCurrency")));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -417,10 +420,19 @@ class MainController extends AppController {
 			$email = new CakeEmail('default');
 			$email->emailFormat('html')
 				->to('kamil.wan05@gmail.com')                            
-				->from(array($response['Contact']['emailFrom']))
-				->subject('Message from wallency')
-				->send(htmlspecialchars($response['Contact']['message']).'<br/>Message from '.htmlspecialchars($response['Contact']['senderName'])." - ".htmlspecialchars($response['Contact']['emailFrom']));
-		}
+				->from($response['Contact']['emailFrom'])
+				->viewVars(array('message' => $response['Contact']['message'], 'senderName' => $response['Contact']['senderName'], 'emailFrom' => $response['Contact']['emailFrom']))
+				->template('contact_view', 'mytemplate')
+				->attachments(array(
+					array(         
+						'file' => ROOT.'/app/webroot/img/bg-pattern.jpg',
+						'mimetype' => 'image/jpg',
+						'contentId' => 'background'
+					)
+				))
+				->subject('Contact message from Wallency')
+				->send();
+			}
 	}
 
 	public function addToTransactionHistory() {
