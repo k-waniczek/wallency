@@ -144,7 +144,7 @@ li.hamburgerMenu, div.slideMenu {
 }
 
 .privacy-policy a {
-    color: #636161;
+    color: #b9b9b9;
     margin: 5px;
     font-size: 10px;
     text-decoration: none;
@@ -168,6 +168,18 @@ li.hamburgerMenu, div.slideMenu {
     background-color:#d2a9bbbb;
     line-height: 30px;
     border-radius: 30px;
+}
+
+button#accept, button#denie {
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    background-color: #051721;
+    width: 100px;
+    color: white;
+    height: 30px;
+    margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .blur {

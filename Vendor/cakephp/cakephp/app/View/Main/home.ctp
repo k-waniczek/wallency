@@ -60,7 +60,7 @@
             histData = JSON.parse(req.responseText).Data.Data;
             for(var i = 0; i < histData.length; i++) {
                 curDate = new Date(histData[i].time * 1000);
-                labels[i] = pad(curDate.getHours()) + ":" + pad(curDate.getMinutes());
+                labels[i] = curDate.getUTCFullYear()+'-'+pad(curDate.getUTCMonth()+1)+'-'+pad(curDate.getUTCDate()) + ' ' + pad(curDate.getHours()) + ":" + pad(curDate.getMinutes());
                 data[i] = histData[i].high;
             }
         }

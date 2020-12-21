@@ -76,7 +76,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			slideMenu.style.right = "-70%";
 			shown = false;
 		}
-		
 	});
 
 	closeIcon.addEventListener("click", function() {

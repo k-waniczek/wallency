@@ -181,9 +181,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         document.querySelector("#sum").innerHTML = lang.wallet_worth + "<b>"+(Math.round(parseFloat(sum) * 100) / 100).toLocaleString()+"</b> "+select.options[select.selectedIndex].value;
         req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/add-to-transaction-history/'+sum, false);
         req.send(null);
-        if(req.status == 200) {
-            console.log('History saved to db!');
-        }
     }
     
 });

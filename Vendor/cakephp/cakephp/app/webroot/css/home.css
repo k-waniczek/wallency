@@ -108,10 +108,6 @@ div.chart {
     margin: 100px auto auto auto;
 }
 
-/* canvas#myChart {
-    background-image: linear-gradient(to top, #6b98c2, #5e8bb8, #527dae, #4770a4, #3c639a);
-} */
-
 @-webkit-keyframes fade {
     from {opacity: .5} 
     to {opacity: 1}
@@ -120,8 +116,4 @@ div.chart {
 @keyframes fade {
     from {opacity: .5} 
     to {opacity: 1}
-}
-
-@media only screen and (max-width: 500px) {
-    
 }

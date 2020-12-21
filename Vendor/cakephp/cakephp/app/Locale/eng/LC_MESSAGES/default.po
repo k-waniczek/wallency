@@ -227,7 +227,7 @@ msgid "users_list"
 msgstr "Users list"
 
 msgid "home_text"
-msgstr "Our wallet has attractive currency rates, no need to have foreign currency accounts at banks and quick transactions."
+msgstr "Our wallet has attractive currency rates, quick transactions and no need to have foreign currency accounts at banks."
 
 msgid "contact_form"
 msgstr "Contact form"

@@ -227,7 +227,7 @@ msgid "users_list"
 msgstr "Lista użytkowników"
 
 msgid "home_text"
-msgstr "Nasz portfel ma atrakcyjne kursy walut, nie potrzeba zakładać konta walutowego w banku oraz szybkie transakcje."
+msgstr "Nasz portfel ma atrakcyjne kursy walut, szybkie transakcje oraz nie potrzeba zakładać konta walutowego w banku."
 
 msgid "contact_form"
 msgstr "Formularz kontaktowy"
