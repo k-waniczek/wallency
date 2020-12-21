@@ -1,0 +1,32 @@
+.container {
+    text-align: center;
+    height: calc(100vh - 256px);
+}
+
+div.rules {
+    text-align: left;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+    height: 400px;
+    background-color: #2a4352;
+    border-radius: 10px;
+}
+
+ol {
+    margin: 0;
+    color: white;
+    height: 100%;
+    text-align: left;
+    position: relative;
+    top: 25px;
+}
+
+li {
+    height: auto;
+}
+
+ul li {
+    height: 60px;
+}

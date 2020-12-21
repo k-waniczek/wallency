@@ -23,7 +23,7 @@
     </div>
     <div class="description">
         <span>
-            To apply to this job as Middle Backend Developer you should have knowledge of PHP, Node.js, Postgre SQL and Docker. Additionally you should have problem solving skills.
+            To apply to this job as Middle Backend Developer you should have knowledge of PHP, Node.js, Postgre SQL and Docker. Additionally you should have problem solving skills. It is a plus if you know Node.js or any PHP framework.
         </span>
     </div>
 </div>
@@ -43,7 +43,7 @@
     </div>
     <div class="description">
         <span>
-            To apply to this job as Middle Backend Developer you should have knowledge of Python, MySQL, OpenCV, Rabbit and NumPY. Additionally you should have problem solving skills.
+            To apply to this job as Middle Backend Developer you should have knowledge of Python, MySQL, OpenCV, Rabbit and NumPY. Additionally you should have problem solving skills. Our company has already programmed applications for 100 different companies such as Facebook or Google.
         </span>
     </div>
 </div>
@@ -68,7 +68,7 @@
     </div>
     <div class="description">
         <span>
-            To apply to this job as Middle Backend Developer you should have knowledge of PHP, MySQL, Wordpress, JavaScript, Drupal, SASS, React, Angular, Vue and Docker. Additionally you should have problem solving skills.
+            To apply to this job as Middle Backend Developer you should have knowledge of PHP, MySQL, Wordpress, JavaScript, Drupal, SASS, React, Angular, Vue and Docker. Additionally you should have problem solving skills. Our company provides: company car, business phone, meals for free, games room and many other things.
         </span>
     </div>
 </div>

@@ -37,8 +37,9 @@ nav {
 }
 
 .logoImg {
-    width: 50px;
+    width: 80px;
     vertical-align: middle;
+    margin-top: -10px;
 }
 
 nav > * {
