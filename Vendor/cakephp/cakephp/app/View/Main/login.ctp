@@ -3,6 +3,7 @@
     echo $this->Html->css('login');
     echo $this->Html->script('login');
     echo $this->Html->css('form');
+    echo $this->Html->css('full_page_container_height');
 
     echo $this->fetch('meta');
     echo $this->fetch('css');

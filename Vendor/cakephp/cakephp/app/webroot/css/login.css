@@ -1,10 +1,5 @@
 /* Background pattern from Toptal Subtle Patterns */
 
-.container {
-    text-align: center;
-    height: calc(100vh - 256px);
-}
-
 .loginForm {
 	height: 450px;
 	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;

@@ -1,8 +1,3 @@
-.container {
-    text-align: center;
-    height: calc(100vh - 256px);
-}
-
 p {
     margin: auto;
     padding: 20px;

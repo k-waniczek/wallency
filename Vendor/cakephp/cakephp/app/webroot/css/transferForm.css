@@ -1,10 +1,4 @@
 /* Background pattern from Toptal Subtle Patterns */
-
-.container {
-	height: calc(100vh - 256px);
-	text-align: center;
-}
-
 .transferForm {
 	height: 550px;
 	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;

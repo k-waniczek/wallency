@@ -1,6 +1,7 @@
 <?php
 
     echo $this->Html->css('about');
+    echo $this->Html->css('full_page_container_height');
 
     echo $this->fetch('meta');
     echo $this->fetch('css');

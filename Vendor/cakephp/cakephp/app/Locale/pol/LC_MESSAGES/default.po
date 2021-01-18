@@ -291,3 +291,21 @@ msgstr "Zmień walutę główną"
 
 msgid "about_text"
 msgstr "Jestem Kamil Waniczek i mam 15 lat. Programowania zacząłem się uczyć jak miałem 11 lat z poradników na YouTube. Najpierw programowałem proste programy w C++. Później przerzuciłem się na HTML, CSS, JavaScript i PHP, żeby programować strony internetowe. Kilka z moich projektów to między innymi: książka telefoniczna, gra memory, strona do chatowania oraz inne mniejsze strony."
+
+msgid "message_sent"
+msgstr "Twoja wiadomość została wysłana."
+
+msgid "wrote"
+msgstr "napisał"
+
+msgid "email_address_confirmation"
+msgstr "Potwierdź swój adres email"
+
+msgid "email_address_confirmation_2"
+msgstr "Twoje nowe konto na Wallency zostało stworzone. Prosimy o potwierdzenie adresu email, abyśmy wiedzieli, że jesteś prawowitym właścicielem tego konta."
+
+msgid "address_confirmation_btn"
+msgstr "Kliknij tutaj aby potwierdzić swój adres email"
+
+msgid "changed_by"
+msgstr "zmieniło się o"

@@ -3,5 +3,8 @@ lang = {
     transfer: "Transfer",
     deposit: "Deposit",
     withdraw: "Withdraw",
-    exchange: "Exchange"
+    exchange: "Exchange",
+    max_transfer_amount: "Max amount you can send is ",
+    max_withdraw_amount: "Max amount you can withdraw is ",
+    max_exchange_amount: "Max amount you can exchange is "
 }

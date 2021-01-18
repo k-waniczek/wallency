@@ -3,5 +3,9 @@ lang = {
     transfer: "Przelew",
     deposit: "Wpłata",
     withdraw: "Wypłata",
-    exchange: "Wymiana"
+    exchange: "Wymiana",
+    max_transfer_amount: "Możesz przelać maksymalnie ",
+    max_withdraw_amount: "Możesz wypłacić maksymalnie ",
+    max_exchange_amount: "Możesz wymienić maksymalnie "
+
 }

@@ -85,24 +85,29 @@ class NotificationController extends AppController {
 	}
 
 	public function sendCurrencyChangeNotification () {
-		// $this->loadModel('User');
-		// $users = $this->User->find('all', array('fields' => 'email'));
-		// for($i = 0; $i < count($users); $i++) {
-		// 	$email = new CakeEmail('default');
-		// 	$email->emailFormat('html')
-		// 		->to($users[$i]['User']['email'])                            
-		// 		->from(array('frezi12345cr@gmail.com' => 'wallency'))
-		// 		->viewVars(array('currency' => $this->params['currency'], 'percent' => $this->params['percent']))
-		// 		->attachments(array(
-		// 			array(         
-		// 				'file' => ROOT.'/app/webroot/img/bg-pattern.jpg',
-		// 				'mimetype' => 'image/jpg',
-		// 				'contentId' => 'background'
-		// 			)
-		// 		))
-		// 		->template('notificationView', 'mytemplate')
-		// 		->subject('Currency Change Notification')
-		// 		->send();
-		// }
+		$this->loadModel('User');
+		$users = $this->User->find('all', array('fields' => 'email'));
+		for($i = 0; $i < count($users); $i++) {
+			$email = new CakeEmail('default');
+			$email->emailFormat('html')
+				->to($users[$i]['User']['email'])                            
+				->from(array('frezi12345cr@gmail.com' => 'wallency'))
+				->viewVars(array('currency' => $this->params['currency'], 'percent' => $this->params['percent']))
+				->attachments(array(
+					array(         
+						'file' => ROOT.'/app/webroot/img/bg-pattern.jpg',
+						'mimetype' => 'image/jpg',
+						'contentId' => 'background'
+					),
+					array(         
+						'file' => ROOT.'/app/webroot/img/wallet.png',
+						'mimetype' => 'image/png',
+						'contentId' => 'logo'
+					)
+				))
+				->template('notificationView', 'mytemplate')
+				->subject('Currency Change Notification')
+				->send();
+		}
 	}
 }

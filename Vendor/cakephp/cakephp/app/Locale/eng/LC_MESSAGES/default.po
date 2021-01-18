@@ -291,3 +291,21 @@ msgstr "Change your base currency"
 
 msgid "about_text"
 msgstr "I am Kamil Waniczek and I am 15 years old. I started learning programming when I was 11 years old from YouTube tutorials. First, I programmed simple programs in C ++. Later I switched to HTML, CSS, JavaScript, and PHP to program websites. Some of my projects include: phone book, memory game, chat website and other small websites."
+
+msgid "message_sent"
+msgstr "Your message has been sent."
+
+msgid "wrote"
+msgstr "wrote"
+
+msgid "email_address_confirmation"
+msgstr "Confirm your email address"
+
+msgid "email_address_confirmation_2"
+msgstr "Your new Wallency account has been created. Please confirm your email address, so that we know you are the rightful owner of this account."
+
+msgid "address_confirmation_btn"
+msgstr "Click here to confirm your email address"
+
+msgid "changed_by"
+msgstr "changed by"

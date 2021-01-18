@@ -240,4 +240,32 @@ class UserController extends AppController {
 		$this->Session->write('loggedIn', false);
 		$this->redirect('/home');
 	}
+
+	public function activate () {
+		$this->loadModel('User');
+		$uuid = $this->params->query['uuid'];
+		$user = $this->User->find('first', array('conditions' => array('UUID' => $uuid)));
+		
+		if($user['User']['verified'] == 0) {
+			$this->User->updateAll(array('verified' => 1),array('UUID' => $uuid));
+			$this->set('alreadyVerified', 0);
+		} else {
+			$this->set('alreadyVerified', 1);
+		}
+	}
+
+	public function changePasswordForm () {
+		
+	}
+
+	public function changePassword () {
+		$data = $this->request->data['changePassword'];
+		$user = $this->User->find('first', array('conditions' => array('password' => $data['currentPassword'])));
+
+		if(isset($user)) {
+			if($data['newPasswordConfirm'] == $data['newPassword']) {
+				$this->User->updateAll(array('password' => "'".$data['newPassword']."'"),array('password' => $data['currentPassword']));
+			}
+		}
+	}
 }

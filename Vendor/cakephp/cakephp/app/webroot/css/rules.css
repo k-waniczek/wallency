@@ -1,8 +1,3 @@
-.container {
-    text-align: center;
-    height: calc(100vh - 256px);
-}
-
 div.rules {
     text-align: left;
     position: absolute;
