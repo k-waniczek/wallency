@@ -116,7 +116,6 @@ class MainController extends AppController {
 		$result = json_decode(curl_exec($ch),true);
 		curl_close($ch);
 
-		$this->set('wallet', $wallet);
 		$this->set('currencies', Configure::read('currencies'));
 		$this->set('apiResult', $result);
 	}
@@ -151,7 +150,6 @@ class MainController extends AppController {
 
 	public function createRodoCookie () {
 		$this->Cookie->write('rodo_accepted', true, true, '6 months');
-		$this->Log('createRodoCookie');
 		$this->set('rodoCookie', $this->Cookie->read('rodo_accepted'));
 	}
 

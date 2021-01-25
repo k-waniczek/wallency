@@ -29,6 +29,8 @@
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
+
+	/*----------MAIN CONTROLLER----------*/
 	Router::connect('/home', array('controller' => 'main', 'action' => 'home'));
 	Router::connect('/profile', array('controller' => 'main', 'action' => 'profile'));
 	Router::connect('/login', array('controller' => 'main', 'action' => 'login'));
@@ -40,37 +42,41 @@
 	Router::connect('/career', array('controller' => 'main', 'action' => 'career'));
 	Router::connect('/createRodoCookie', array('controller' => 'main', 'action' => 'createRodoCookie'));
 	Router::connect('/wallet', array('controller' => 'main', 'action' => 'wallet'));
-	Router::connect('/activate', array('controller' => 'user', 'action' => 'activate'));
-	Router::connect('/deposit', array('controller' => 'transaction', 'action' => 'deposit'));
-	Router::connect('/add-money', array('controller' => 'transaction', 'action' => 'addMoney'));
-	Router::connect('/substract-money', array('controller' => 'transaction', 'action' => 'substractMoney'));
-	Router::connect('/check-money', array('controller' => 'transaction', 'action' => 'checkMoney'));
-	Router::connect('/withdraw', array('controller' => 'transaction', 'action' => 'withdraw'));
 	Router::connect('/rules', array('controller' => 'main', 'action' => 'rules'));
-	Router::connect('/change-password', array('controller' => 'user', 'action' => 'changePassword'));
-	Router::connect('/change-password-form', array('controller' => 'user', 'action' => 'changePasswordForm'));
-	Router::connect('/exchange-form', array('controller' => 'transaction', 'action' => 'exchangeForm'));
-	Router::connect('/exchange', array('controller' => 'transaction', 'action' => 'exchange'));
-	Router::connect('/get-wallet', array('controller' => 'transaction', 'action' => 'getWallet'));
-	Router::connect('/change-base-currency', array('controller' => 'transaction', 'action' => 'changeBaseCurrency'));
-	Router::connect('/transfer-form', array('controller' => 'transaction', 'action' => 'transferForm'));
-	Router::connect('/transfer', array('controller' => 'transaction', 'action' => 'transfer'));
 	Router::connect('/privacy-policy', array('controller' => 'main', 'action' => 'privacyPolicy'));
 	Router::connect('/history', array('controller' => 'main', 'action' => 'history'));
 	Router::connect('/get-history-rows/:limit', array('controller' => 'main', 'action' => 'getHistoryRows'));
 	Router::connect('/faq', array('controller' => 'main', 'action' => 'faq'));
 	Router::connect('/change-language/:lang', array('controller' => 'main', 'action' => 'changeLanguage'));
 	Router::connect('/send-email', array('controller' => 'main', 'action' => 'sendEmail'));
-	Router::connect('/add-to-transaction-history/:sum', array('controller' => 'transaction', 'action' => 'addToTransactionHistory'));
 
+	/*----------TRANSACTION CONTROLLER----------*/
+	Router::connect('/add-to-transaction-history/:sum', array('controller' => 'transaction', 'action' => 'addToTransactionHistory'));
+	Router::connect('/deposit', array('controller' => 'transaction', 'action' => 'deposit'));
+	Router::connect('/add-money', array('controller' => 'transaction', 'action' => 'addMoney'));
+	Router::connect('/substract-money', array('controller' => 'transaction', 'action' => 'substractMoney'));
+	Router::connect('/check-money', array('controller' => 'transaction', 'action' => 'checkMoney'));
+	Router::connect('/withdraw', array('controller' => 'transaction', 'action' => 'withdraw'));
+	Router::connect('/exchange-form', array('controller' => 'transaction', 'action' => 'exchangeForm'));
+	Router::connect('/exchange', array('controller' => 'transaction', 'action' => 'exchange'));
+	Router::connect('/get-wallet', array('controller' => 'transaction', 'action' => 'getWallet'));
+	Router::connect('/change-base-currency', array('controller' => 'transaction', 'action' => 'changeBaseCurrency'));
+	Router::connect('/transfer-form', array('controller' => 'transaction', 'action' => 'transferForm'));
+	Router::connect('/transfer', array('controller' => 'transaction', 'action' => 'transfer'));
+
+	/*----------NOTIFICATION CONTROLLER----------*/
 	Router::connect('/send_currency_change_notification/:currency/:percent/', array('controller' => 'notification', 'action' => 'sendCurrencyChangeNotification'));
 
+	/*----------USER CONTROLLER----------*/
 	Router::connect('/register-user', array('controller' => 'user', 'action' => 'registerUser'));
 	Router::connect('/login-user', array('controller' => 'user', 'action' => 'loginUser'));
 	Router::connect('/logout', array('controller' => 'user', 'action' => 'logout'));
 	Router::connect('/deposit', array('controller' => 'user', 'action' => 'deposit'));
 	Router::connect('/transfer', array('controller' => 'user', 'action' => 'transfer'));
 	Router::connect('/editProfile', array('controller' => 'user', 'action' => 'editProfile'));
+	Router::connect('/activate', array('controller' => 'user', 'action' => 'activate'));
+	Router::connect('/change-password', array('controller' => 'user', 'action' => 'changePassword'));
+	Router::connect('/change-password-form', array('controller' => 'user', 'action' => 'changePasswordForm'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

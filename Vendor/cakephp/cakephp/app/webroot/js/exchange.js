@@ -1,5 +1,4 @@
 window.addEventListener("DOMContentLoaded", function () {
-    var currencies = ['usd', 'eur', 'chf', 'pln', 'gbp', 'jpy', 'cad', 'rub', 'cny', 'try', 'nok', 'huf'];
     var rate;
     var value;
 

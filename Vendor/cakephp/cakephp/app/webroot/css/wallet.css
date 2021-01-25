@@ -86,7 +86,6 @@ div.calculateFrom select, div.calculateTo select {
 
 input#calculateFrom, input#calculateTo {
 	background-color: transparent;
-	border: none;
 	outline: none;
 	border-bottom: 1px solid #ccc;
 	width: 80%;

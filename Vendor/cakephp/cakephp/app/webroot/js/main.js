@@ -1,43 +1,5 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-	// var submitBtn = document.querySelector("div.submitRegister > input");
-	// var inputs = document.querySelectorAll("#RegisterUserRegisterForm input");
-
-	// var counter = 0;
-
-	// submitBtn.setAttribute("disabled", true);
-
-	// inputs.forEach(function(input) {
-	// 	input.addEventListener("keyup", function() {
-	// 		for(var i = 1; i < inputs.length - 1; i++) {
-	// 			if(inputs[i].value.length > 0) {
-	// 				counter++;
-	// 			}
-	// 		}
-			
-	// 		if(counter >= inputs.length - 2) {
-	// 			submitBtn.removeAttribute("disabled");
-	// 		} else {
-	// 			submitBtn.setAttribute("disabled", true);
-	// 		}
-	// 		counter = 0;
-	// 	});
-	// });
-
-	// function disableDefault(evt) {
-	// 	evt.preventDefault()
-	// }
-
 	var request = new XMLHttpRequest();
-
-	request.onreadystatechange = function () {
-		if (request.readyState === 4) {
-			if (request.status === 200) {
-				
-			} else {
-				
-			}
-		}
-	}
 
 	request.open('Get', 'createRodoCookie');
 	function noScroll() {

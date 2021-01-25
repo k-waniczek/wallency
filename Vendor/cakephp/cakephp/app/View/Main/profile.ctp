@@ -21,7 +21,6 @@
         ?>
     </select><br/>
 </div>
-<!-- <canvas id="canvas" width="375" height="375" style="float: right;"></canvas> -->
 <div class="chart">
     <canvas id="myChart"></canvas>
 </div>
@@ -83,7 +82,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     function pad(number) {
-        return number<10? '0'+number:''+number;
+        return number < 10 ? '0' + number : '' + number;
     }
 
     function compare() {

@@ -1,10 +1,9 @@
-
 :root {
     --screenshots-nav-height: 33px;
 }
 
 body {
-    background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
+    background: url('../app/webroot/img/background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

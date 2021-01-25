@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-    var div = document.querySelector("div.images");
 	var images = document.querySelectorAll(".images img");
 	var index = 0;
 

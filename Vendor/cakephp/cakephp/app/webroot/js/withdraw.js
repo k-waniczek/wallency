@@ -4,10 +4,7 @@ var currency = 'usd';
 var response;
 
 amountInput.value = '';
-
-if(amountInput.value < 0 || amountInput.value == '') {
-    document.querySelector('div.submit input').setAttribute('disabled', true);
-}
+document.querySelector('div.submit input').setAttribute('disabled', true);
 
 currency = select.options[select.selectedIndex].value;
 var req = new XMLHttpRequest();

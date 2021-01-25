@@ -174,7 +174,6 @@ class TransactionController extends AppController {
 	public function getWallet () {
 		$this->autoRender = false;
 		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
-		$this->Log(print_r($wallet, true));
 		$this->response->type('json');
 		$this->response->body(json_encode($wallet));
 		return $this->response;

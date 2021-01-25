@@ -180,6 +180,7 @@ button#accept, button#denie {
     height: 30px;
     margin-bottom: 20px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .blur {

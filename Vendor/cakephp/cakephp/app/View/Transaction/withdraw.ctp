@@ -1,9 +1,9 @@
 <?php
 
     if ($this->Session->read('language') == 'eng') {
-        $this->Html->script('lang.en', array('inline' => false));
+        $this->Html->script('lang_en', array('inline' => false));
     } else { 
-        $this->Html->script('lang.pl', array('inline' => false));
+        $this->Html->script('lang_pl', array('inline' => false));
     }    
 
     echo $this->Html->css('withdraw');

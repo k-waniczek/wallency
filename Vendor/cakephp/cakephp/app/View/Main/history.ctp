@@ -3,25 +3,27 @@
     echo $this->Html->css("history");
     echo $this->Html->css("table");
     if($this->Session->read('language') == 'eng'){
-        $this->Html->script('lang.en', array('inline' => false));
+        $this->Html->script('lang_en', array('inline' => false));
     } else { 
-        $this->Html->script('lang.pl', array('inline' => false));
+        $this->Html->script('lang_pl', array('inline' => false));
     } 
 
     echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
 
-    echo "<div class='limiterHistory col-8k-5 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-5 col-480p-7 col-360p-7 col-sd-8'>";
-    echo "<table class='walletHistory'>";
-    echo "<thead><tr><th>".__('type')."</th><th>".__('money_on_plus')."</th><th>".__('money_on_minus')."</th><th>".__('transaction_date')."</th></tr></thead>";
-    for($i = 0; $i < count($history); $i++) {
-        echo "<tr><td>".__($history[$i]['TransactionHistory']['type'])."</td><td>".$history[$i]['TransactionHistory']['money_on_plus']." ".$history[$i]['TransactionHistory']['currency_plus']."</td><td>".$history[$i]['TransactionHistory']['money_on_minus']." ".$history[$i]['TransactionHistory']['currency_minus']."</td><td>".$history[$i]['TransactionHistory']['transaction_date']."</td></tr>";
-    }
-    echo "</table>";
-    echo "</div>";
-
 ?>
+
+    <div class='limiterHistory col-8k-5 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-5 col-480p-7 col-360p-7 col-sd-8'>
+    <table class='walletHistory'>
+    <thead><tr><th><?php echo __('type');?></th><th><?php echo __('money_on_plus');?></th><th><?php echo __('money_on_minus');?></th><th><?php echo __('transaction_date');?></th></tr></thead>
+    <?php
+        for($i = 0; $i < count($history); $i++) {
+            echo "<tr><td>".__($history[$i]['TransactionHistory']['type'])."</td><td>".$history[$i]['TransactionHistory']['money_on_plus']." ".$history[$i]['TransactionHistory']['currency_plus']."</td><td>".$history[$i]['TransactionHistory']['money_on_minus']." ".$history[$i]['TransactionHistory']['currency_minus']."</td><td>".$history[$i]['TransactionHistory']['transaction_date']."</td></tr>";
+        }
+    ?>
+    </table>
+    </div>
 <div class="buttons">
 
 </div>

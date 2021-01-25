@@ -6,9 +6,9 @@
     echo $this->Html->css('table');
 
     if($this->Session->read('language') == 'eng'){
-        $this->Html->script('lang.en', array('inline' => false));
+        $this->Html->script('lang_en', array('inline' => false));
     }else{ 
-        $this->Html->script('lang.pl', array('inline' => false));
+        $this->Html->script('lang_pl', array('inline' => false));
     }    
 
     echo $this->fetch('meta');
@@ -16,26 +16,26 @@
     echo $this->fetch('script');
 
 ?>
-    <div class='limiter glider-contain col-8k-5 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-5 col-480p-10 col-360p-10 col-sd-10'>
-        <div class='glider'>
-            <table class='wallet' id='table1'>
-            <thead><tr><th><?php echo __('currency');?></th><th><?php echo __('value');?></th><th><?php echo __('base_currency');?></th></tr></thead>
+    <div class="limiter glider-contain col-8k-5 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-5 col-480p-10 col-360p-10 col-sd-10">
+        <div class="glider">
+            <table class="wallet" id="table1">
+            <thead><tr><th><?php echo __("currency");?></th><th><?php echo __("value");?></th><th><?php echo __("base_currency");?></th></tr></thead>
             <?php
                 foreach($currencies as $currency) { 
                     echo "<tr><td class='currency'>".strtoupper($currency)."".$this->Html->image("flag-".$currency.".png", array('alt' => "flag-".$currency, 'class' => 'flag'))."</td><td class='value'>".(floor(floatval($wallet['Wallet'][$currency]) * 100) / 100)."</td><td class='base'></td></tr>";
                 }
             ?>
             </table>
-            <table class='wallet' id='table2'>
-            <thead><tr><th><?php echo __('crypto_currency');?></th><th><?php echo __('value');?></th><th><?php echo __('base_currency');?></th></tr></thead>
+            <table class="wallet" id="table2">
+            <thead><tr><th><?php echo __("crypto_currency");?></th><th><?php echo __("value");?></th><th><?php echo __("base_currency");?></th></tr></thead>
             <?php
                 foreach($cryptoCurrencies as $cryptoCurrency) { 
                     echo "<tr><td class='cryptoCurrency'>".ucfirst($cryptoCurrency)."</td><td class='cryptoValue'>".(floor(floatval($wallet['Wallet'][$cryptoCurrency]) * 100) / 100)."</td><td class='cryptoBase'></td></tr>";
                 }
             ?>
             </table>
-            <table class='wallet' id='table3'>
-            <thead><tr><th><?php echo __('resources');?></th><th><?php echo __('value');?></th><th><?php echo __('base_currency');?></th></tr></thead>
+            <table class="wallet" id="table3">
+            <thead><tr><th><?php echo __("resources");?></th><th><?php echo __("value");?></th><th><?php echo __("base_currency");?></th></tr></thead>
             <?php
                 foreach($resources as $resource) { 
                     echo "<tr><td class='resource'>".ucfirst(__($resource))."</td><td class='resourceValue'>".(floor(floatval($wallet['Wallet'][$resource]) * 100) / 100)."</td><td class='resourceBase'></td></tr>";
@@ -43,9 +43,9 @@
             ?>
             </table>
         </div>
-        <button aria-label='Previous' class='glider-prev'>«</button>
-        <button aria-label='Next' class='glider-next'>»</button>
-        <div role='tablist' class='dots'></div>
+        <button aria-label="Previous" class="glider-prev">«</button>
+        <button aria-label="Next" class="glider-next">»</button>
+        <div role="tablist" class="dots"></div>
     </div>
 
 <?php
@@ -61,8 +61,6 @@
         echo "<input type='hidden' id='hidden4' value='$buyAmount'>";
     }
 ?>
-
-
     <div class="walletWorth col-8k-4 col-4k-4 col-wqhd-4 col-fhd-4 col-hd-4 col-480p-10 col-360p-10 col-sd-10">
         <select id="baseValue">
         <?php
