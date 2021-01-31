@@ -62,7 +62,7 @@
         }
 
         setInterval(function() {
-            if(new Date().getMinutes() == 0 || new Date().getMinutes() == 15 || new Date().getMinutes() == 30 || new Date().getMinutes() == 45) {
+            if (new Date().getMinutes() == 0 || new Date().getMinutes() == 15 || new Date().getMinutes() == 30 || new Date().getMinutes() == 45) {
                 req.open('GET', 'https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=19&aggregate=15&api_key=b76f05d7ae85a73e7992e1044fb1c4b3f07171bfe67a8e21026072f0ac0a26d9', false);
                 req.send(null);
                 if (req.status == 200) {   
@@ -77,7 +77,7 @@
                         data.shift();
                         labels.shift();
                     }
-                    if(data[19] >= data[18]) {
+                    if (data[19] >= data[18]) {
                         myChart.data.datasets.forEach(function (dataset) {
                             dataset.borderColor = "#00ff00";
                         });

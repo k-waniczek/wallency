@@ -45,10 +45,11 @@ class MainController extends AppController {
 		$this->loadModel('TransactionHistory');
 		App::uses('CakeEmail', 'Network/Email');
 		$this->TransactionHistory->validator()->remove('login');
-		if($this->Session->read('loggedIn'))
+		if ($this->Session->read('loggedIn')) {
 			$this->layout = 'loggedIn';
-		else 
+		} else { 
 			$this->layout = 'default';
+		}
 		Configure::write('Config.language', $this->Session->read('language'));
 		$locale = $this->Session->read('language');
         if ($locale && file_exists(APP . 'View' . DS . $locale . DS . $this->viewPath . DS . $this->view . $this->ext)) {
@@ -99,33 +100,9 @@ class MainController extends AppController {
 	}
 
 	public function home () {
-		if($this->Session->read('loggedIn')) {
+		if ($this->Session->read('loggedIn')) {
 			$this->redirect('/wallet');
 		}
-	}
-
-	public function profile () {
-		$this->loadModel('History');
-		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
-		$history = $this->History->find('all', array('conditions' => array('wallet_id' => $wallet['Wallet']['id'])));
-		$this->set('history', $history);
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "https://api.ratesapi.io/api/latest?base=".strtoupper($this->Session->read("baseCurrency")));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-		$result = json_decode(curl_exec($ch),true);
-		curl_close($ch);
-
-		$this->set('currencies', Configure::read('currencies'));
-		$this->set('apiResult', $result);
-	}
-
-	public function login () {
-
-	}
-
-	public function register () {
-		$this->set('currencies', Configure::read('currencies'));
 	}
 
 	public function termsOfService () {
@@ -149,12 +126,13 @@ class MainController extends AppController {
 	}
 
 	public function createRodoCookie () {
+		$this->autoRender = false;
 		$this->Cookie->write('rodo_accepted', true, true, '6 months');
 		$this->set('rodoCookie', $this->Cookie->read('rodo_accepted'));
 	}
 
 	public function wallet () {
-		if($this->Session->read('loggedIn')) {
+		if ($this->Session->read('loggedIn')) {
 
 			$cryptoCurrencies = ['bitcoin', 'ethereum', 'lumen', 'XRP', 'litecoin', 'eos', 'Yearn-finance'];
 			$resources = ['oil', 'gold', 'copper', 'silver', 'palladium', 'platinum', 'nickel', 'aluminum'];
@@ -200,6 +178,7 @@ class MainController extends AppController {
 	}
 
 	public function changeLanguage() {
+		$this->autoRender = false;
 		$this->Session->write('language', $this->params['lang']);
 	}
 
@@ -217,12 +196,11 @@ class MainController extends AppController {
 			),
 		);
 
-		// We could also use curl to send the API request
 		$context  = stream_context_create($options);
 		$json_result = file_get_contents($url, false, $context);
 		$result = json_decode($json_result);
 		
-		if(!$result->success) {
+		if (!$result->success) {
 			$this->Session->write('captchaError', true);
 			$this->redirect('/contact');
 		} else {

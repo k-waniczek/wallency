@@ -1,5 +1,5 @@
 <?php 
-if($alreadyVerified == 0) { ?>
+if ($alreadyVerified == 0) { ?>
     <h4>Your account have been successfully activated!</h4>
 <?php } else {?>
     <h4>Your account is already activated!</h4>
@@ -9,7 +9,7 @@ if($alreadyVerified == 0) { ?>
     var seconds = document.querySelector('#timer');
 
     setInterval(function () {
-        if(parseInt(seconds.innerText) == 1) {
+        if (parseInt(seconds.innerText) == 1) {
             location.replace("http://localhost/wallency/Vendor/cakephp/cakephp/home");
         }
         seconds.innerText = parseInt(seconds.innerText) - 1;

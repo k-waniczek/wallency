@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	function createCheck(div) {
 		var check = document.createElement("i");
 		check.setAttribute("class", "fas fa-check");
-		if(!div.querySelector(".fa-check")) {
+		if (!div.querySelector(".fa-check")) {
 			div.append(check);
 		}
 		if (div.querySelector(".fa-times")) {
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	function createWrong(div) {
 		var wrong = document.createElement("i");
 		wrong.setAttribute("class", "fas fa-times");
-		if(!div.querySelector(".fa-times")) {
+		if (!div.querySelector(".fa-times")) {
 			div.append(wrong);
 		}
 		if (div.querySelector(".fa-check")) {
@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	}
 
 	function validateBirthDate(input, div) {
-	    if(isValidDate(input.value)) {
+	    if (isValidDate(input.value)) {
 			createCheck(div);
 	    } else {
             createWrong(div);
@@ -97,7 +97,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	}
 
 	function validateEmail(input, div) {
-		if(/^[.-_=+\w]+@[a-zA-Z_0-9]+?\.[a-zA-Z]{2,3}$/.test(input.value)) {
+		if (/^[.-_=+\w]+@[a-zA-Z_0-9]+?\.[a-zA-Z]{2,3}$/.test(input.value)) {
 			createCheck(div);
 		} else {
             createWrong(div);

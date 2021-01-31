@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     divs.forEach(function(div) {
         div.addEventListener('click', function() {
-            if(this.dataset.hidden == "false") {
+            if (this.dataset.hidden == "false") {
                 this.style.height = "300px";
                 this.dataset.hidden = "true";
             } else {

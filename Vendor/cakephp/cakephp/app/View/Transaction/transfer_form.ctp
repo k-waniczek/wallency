@@ -39,7 +39,7 @@ if ($this->Session->read('language') == 'eng') {
 
 <script src="app/webroot/js/transfer.js"></script>
 <?php
-if($this->Session->read('transferError') === true) {
+if ($this->Session->read('transferError') === true) {
 echo "<script>Swal.fire({icon: 'error',text: 'You cannot transfer money to yourself!',showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
 $_SESSION['transferError'] = false;
 }?>

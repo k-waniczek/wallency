@@ -22,10 +22,10 @@ if (req.status == 200) {
 }     
 
 amountInput.addEventListener('keyup', function () {
-    if(parseFloat(amountInput.value) > parseFloat(response[currency])) {
+    if (parseFloat(amountInput.value) > parseFloat(response[currency])) {
         amountInput.value = parseFloat(response[currency]);
     }
-    if(amountInput.value < 0 || amountInput.value == '' || parseFloat(amountInput.value) > parseInt(response[currency])) {
+    if (amountInput.value < 0 || amountInput.value == '' || parseFloat(amountInput.value) > parseInt(response[currency])) {
         document.querySelector('div.submit input').setAttribute('disabled', true);
     } else {
         document.querySelector('div.submit input').removeAttribute('disabled');

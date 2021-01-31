@@ -11,7 +11,7 @@
 
 <div class="rules">
     <ol>
-        <li>Your login cannot contain any swear word. If an administrator will notice that your<br/> account has one, your account may be temporarily blocked, or terminated.</li>
+        <li>Your login cannot contain any swear word. If an administrator will notice that your account has one, your account may be temporarily blocked, or terminated.</li>
         <li>If you find any exploit in the website, please contact owner by the contact page.</li>
         <li>On this website money you deposit and withdraw from your account, is not real money, this website is only for educational purposes.</li>
         <li>In order to use our website you need to create an account, with the registration you have to accept terms and conditions.</li>

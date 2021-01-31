@@ -1,5 +1,4 @@
 <div class="chnagePasswordForm">
-<br/>
 <?php
 
     echo $this->Form->create("changePassword", array("url" => "/change-password"));

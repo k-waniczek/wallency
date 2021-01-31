@@ -25,16 +25,13 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'main', 'action' => 'display', 'home'));
+	Router::connect('/', array('controller' => 'main', 'action' => 'home'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 
 	/*----------MAIN CONTROLLER----------*/
 	Router::connect('/home', array('controller' => 'main', 'action' => 'home'));
-	Router::connect('/profile', array('controller' => 'main', 'action' => 'profile'));
-	Router::connect('/login', array('controller' => 'main', 'action' => 'login'));
-	Router::connect('/register', array('controller' => 'main', 'action' => 'register'));
 	Router::connect('/terms-of-service', array('controller' => 'main', 'action' => 'termsOfService'));
 	Router::connect('/webroot', array('controller' => 'main', 'action' => 'privacyPolicy'));
 	Router::connect('/about', array('controller' => 'main', 'action' => 'about'));
@@ -77,6 +74,9 @@
 	Router::connect('/activate', array('controller' => 'user', 'action' => 'activate'));
 	Router::connect('/change-password', array('controller' => 'user', 'action' => 'changePassword'));
 	Router::connect('/change-password-form', array('controller' => 'user', 'action' => 'changePasswordForm'));
+	Router::connect('/profile', array('controller' => 'user', 'action' => 'profile'));
+	Router::connect('/login', array('controller' => 'user', 'action' => 'login'));
+	Router::connect('/register', array('controller' => 'user', 'action' => 'register'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

@@ -45,7 +45,7 @@ class TransactionController extends AppController {
 		$this->loadModel('TransactionHistory');
 		App::uses('CakeEmail', 'Network/Email');
 		$this->TransactionHistory->validator()->remove('login');
-		if($this->Session->read('loggedIn'))
+		if ($this->Session->read('loggedIn'))
 			$this->layout = 'loggedIn';
 		else 
 			$this->layout = 'default';
@@ -180,6 +180,7 @@ class TransactionController extends AppController {
 	}
 
 	public function changeBaseCurrency () {
+		$this->autoRender = false;
 		$this->User->updateAll(
 			array('base_currency' => "'".$this->params['url']['currency']."'"),
 			array('UUID' => $this->Session->read('userUUID'))
@@ -195,7 +196,7 @@ class TransactionController extends AppController {
 	public function transfer() {
 		$data = $this->request->data['transferMoney'];
 
-		if($data['recipientLogin'] == $this->Session->read('userName')) {
+		if ($data['recipientLogin'] == $this->Session->read('userName')) {
 			$this->Session->write('transferError', true);
 			$this->redirect('/transfer-form');
 		}
@@ -234,7 +235,7 @@ class TransactionController extends AppController {
 			'fields' => array('User.*', 'Wallet.*')
 		));
 
-		if(!empty($sender) && !empty($recipient)) {
+		if (!empty($sender) && !empty($recipient)) {
 			try  {
 				$amount = $sender['Wallet'][$data['currencyToSend']] - intval($data['amountToSend']);
 				$this->Wallet->updateAll(array($data['currencyToSend'] => $amount), array('userUUID' => $this->Session->read('userUUID')));
@@ -259,6 +260,7 @@ class TransactionController extends AppController {
 	}
 
 	public function addToTransactionHistory() {
+		$this->autoRender = false;
 		$this->loadModel('History');
 		$this->History->validator()->remove('login');
 		$this->History->save(array('id' => null, 'wallet_id' => $this->Session->read('walletId'), 'sum' => floor($this->params['sum']), 'date' => date('Y-m-d')));

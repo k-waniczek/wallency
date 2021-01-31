@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const urlParams = new URLSearchParams(queryString);
     const showModal = urlParams.get('showModal');
 
-    if(showModal) {
+    if (showModal) {
         var modalText = "<p style='color: red; margin-right: 10px; display: inline-block; font-weight: bold;'>-" + document.querySelector("#hidden2").value + " " + document.querySelector("#hidden1").value + "</p>|<p style='color: #5fd137; margin-left: 10px; display: inline-block; font-weight: bold;'>" + "+" + document.querySelector("#hidden4").value + " " + document.querySelector("#hidden3").value + "</p>";
         Swal.fire({
             icon: 'success',
@@ -87,16 +87,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         currencies.forEach(function (currency, index) {
             baseValues[index] = (typeof(response[currency.textContent.toUpperCase()]) == 'undefined') ? 1 : response[currency.textContent.toUpperCase()];
-            if(currency.textContent == chosen) {
+            if (currency.textContent == chosen) {
                 sameIndex = index;
             }
             index++;
         });
 
         finalValues.forEach(function (finalValue, index) {
-            if(index == sameIndex) {
+            if (index == sameIndex) {
                 finalValue.innerHTML = Math.round(parseFloat(values[index].innerHTML) * 100) / 100;
-            } else if(parseFloat(values[index].innerHTML) > 0) {
+            } else if (parseFloat(values[index].innerHTML) > 0) {
                 finalValue.innerHTML = Math.round(parseFloat(values[index].innerHTML) / baseValues[index] * 100) / 100; 
             } else {
                 finalValue.innerHTML = 0;
@@ -108,7 +108,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         
         req.open('GET', 'https://api.coingecko.com/api/v3/exchange_rates', false);
         req.send(null);
-        if(req.status == 200) {
+        if (req.status == 200) {
             cryptoResponse = JSON.parse(req.responseText).rates;
         }
 
@@ -119,7 +119,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
 
         cryptoFinalValues.forEach(function (cryptoFinalValue, index) {
-            if(parseFloat(cryptoValues[index].innerHTML) > 0) {
+            if (parseFloat(cryptoValues[index].innerHTML) > 0) {
                 cryptoFinalValue.innerHTML = Math.round(prices[index] * 100) / 100;
             } else {
                 cryptoFinalValue.innerHTML = 0;

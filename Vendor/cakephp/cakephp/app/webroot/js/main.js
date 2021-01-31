@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	var shown = false;
 
 	hamburgerIcon.addEventListener("click", function() {
-		if(!shown) {
+		if (!shown) {
 			slideMenu.style.right = "0";
 			shown = true;
 		} else {
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	document.querySelector('select#langSelect').addEventListener('change', function() {
 		req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/change-language/'+this.options[this.selectedIndex].value, false);
         req.send(null);
-        if(req.status == 200) {
+        if (req.status == 200) {
             window.location.reload();
         }
 	});

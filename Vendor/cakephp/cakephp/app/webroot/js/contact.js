@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function checkMessageLength () {
         msgLen.textContent = textArea.value.length + "/200";
-        if(textArea.value.length > 170 && textArea.value.length < 200) {
+        if (textArea.value.length > 170 && textArea.value.length < 200) {
             applyAnimation('yellow');
         } else if (textArea.value.length == 200) {
             applyAnimation('red');

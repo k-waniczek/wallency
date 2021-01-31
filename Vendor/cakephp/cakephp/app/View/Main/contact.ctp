@@ -30,7 +30,7 @@
         <?php echo $this->Form->end(__('send'));?>
 </div>
 <?php
-if($this->Session->read('captchaError') === true) {
+if ($this->Session->read('captchaError') === true) {
 echo "<script>Swal.fire({icon: 'error',text: 'Please confirm that you are not a bot, by verifying reCaptcha!',showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
 $_SESSION['captchaError'] = false;
 }?>

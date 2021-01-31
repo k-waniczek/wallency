@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function () {
     var eye = document.querySelector(".fa-eye");
     var shown = false;
     eye.addEventListener('click', function() {
-        if(!shown) {
+        if (!shown) {
             document.querySelector("input#LoginUserPassword").setAttribute('type', 'text');
             shown = true;
         } else {

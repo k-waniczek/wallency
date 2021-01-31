@@ -10,7 +10,7 @@
 
 <div class="sidebar">
     <h1><?php echo __('hello');?> <?=$this->Session->read("userName");?>!</h1>
-    <a href="change-password-form" id="changePassword"><?php echo __('change_password');?></a><br/>
+    <a href="change-password-form" id="changePassword"><?php echo __('change_password');?></a>
     <?php echo __('change_base_currency');?>
     <select id="baseCurrency">
         <?php
@@ -19,7 +19,7 @@
                 echo "<option value='".$currency."' ".$selected.">".$currency."</option>";
             }
         ?>
-    </select><br/>
+    </select>
 </div>
 <div class="chart">
     <canvas id="myChart"></canvas>
@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', function() {
     var date = new Date();
     date.setDate(date.getDate()-2);
     var weekend;
-    if(date.getDay() == 6 || date.getDay() == 0) {
+    if (date.getDay() == 6 || date.getDay() == 0) {
         weekend = true;
     } else {
         weekend = false;
@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', function() {
     var diff = date - start;
     var oneDay = 1000 * 60 * 60 * 24;
     var day = Math.floor(diff / oneDay);
-    if(day % 2 == 0 && weekend == false) {
+    if (day % 2 == 0 && weekend == false) {
         historyRates = historyApiCall();
         compare();
     } else {
@@ -92,7 +92,7 @@ window.addEventListener('DOMContentLoaded', function() {
         for(var i = 0; i < currencies.length; i++) {
             historyRate = (typeof(historyRates.rates[date.getUTCFullYear()+'-'+pad(date.getUTCMonth()+1)+'-'+pad(date.getUTCDate())][currencies[i]]) == undefined) ? 1 : historyRates.rates[date.getUTCFullYear()+'-'+pad(date.getUTCMonth()+1)+'-'+pad(date.getUTCDate())][currencies[i]];
             lastRate = (currentRates.rates[currencies[i]] == undefined) ? 1 : currentRates.rates[currencies[i]];
-            if(lastRate < historyRate * 0.995 || lastRate > historyRate * 1.005) {
+            if (lastRate < historyRate * 0.995 || lastRate > historyRate * 1.005) {
                 percent = (lastRate / historyRate) * 100 - 100;
                 req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/send_currency_change_notification/'+currencies[i]+'/'+Math.round(percent * 100) / 100+'/', false);
                 req.send(null);

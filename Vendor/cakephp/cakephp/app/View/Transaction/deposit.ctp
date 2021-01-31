@@ -1,6 +1,6 @@
-    <div class='depositForm col-8k-3 col-4k-3 col-wqhd-3 col-fhd-3 col-hd-3 col-480p-6 col-360p-8 col-sd-9'>
-    <div class='overlay'></div>
-    <h2><?php echo __('deposit');?></h2>
+<div class='depositForm col-8k-3 col-4k-3 col-wqhd-3 col-fhd-3 col-hd-3 col-480p-6 col-360p-8 col-sd-9'>
+<div class='overlay'></div>
+<h2><?php echo __('deposit');?></h2>
 <?php
     echo $this->Form->create("Deposit", array("url" => "/add-money"));
     echo "<div class='col'>";

@@ -93,6 +93,7 @@ class UserController extends AppController {
 	}
 
 	public function registerUser() {
+		$this->autoRender = false;
 		$data = $this->request->data['RegisterUser'];
 		$this->loadModel('Wallet');
 		$this->User->set($data);
@@ -111,12 +112,11 @@ class UserController extends AppController {
 			),
 		);
 
-		// We could also use curl to send the API request
 		$context  = stream_context_create($options);
 		$json_result = file_get_contents($url, false, $context);
 		$result = json_decode($json_result);
 		
-		if($result->success) {
+		if ($result->success) {
 			try {
 				$dateDiff = date_diff(new DateTime($data['birth_date']), new DateTime('NOW'));
 				$adult = $dateDiff->y >= 18 ? true : false;
@@ -125,9 +125,9 @@ class UserController extends AppController {
 			}
 
 			try {
-				if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+				if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
 					$emailDomain = explode("@", $data['email']);
-					if(filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]['target']), FILTER_VALIDATE_IP)) {
+					if (filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]['target']), FILTER_VALIDATE_IP)) {
 						$emailValid = true;
 					} else {
 						$emailValid = false;
@@ -139,7 +139,7 @@ class UserController extends AppController {
 				echo $e->getMessage();
 			}
 
-			if($this->User->validates() && $adult) {
+			if ($this->User->validates() && $adult) {
 				$this->User->save(array('id' => null, 'login' => $data['login'], 'name' => $data['name'], 'surname' => $data['surname'], 'password' => hash("SHA384", md5($data['password'])), 'email' => $data['email'], 'birthdate' => $data['birth_date'] .= ' 00:00:00', 'UUID' => $uuid, 'base_currency' => $data['baseCurrency'], 'verified' => 0));
 				$this->Wallet->validator()->remove('login');
 				$this->Wallet->save(array(
@@ -208,21 +208,22 @@ class UserController extends AppController {
 	}
 
 	public function loginUser () {
+		$this->autoRender = false;
 		$data = $this->request->data['LoginUser'];
 		$this->loadModel('Wallet');
 		$userData = $this->User->find('first', array('conditions' => array('login' => $data['loginOrEmail'], 'password' => hash("SHA384", md5($data['password'])))));
-		if($userData['User']['verified'] == 0) {
+		if ($userData['User']['verified'] == false) {
 			$this->Session->write('verificationError', true);
 			$this->redirect('/login');
 		}
 
 		$walletId = $this->Wallet->find('first', array('conditions' => array('userUUID' => $userData['User']['UUID']), 'fields' => 'id'));
 
-		if(empty($userData)) {
+		if (empty($userData)) {
 			$userData = $this->User->find('first', array('conditions' => array('email' => $data['loginOrEmail'], 'password' => $data['password'])));
 		} 
 		
-		if(empty($userData)) {
+		if (empty($userData)) {
 			$this->Session->write('loginError', true);
 			$this->redirect('/login');
 		}
@@ -237,6 +238,7 @@ class UserController extends AppController {
 	}
 
 	public function logout () {
+		$this->autoRender = false;
 		$this->Session->write('loggedIn', false);
 		$this->redirect('/home');
 	}
@@ -246,7 +248,7 @@ class UserController extends AppController {
 		$uuid = $this->params->query['uuid'];
 		$user = $this->User->find('first', array('conditions' => array('UUID' => $uuid)));
 		
-		if($user['User']['verified'] == 0) {
+		if ($user['User']['verified'] == 0) {
 			$this->User->updateAll(array('verified' => 1),array('UUID' => $uuid));
 			$this->set('alreadyVerified', 0);
 		} else {
@@ -259,13 +261,39 @@ class UserController extends AppController {
 	}
 
 	public function changePassword () {
+		$this->autoRender = false;
 		$data = $this->request->data['changePassword'];
 		$user = $this->User->find('first', array('conditions' => array('password' => $data['currentPassword'])));
 
-		if(isset($user)) {
-			if($data['newPasswordConfirm'] == $data['newPassword']) {
+		if (isset($user)) {
+			if ($data['newPasswordConfirm'] == $data['newPassword']) {
 				$this->User->updateAll(array('password' => "'".$data['newPassword']."'"),array('password' => $data['currentPassword']));
 			}
 		}
+	}
+
+	public function profile () {
+		$this->loadModel('History');
+		$this->loadModel('Wallet');
+		$wallet = $this->Wallet->find('first', array('conditions' => array('userUUID' => $this->Session->read('userUUID'))));
+		$history = $this->History->find('all', array('conditions' => array('wallet_id' => $wallet['Wallet']['id'])));
+		$this->set('history', $history);
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://api.ratesapi.io/api/latest?base=".strtoupper($this->Session->read("baseCurrency")));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		$result = json_decode(curl_exec($ch),true);
+		curl_close($ch);
+
+		$this->set('currencies', Configure::read('currencies'));
+		$this->set('apiResult', $result);
+	}
+
+	public function login () {
+
+	}
+
+	public function register () {
+		$this->set('currencies', Configure::read('currencies'));
 	}
 }

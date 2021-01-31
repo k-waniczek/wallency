@@ -85,6 +85,7 @@ class NotificationController extends AppController {
 	}
 
 	public function sendCurrencyChangeNotification () {
+		$this->autoRender = false;
 		$this->loadModel('User');
 		$users = $this->User->find('all', array('fields' => 'email'));
 		for($i = 0; $i < count($users); $i++) {

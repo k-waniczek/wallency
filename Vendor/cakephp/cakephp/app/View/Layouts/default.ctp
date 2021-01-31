@@ -41,7 +41,7 @@
 					<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
 					<select id="langSelect">
 						<?php
-							if($this->Session->read('language') == 'eng') {
+							if ($this->Session->read('language') == 'eng') {
 								echo '<option value="eng">eng</option>';
 								echo '<option value="pol">pol</option>';
 							} else {
@@ -53,9 +53,7 @@
 				</ul>
 			</div>
 			<span class="registerAndLogin col-fhd-2 col-hd-2 col-480p-2 col-360p-2">
-				<span class="register"><a href="register"><?php echo __('register');?></a></span> 
-				| 
-				<span class="login"><a href="login"><?php echo __('login');?></a></span>
+				<span class="register"><a href="register"><?php echo __('register');?></a></span><span> | </span><span class="login"><a href="login"><?php echo __('login');?></a></span>
 			</span>
 		</nav>
 		<div class="container">
@@ -70,20 +68,20 @@
 						<li><a href="contact"><?php echo __('contact');?></a></li>
 						<li><a href="career"><?php echo __('career');?></a></li>
 					</ul>
-				</div><br />
+				</div>
 				<span class="logo col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-2">WALLENCY</span>
 				<span><?php echo __('copyright');?> &copy; <?= date('Y')?> Wallency.
 				Wallency <?php echo __('copyright_rest');?>.</span>
 				<span class="privacy-policy">
 					<a href="privacy-policy" target="_blank"><?php echo __('privacy_policy');?></a>
 					<a href="terms-of-service"><?php echo __('terms_of_service');?></a>
-				</span><br/><br/>
+				</span>
 				<div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 			</div>	
 		</div>
 	</div>
 	<?php
-		if(!isset($_COOKIE['CakeCookie']['rodo_accepted'])) {
+		if (!isset($_COOKIE['CakeCookie']['rodo_accepted'])) {
 			echo $this->element('rodo-modal');
 		}
 	?>

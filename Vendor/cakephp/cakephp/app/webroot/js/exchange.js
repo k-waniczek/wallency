@@ -55,10 +55,10 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     function checkInput (input) {
-        if(parseFloat(input.value) > Math.floor(parseFloat(value) * rate * 1) / 1) {
+        if (parseFloat(input.value) > Math.floor(parseFloat(value) * rate * 1) / 1) {
             input.value = Math.floor(parseFloat(value) * rate * 1) / 1;
         }
-        if(input.value <= 0 || input.value.trim() == '' || input.value > Math.floor(parseFloat(value) * rate * 1) / 1) {
+        if (input.value <= 0 || input.value.trim() == '' || input.value > Math.floor(parseFloat(value) * rate * 1) / 1) {
             submitBtn.setAttribute('disabled', true);
         } else {
             submitBtn.removeAttribute("disabled");
@@ -66,8 +66,8 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     function checkCurrencies(select1, select2) {
-        if(select2.options[select2.selectedIndex].value == select1.options[select1.selectedIndex].value) {
-            if(select2.selectedIndex == select2.options.length-1) {
+        if (select2.options[select2.selectedIndex].value == select1.options[select1.selectedIndex].value) {
+            if (select2.selectedIndex == select2.options.length-1) {
                 select2.selectedIndex = 0;
             } else {
                 select2.selectedIndex = select2.selectedIndex + 1;

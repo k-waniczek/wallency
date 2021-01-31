@@ -8,7 +8,7 @@
     echo $this->fetch('script');
 
 
-    if($this->Session->read("dbError") == true) {
+    if ($this->Session->read("dbError") == true) {
         echo "<h4>".$this->Session->read("dbError")."</h4>";
     } else {
         echo "<h4>Your money has been transfered!</h4>";
