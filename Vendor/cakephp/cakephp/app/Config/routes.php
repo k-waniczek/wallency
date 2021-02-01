@@ -62,7 +62,8 @@
 	Router::connect('/transfer', array('controller' => 'transaction', 'action' => 'transfer'));
 
 	/*----------NOTIFICATION CONTROLLER----------*/
-	Router::connect('/send_currency_change_notification/:currency/:percent/', array('controller' => 'notification', 'action' => 'sendCurrencyChangeNotification'));
+	Router::connect('/send-currency-change-notification/:currency/:percent/', array('controller' => 'notification', 'action' => 'sendCurrencyChangeNotification'));
+	Router::connect('/notification/send-currency-change-notification/:currency/:percent/', array('controller' => 'notification', 'action' => 'sendCurrencyChangeNotification'));
 
 	/*----------USER CONTROLLER----------*/
 	Router::connect('/register-user', array('controller' => 'user', 'action' => 'registerUser'));

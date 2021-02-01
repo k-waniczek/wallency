@@ -1,55 +1,14 @@
 <?php
-/**
- * Static content controller.
- *
- * This file will render views from views/pages/
- *
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @package       app.Controller
- * @since         CakePHP(tm) v 0.2.9
- * @license       https://opensource.org/licenses/mit-license.php MIT License
- */
-
 App::uses('AppController', 'Controller');
 
-/**
- * Static content controller
- *
- * Override this controller by placing a copy in controllers directory of an application
- *
- * @package       app.Controller
- * @link https://book.cakephp.org/2.0/en/controllers/pages-controller.html
- */
 class NotificationController extends AppController {
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
 	public $uses = array();
 
 	public function beforeFilter() {
 		parent::beforeFilter();
 		App::uses('CakeEmail', 'Network/Email');
 	}
-
-/**
- * Displays a view
- *
- * @return CakeResponse|null
- * @throws ForbiddenException When a directory traversal attempt.
- * @throws NotFoundException When the view file could not be found
- *   or MissingViewException in debug mode.
- */
 
 	public function display() {
 		$path = func_get_args();
@@ -85,30 +44,31 @@ class NotificationController extends AppController {
 	}
 
 	public function sendCurrencyChangeNotification () {
-		$this->autoRender = false;
-		$this->loadModel('User');
-		$users = $this->User->find('all', array('fields' => 'email'));
-		for($i = 0; $i < count($users); $i++) {
-			$email = new CakeEmail('default');
-			$email->emailFormat('html')
-				->to($users[$i]['User']['email'])                            
-				->from(array('frezi12345cr@gmail.com' => 'wallency'))
-				->viewVars(array('currency' => $this->params['currency'], 'percent' => $this->params['percent']))
-				->attachments(array(
-					array(         
-						'file' => ROOT.'/app/webroot/img/bg-pattern.jpg',
-						'mimetype' => 'image/jpg',
-						'contentId' => 'background'
-					),
-					array(         
-						'file' => ROOT.'/app/webroot/img/wallet.png',
-						'mimetype' => 'image/png',
-						'contentId' => 'logo'
-					)
-				))
-				->template('notificationView', 'mytemplate')
-				->subject('Currency Change Notification')
-				->send();
-		}
+		echo "Działa";
+		// $this->loadModel('User');
+		// $users = $this->User->find('all', array('fields' => 'email'));
+		// for($i = 0; $i < count($users); $i++) {
+		// 	$email = new CakeEmail('default');
+		// 	$email->emailFormat('html')
+		// 		->to($users[$i]['User']['email'])                            
+		// 		->from(array('frezi12345cr@gmail.com' => 'wallency'))
+		// 		->viewVars(array('currency' => $this->params['currency'], 'percent' => $this->params['percent']))
+		// 		->attachments(array(
+		// 			array(         
+		// 				'file' => ROOT.'/app/webroot/img/bg-pattern.jpg',
+		// 				'mimetype' => 'image/jpg',
+		// 				'contentId' => 'background'
+		// 			),
+		// 			array(         
+		// 				'file' => ROOT.'/app/webroot/img/wallet.png',
+		// 				'mimetype' => 'image/png',
+		// 				'contentId' => 'logo'
+		// 			)
+		// 		))
+		// 		->template('notificationView', 'mytemplate')
+		// 		->subject('Currency Change Notification')
+		// 		->send();
+		// }
+		//$this->autoRender = false;
 	}
 }
