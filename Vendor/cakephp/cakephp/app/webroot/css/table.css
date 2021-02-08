@@ -37,6 +37,7 @@ table.walletHistory tr th:nth-of-type(1) {
 table.walletHistory tr th:nth-of-type(4) {
 	width: 300px;
 }
+
 table#table1 {
 	border-radius: 2% 0 2% 2%;
 }

@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", function () {
     var buySelect = document.querySelector("#exchangeMoneyCurrencyToBuy");
     var req = new XMLHttpRequest();
 
-    amountInput.value = '';
+    amountInput.value = "";
 
     checkInput(amountInput);
     exchange();
@@ -27,22 +27,22 @@ window.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         var rate = exchange();
         var req = new XMLHttpRequest();
-        req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/exchange?currencyToExchange='+exchangeSelect.value+'&exchangeAmout='+(Math.floor((amountInput.value)/rate * 100) / 100)+'&currencyToBuy='+buySelect.value+'&buyAmount='+amountInput.value, false);
+        req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/exchange?currencyToExchange="+exchangeSelect.value+"&exchangeAmout="+(Math.floor((amountInput.value)/rate * 100) / 100)+"&currencyToBuy="+buySelect.value+"&buyAmount="+amountInput.value, false);
         req.send(null);
         if (req.status == 200) {
-            window.location = 'http://localhost/wallency/Vendor/cakephp/cakephp/wallet?currencyToExchange='+exchangeSelect.value+'&exchangeAmout='+(Math.floor((amountInput.value)/rate * 100) / 100)+'&currencyToBuy='+buySelect.value+'&buyAmount='+amountInput.value+'&showModal=true';
+            window.location = "http://localhost/wallency/Vendor/cakephp/cakephp/wallet?currencyToExchange="+exchangeSelect.value+"&exchangeAmout="+(Math.floor((amountInput.value)/rate * 100) / 100)+"&currencyToBuy="+buySelect.value+"&buyAmount="+amountInput.value+"&showModal=true";
         }    
         
     });
 
     function exchange () {
         chosenCurrency = exchangeSelect.options[exchangeSelect.selectedIndex].value;
-        req.open('GET', 'https://api.ratesapi.io/api/latest?base='+chosenCurrency.toUpperCase(), false);
+        req.open("GET", "https://api.ratesapi.io/api/latest?base="+chosenCurrency.toUpperCase(), false);
         req.send(null);
         if (req.status == 200) {
             rate = JSON.parse(req.responseText).rates[buySelect.options[buySelect.selectedIndex].value.toUpperCase()];
         }
-        req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/get-wallet', false);
+        req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/get-wallet", false);
         req.send();
         if (req.status == 200) {
             value = JSON.parse(req.responseText).Wallet[chosenCurrency];
@@ -58,8 +58,8 @@ window.addEventListener("DOMContentLoaded", function () {
         if (parseFloat(input.value) > Math.floor(parseFloat(value) * rate * 1) / 1) {
             input.value = Math.floor(parseFloat(value) * rate * 1) / 1;
         }
-        if (input.value <= 0 || input.value.trim() == '' || input.value > Math.floor(parseFloat(value) * rate * 1) / 1) {
-            submitBtn.setAttribute('disabled', true);
+        if (input.value <= 0 || input.value.trim() == "" || input.value > Math.floor(parseFloat(value) * rate * 1) / 1) {
+            submitBtn.setAttribute("disabled", true);
         } else {
             submitBtn.removeAttribute("disabled");
         }

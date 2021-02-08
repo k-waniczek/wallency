@@ -31,7 +31,7 @@ form {
 input[type=checkbox] {
     background-color: transparent;
     outline: none;
-    border: 1px solid black;
+    border: 1px solid #000000;
     border-radius: 2px;
 }
 
@@ -75,7 +75,7 @@ div.select select {
     -webkit-appearance: none;
     -moz-appearance: none;
     border: none;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #ccc;
     outline: none;
     background-color: transparent;
     padding: 2px 5px 2px 5px;
@@ -100,9 +100,9 @@ i.fa-check, i.fa-times {
 }
 
 i.fa-check {
-    color: rgb(0, 211, 0);
+    color: #00d300;
 }
 
 i.fa-times {
-    color: red;
+    color: #ff0000;
 }

@@ -1,18 +1,17 @@
-<?php 
-if ($alreadyVerified == 0) { ?>
-    <h4>Your account have been successfully activated!</h4>
-<?php } else {?>
-    <h4>Your account is already activated!</h4>
-<?php }?>
-<p>You will be redirected in <span id="timer">5</span> seconds.</p>
-<script>
-    var seconds = document.querySelector('#timer');
+<?php
 
-    setInterval(function () {
-        if (parseInt(seconds.innerText) == 1) {
-            location.replace("http://localhost/wallency/Vendor/cakephp/cakephp/home");
-        }
-        seconds.innerText = parseInt(seconds.innerText) - 1;
-    }, 1000);
+    echo $this->Html->script("timer");
 
-</script>
+    echo $this->fetch("meta");
+    echo $this->fetch("css");
+    echo $this->fetch("script");
+
+    if ($alreadyVerified == 0) {
+        echo "<h4>Your account have been successfully activated!</h4>";
+    } else {
+        echo "<h4>Your account is already activated!</h4>";
+    }
+?>
+<p>
+    You will be redirected in <span id="timer">5</span> seconds.
+</p>

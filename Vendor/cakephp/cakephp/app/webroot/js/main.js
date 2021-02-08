@@ -1,19 +1,19 @@
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener("DOMContentLoaded", (event) => {
 	var request = new XMLHttpRequest();
 
-	request.open('Get', 'createRodoCookie');
+	request.open("Get", "createRodoCookie");
 	function noScroll() {
 		window.scrollTo(0, 0);
 	}
 	  
-	if (document.cookie.substring(document.cookie.length - 1, document.cookie.indexOf('=') + 1)) {
+	if (document.cookie.substring(document.cookie.length - 1, document.cookie.indexOf("=") + 1)) {
 		document.querySelector("div.blur").style.filter = "blur(0px)";
 	} else {
-		window.addEventListener('scroll', noScroll);
+		window.addEventListener("scroll", noScroll);
 		document.querySelector("div.blur").style.backgroundColor = "rgba(255, 255, 255, 0.5)";
 		document.querySelector("div.blur").style.filter = "blur(3px)";
 		document.querySelector("button#accept").addEventListener("click", function () {
-			window.removeEventListener('scroll', noScroll);
+			window.removeEventListener("scroll", noScroll);
 			document.querySelector("div.rodoModal").style.display = "none";
 			request.send();
 			document.querySelector("div.blur").style.backgroundColor = "transparent";
@@ -47,8 +47,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 	var req = new XMLHttpRequest();
 
-	document.querySelector('select#langSelect').addEventListener('change', function() {
-		req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/change-language/'+this.options[this.selectedIndex].value, false);
+	document.querySelector("select#langSelect").addEventListener("change", function() {
+		req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/change-language/"+this.options[this.selectedIndex].value, false);
         req.send(null);
         if (req.status == 200) {
             window.location.reload();

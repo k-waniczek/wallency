@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener("DOMContentLoaded", (event) => {
 
 	var loginInput = document.querySelector("input#RegisterUserLogin");
 	var nameInput = document.querySelector("input#RegisterUserName");

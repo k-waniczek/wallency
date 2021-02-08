@@ -13,6 +13,7 @@ div.offer {
     margin: 40px auto;
     overflow-y: hidden;
     transition: all .4s ease-out;
+    cursor: pointer;
 }
 
 div.main {
@@ -36,6 +37,7 @@ div.offer div.main img {
     float: left;
     margin-left: 40px;
 }
+
 div.offer div.main div {
     width: 400px;
     height: 100%;

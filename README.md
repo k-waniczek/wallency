@@ -7,7 +7,7 @@ git clone https://github.com/Frezi2005/wallency.git
 ```
 After cloning the repository you need to go to wallency-master/Vendor/cakephp/cakephp/app/config/database.php and fill in your databse credentials.
 
-If you see a blank page after clicking one of these links below, click one of these links to fix your problem.
+If you see a blank page after clicking one of these links below, see if one of these methods will help you out.
 - If you have Ubuntu and LAMP installed: 
     execute this command: 
     ```sh

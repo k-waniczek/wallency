@@ -1,31 +1,40 @@
-window.addEventListener('DOMContentLoaded', function () {
-    var msgLen = document.querySelector('span.messageLength');
-    var textArea = document.querySelector('textarea');
+window.addEventListener("DOMContentLoaded", function () {
+    var msgLen = document.querySelector("span.messageLength");
+    var textArea = document.querySelector("textarea");
+    var inputs = document.querySelectorAll("input[type=text]");
+    var inputSubmit = document.querySelector("div.submit input");
 
     checkMessageLength();
 
-    textArea.addEventListener('keyup', function () {
+    inputs.forEach(input => {
+        if(input.textContent.length == 0) {
+            inputSubmit.setAttribute("disabled", true);
+            inputSubmit.style.cursor = "default";
+        }
+    });
+
+    textArea.addEventListener("keyup", function () {
         checkMessageLength();
     });
 
     function checkMessageLength () {
         msgLen.textContent = textArea.value.length + "/200";
         if (textArea.value.length > 170 && textArea.value.length < 200) {
-            applyAnimation('yellow');
+            applyAnimation("yellow");
         } else if (textArea.value.length == 200) {
-            applyAnimation('red');
+            applyAnimation("red");
         } else {
-            msgLen.style.color = 'rgb(0, 211, 0)';
-            msgLen.style.animation = '';
-            document.querySelector('div.submit input').removeAttribute('disabled');
+            msgLen.style.color = "#00d300";
+            msgLen.style.animation = "";
+            inputSubmit.removeAttribute("disabled");
         }
     }
 
     function applyAnimation (color) {
         msgLen.style.color = color;
-        msgLen.style.animation = 'shake 0.25s';
+        msgLen.style.animation = "shake 0.25s";
         setTimeout(function() {
-            msgLen.style.animation = '';
+            msgLen.style.animation = "";
         }, 250);
     }
 

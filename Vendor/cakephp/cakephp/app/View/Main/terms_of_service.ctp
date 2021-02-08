@@ -1,11 +1,11 @@
 <?php
 
-    echo $this->Html->css('rules');
-    echo $this->Html->css('full_page_container_height');
+    echo $this->Html->css("rules");
+    echo $this->Html->css("full_page_container_height");
 
-    echo $this->fetch('meta');
-    echo $this->fetch('css');
-    echo $this->fetch('script');
+    echo $this->fetch("meta");
+    echo $this->fetch("css");
+    echo $this->fetch("script");
 
 ?>
 

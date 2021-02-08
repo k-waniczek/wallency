@@ -1,17 +1,17 @@
 <?php
 
-    echo $this->Html->css('home');
-    echo $this->Html->script('home');
+    echo $this->Html->css("home");
+    echo $this->Html->script("home");
 
-    echo $this->fetch('meta');
-    echo $this->fetch('css');
-    echo $this->fetch('script');
+    echo $this->fetch("meta");
+    echo $this->fetch("css");
+    echo $this->fetch("script");
 
 ?>
 
 <div id="mainText">
     <h1><strong>Wallency</strong></h1>
-    <span class="mainSiteText col-hd-4 col-fhd-4 col-480p-6 col-360p-6 col-sd-8"><?php echo __('home_text');?></span>
+    <span class="mainSiteText col-hd-4 col-fhd-4 col-480p-6 col-360p-6 col-sd-8"><?php echo __("home_text");?></span>
 </div>
 
 <div class="screenshots">
@@ -22,9 +22,9 @@
     </div>
     <div class="images">
         <?php
-            echo $this->Html->image('screenshot1.jpg', array('alt' => 'Image 1', 'class' => 'img1 fade', 'style' => 'opacity: 1'));
-            echo $this->Html->image('screenshot2.jpg', array('alt' => 'Image 2', 'class' => 'img2 fade', 'style' => 'opacity: 0'));
-            echo $this->Html->image('screenshot3.jpg', array('alt' => 'Image 3', 'class' => 'img3 fade', 'style' => 'opacity: 0'));
+            echo $this->Html->image("screenshot-wallet.jpg", array("alt" => "Image 1", "class" => "img1 fade", "style" => "opacity: 1"));
+            echo $this->Html->image("screenshot-contact.jpg", array("alt" => "Image 2", "class" => "img2 fade", "style" => "opacity: 0"));
+            echo $this->Html->image("screenshot-exchange.jpg", array("alt" => "Image 3", "class" => "img3 fade", "style" => "opacity: 0"));
         ?>
     </div>
 </div>
@@ -36,34 +36,34 @@
         var index = 1;
         var data = [];
         var labels = [];
-        var ctx = document.getElementById('myChart').getContext('2d');
+        var ctx = document.getElementById("myChart").getContext("2d");
         var curDate;
         var histData;
         var dateToPush;
 
         function pad(value) {
             if (value < 10) {
-                return '0' + value;
+                return "0" + value;
             } else {
                 return value;
             }
         }
 
         var req = new XMLHttpRequest();
-        req.open('GET', 'https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=19&aggregate=15&api_key=b76f05d7ae85a73e7992e1044fb1c4b3f07171bfe67a8e21026072f0ac0a26d9', false);
+        req.open("GET", "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=19&aggregate=15&api_key=b76f05d7ae85a73e7992e1044fb1c4b3f07171bfe67a8e21026072f0ac0a26d9", false);
         req.send(null);
         if (req.status == 200) {
             histData = JSON.parse(req.responseText).Data.Data;
             for(var i = 0; i < histData.length; i++) {
                 curDate = new Date(histData[i].time * 1000);
-                labels[i] = curDate.getUTCFullYear()+'-'+pad(curDate.getUTCMonth()+1)+'-'+pad(curDate.getUTCDate()) + ' ' + pad(curDate.getHours()) + ":" + pad(curDate.getMinutes());
+                labels[i] = curDate.getUTCFullYear()+"-"+pad(curDate.getUTCMonth()+1)+"-"+pad(curDate.getUTCDate()) + " " + pad(curDate.getHours()) + ":" + pad(curDate.getMinutes());
                 data[i] = histData[i].high;
             }
         }
 
         setInterval(function() {
             if (new Date().getMinutes() == 0 || new Date().getMinutes() == 15 || new Date().getMinutes() == 30 || new Date().getMinutes() == 45) {
-                req.open('GET', 'https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=19&aggregate=15&api_key=b76f05d7ae85a73e7992e1044fb1c4b3f07171bfe67a8e21026072f0ac0a26d9', false);
+                req.open("GET", "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=19&aggregate=15&api_key=b76f05d7ae85a73e7992e1044fb1c4b3f07171bfe67a8e21026072f0ac0a26d9", false);
                 req.send(null);
                 if (req.status == 200) {   
                     histData = JSON.parse(req.responseText).Data.Data;
@@ -96,7 +96,7 @@
         "data": {
             "labels": labels,
             "datasets": [{
-            "label": "<?php echo __('btc_value');?>",
+            "label": "<?php echo __("btc_value");?>",
             "data": data,
             "fill": false,
             "borderColor": (data[data.length-1] >= data[data.length-2]) ? "#00ff00" : "#ff0000",

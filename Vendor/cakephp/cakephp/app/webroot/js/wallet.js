@@ -1,23 +1,23 @@
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener("DOMContentLoaded", (event) => {
 
-    new Glider(document.querySelector('.glider'), {
+    new Glider(document.querySelector(".glider"), {
         slidesToShow: 1,
         scrollLock: true,
         arrows: {
-            prev: '.glider-prev',
-            next: '.glider-next'
+            prev: ".glider-prev",
+            next: ".glider-next"
         }
     });
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const showModal = urlParams.get('showModal');
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var showModal = urlParams.get("showModal");
 
     if (showModal) {
-        var modalText = "<p style='color: red; margin-right: 10px; display: inline-block; font-weight: bold;'>-" + document.querySelector("#hidden2").value + " " + document.querySelector("#hidden1").value + "</p>|<p style='color: #5fd137; margin-left: 10px; display: inline-block; font-weight: bold;'>" + "+" + document.querySelector("#hidden4").value + " " + document.querySelector("#hidden3").value + "</p>";
+        var modalText = "<p style=\"color: red; margin-right: 10px; display: inline-block; font-weight: bold;\">-" + document.querySelector("#hidden2").value + " " + document.querySelector("#hidden1").value + "</p>|<p style=\"color: #5fd137; margin-left: 10px; display: inline-block; font-weight: bold;\">" + "+" + document.querySelector("#hidden4").value + " " + document.querySelector("#hidden3").value + "</p>";
         Swal.fire({
-            icon: 'success',
-            title: 'Your balance has changed!',
+            icon: "success",
+            title: "Your balance has changed!",
             html: modalText,
             showConfirmButton: false,
             timer: 5000,
@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var sameIndex;
     var cryptoResponse;
     var cryptoValues = document.querySelectorAll(".cryptoValue");
-    var cryptoCurrencies = ['BTC', 'ETH', 'XLM', 'XRP', 'LTC', 'EOS', 'YFI'];
+    var cryptoCurrencies = ["BTC", "ETH", "XLM", "XRP", "LTC", "EOS", "YFI"];
     var cryptoFinalValues = document.querySelectorAll(".cryptoBase");
     var resourceValues = document.querySelectorAll(".resourceValue");
     var resourceFinalValues = document.querySelectorAll(".resourceBase");
@@ -49,17 +49,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
     setCalculationRate();
     calculate();
 
-    select.addEventListener('change', function () {
+    select.addEventListener("change", function () {
         calculateWallet();
         calculateCurrencies();
     });
 
-    currencyFrom.addEventListener('change', function () {
+    currencyFrom.addEventListener("change", function () {
         setCalculationRate();
         calculate()
     });
 
-    currencyTo.addEventListener('change', function () {
+    currencyTo.addEventListener("change", function () {
         setCalculationRate();
         calculate()
     });
@@ -72,21 +72,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
         calculate();
     });
 
-    calculateFrom.addEventListener('keyup', function(e) {
+    calculateFrom.addEventListener("keyup", function(e) {
         calculate();
     });
 
     function calculateCurrencies (onPageLoad) {
         //CURRENCIES
         var chosen = select.options[select.selectedIndex].value;
-        req.open('GET', 'https://api.ratesapi.io/api/latest?base='+chosen.toUpperCase(), false);
+        req.open("GET", "https://api.ratesapi.io/api/latest?base="+chosen.toUpperCase(), false);
         req.send(null);
         if (req.status == 200) {
             response = JSON.parse(req.responseText).rates;
         }
 
         currencies.forEach(function (currency, index) {
-            baseValues[index] = (typeof(response[currency.textContent.toUpperCase()]) == 'undefined') ? 1 : response[currency.textContent.toUpperCase()];
+            baseValues[index] = (typeof(response[currency.textContent.toUpperCase()]) == "undefined") ? 1 : response[currency.textContent.toUpperCase()];
             if (currency.textContent == chosen) {
                 sameIndex = index;
             }
@@ -106,7 +106,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         //CRYPTO
         
-        req.open('GET', 'https://api.coingecko.com/api/v3/exchange_rates', false);
+        req.open("GET", "https://api.coingecko.com/api/v3/exchange_rates", false);
         req.send(null);
         if (req.status == 200) {
             cryptoResponse = JSON.parse(req.responseText).rates;
@@ -128,16 +128,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         //RESOURCES
 
-        req.open('GET', 'https://api.ratesapi.io/api/latest?base=USD', false);
+        req.open("GET", "https://api.ratesapi.io/api/latest?base=USD", false);
         req.send(null);
         if (req.status == 200) {
             resourcesResponse = JSON.parse(req.responseText).rates;
         }
 
         var div = document.createElement("div");
-        var proxy = 'https://cors-anywhere.herokuapp.com/';
+        var proxy = "https://cors-anywhere.herokuapp.com/";
 
-        req.open('GET', proxy + 'https://www.bankier.pl/surowce/notowania', false);
+        req.open("GET", proxy + "https://www.bankier.pl/surowce/notowania", false);
         req.send(null);
         if (req.status == 200) {
             div.innerHTML = req.responseText;
@@ -151,13 +151,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function setCalculationRate() {
-        req.open('GET', 'https://api.ratesapi.io/api/latest?base='+currencyFrom.options[currencyFrom.selectedIndex].value.toUpperCase(), false);
+        req.open("GET", "https://api.ratesapi.io/api/latest?base="+currencyFrom.options[currencyFrom.selectedIndex].value.toUpperCase(), false);
         req.send(null);
         if (req.status == 200) {
             response = JSON.parse(req.responseText).rates;
             var rate = response[currencyTo.options[currencyTo.selectedIndex].value.toUpperCase()];
             rate = Math.floor(rate * 10000) / 10000;
-            document.querySelector("span#rate").innerHTML = '1 ' + currencyFrom.options[currencyFrom.selectedIndex].value + ' = ' + rate.toString().replace('.', ',') + ' ' + currencyTo.options[currencyTo.selectedIndex].value;
+            document.querySelector("span#rate").innerHTML = "1 " + currencyFrom.options[currencyFrom.selectedIndex].value + " = " + rate.toString().replace(".", ",") + " " + currencyTo.options[currencyTo.selectedIndex].value;
         }
         return rate;
         
@@ -179,7 +179,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             sum += parseFloat(resourceBase.textContent.trim());
         })
         document.querySelector("#sum").innerHTML = lang.wallet_worth + "<b>"+(Math.round(parseFloat(sum) * 100) / 100).toLocaleString()+"</b> "+select.options[select.selectedIndex].value;
-        req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/add-to-transaction-history/'+sum, false);
+        req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/add-to-transaction-history/"+sum, false);
         req.send(null);
     }
     
