@@ -82,7 +82,7 @@
         <select id="baseValue">
             <?php
                 foreach($currencies as $currency) {
-                    echo "<option value=\"$currency\">".strtoupper($currency)."</option>";
+                    echo "<option value=\"$currency\"".(($currency == $userBaseCurrency) ? "selected=\"selected\"" : "").">".strtoupper($currency)."</option>";
                 }
             ?>
         </select>
@@ -99,7 +99,7 @@
                     }
                 ?>
             </select>
-            <input type="number" id="calculateFrom">
+            <input type="string" id="calculateFrom">
         </div>
         <div id="changeAndRate">
             <button id="change">⇅</button>

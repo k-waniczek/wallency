@@ -6,7 +6,7 @@
 
 .contactForm {
 	height: 700px;
-	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
+	background: url('../app/webroot/img/background.jpg') no-repeat center center fixed;
 	background-attachment: scroll;
 	position: relative;
 	margin: auto;

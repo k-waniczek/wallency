@@ -10,71 +10,80 @@
 ?>
 <div class="offer" data-offer="1" data-hidden="false">
 	<div class="main">
-		<img src="" alt="LOGO">
-		<div>
+		<div class="logoImgCareerDiv">
+			<?php echo $this->Html->image("wallet.png", array("alt" => "Logo", "class" => "careerLogoImg"));?>
+		</div>
+		<div class="info">
 			<span class="jobTitle">Middle Backend Developer</span>
 			<span class="sallary">7000 - 12000 PLN brutto</span>
 			<span class="place">Katowice</span>
 		</div>
-		<span class="technologies">PHP</span>
-		<span class="technologies">Node.js</span>
-		<span class="technologies">Postgre SQL</span>
-		<span class="technologies">Docker</span>
+		<div class="tech">
+			<span class="technologies">PHP</span>
+			<span class="technologies">Node.js</span>
+			<span class="technologies">Postgre SQL</span>
+			<span class="technologies">Docker</span>
+		</div>
+		
 	</div>
 	<div class="description">
 		<span>
-			To apply to this job as Middle Backend Developer you should have knowledge of PHP, Node.js, Postgre SQL and
-			Docker. Additionally you should have problem solving skills. It is a plus if you know Node.js or any PHP
-			framework.
+			<?php echo __("career_description_1");?>
 		</span>
 	</div>
 </div>
 <div class="offer" data-offer="2" data-hidden="false">
 	<div class="main">
-		<img src="" alt="LOGO">
-		<div>
+		<div class="logoImgCareerDiv">
+			<?php echo $this->Html->image("wallet.png", array("alt" => "Logo", "class" => "careerLogoImg"));?>
+		</div>
+		<div class="info">
 			<span class="jobTitle">Junior Python Developer</span>
 			<span class="sallary">5000 - 8000 netto + VAT</span>
 			<span class="place">Warszawa</span>
 		</div>
-		<span class="technologies">Python</span>
-		<span class="technologies">MySQL</span>
-		<span class="technologies">OpenCV</span>
-		<span class="technologies">Rabbit</span>
-		<span class="technologies">NumPy</span>
+		<div class="tech">
+			<span class="technologies">Python</span>
+			<span class="technologies">MySQL</span>
+			<span class="technologies">OpenCV</span>
+			<span class="technologies">Rabbit</span>
+			<span class="technologies">NumPy</span>
+		</div>
+		
 	</div>
 	<div class="description">
 		<span>
-			To apply to this job as Middle Backend Developer you should have knowledge of Python, MySQL, OpenCV, Rabbit
-			and NumPY. Additionally you should have problem solving skills. Our company has already programmed
-			applications for 100 different companies such as Facebook or Google.
+			<?php echo __("career_description_2");?>
 		</span>
 	</div>
 </div>
 <div class="offer" data-offer="3" data-hidden="false">
 	<div class="main">
-		<img src="" alt="LOGO">
-		<div>
+		<div class="logoImgCareerDiv">
+			<?php echo $this->Html->image("wallet.png", array("alt" => "Logo", "class" => "careerLogoImg"));?>
+		</div>
+		<div class="info">
 			<span class="jobTitle">Senior Fullstack Developer</span>
 			<span class="sallary">20000 - 30000 PLN brutto</span>
 			<span class="place">Gdańsk</span>
 		</div>
-		<span class="technologies">PHP</span>
-		<span class="technologies">MySQL</span>
-		<span class="technologies">Wordpress</span>
-		<span class="technologies">JavaScript</span>
-		<span class="technologies">Drupal</span>
-		<span class="technologies">SASS</span>
-		<span class="technologies">React</span>
-		<span class="technologies">Angular</span>
-		<span class="technologies">Vue</span>
-		<span class="technologies">Docker</span>
+		<div class="tech">
+			<span class="technologies">PHP</span>
+			<span class="technologies">MySQL</span>
+			<span class="technologies">Wordpress</span>
+			<span class="technologies">JavaScript</span>
+			<span class="technologies">Drupal</span>
+			<span class="technologies">SASS</span>
+			<span class="technologies">React</span>
+			<span class="technologies">Angular</span>
+			<span class="technologies">Vue</span>
+			<span class="technologies">Docker</span>
+		</div>
+		
 	</div>
 	<div class="description">
 		<span>
-			To apply to this job as Middle Backend Developer you should have knowledge of PHP, MySQL, Wordpress,
-			JavaScript, Drupal, SASS, React, Angular, Vue and Docker. Additionally you should have problem solving
-			skills. Our company provides: company car, business phone, meals for free, games room and many other things.
+			<?php echo __("career_description_3");?>
 		</span>
 	</div>
 </div>

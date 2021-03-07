@@ -8,6 +8,9 @@ class TransactionController extends AppController {
 	public $components = array("Cookie");
 
 	public function beforeFilter() {
+		if(!$this->Session->read('loggedIn')) {
+			$this->redirect("/home");
+		}
 		$this->loadModel("Wallet");
 		$this->loadModel("User");
 		$this->loadModel("TransactionHistory");

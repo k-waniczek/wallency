@@ -47,12 +47,27 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 	var req = new XMLHttpRequest();
 
-	document.querySelector("select#langSelect").addEventListener("change", function() {
-		req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/change-language/"+this.options[this.selectedIndex].value, false);
-        req.send(null);
-        if (req.status == 200) {
-            window.location.reload();
-        }
+	document.querySelectorAll("select.langSelect").forEach(select => {
+		for(var i = 0; i < select.getElementsByTagName("option").length; i++) {
+			if(select.getElementsByTagName("option")[i].value == document.querySelector("#language").value) {
+				select.getElementsByTagName("option")[i].selected = true;
+			}
+		}
+		select.addEventListener("change", function() {
+			req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/change-language/"+this.options[this.selectedIndex].value, false);
+			req.send(null);
+			if (req.status == 200) {
+				window.location.reload();
+			}
+		});
 	});
 	
+	var currentLink = window.location.href.split("/");
+	document.querySelectorAll(".menu ul li a, .slideMenu ul li a").forEach((link) => {
+		if(currentLink[currentLink.length - 1] == link.attributes.href.nodeValue) {
+			link.classList.add("currentLink");
+		} else {
+			link.classList.remove("currentLink");
+		}
+	});
 });

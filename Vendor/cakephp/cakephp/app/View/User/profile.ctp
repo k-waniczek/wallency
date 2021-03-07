@@ -1,42 +1,44 @@
 <?php
 
-    echo $this->Html->css('profile');
+    echo $this->Html->css("profile");
 
-    echo $this->fetch('meta');
-    echo $this->fetch('css');
-    echo $this->fetch('script');
+    echo $this->fetch("meta");
+    echo $this->fetch("css");
+    echo $this->fetch("script");
 
 ?>
-
 <div class="sidebar">
-    <h1><?php echo __('hello');?> <?=$this->Session->read("userName");?>!</h1>
-    <a href="change-password-form" id="changePassword"><?php echo __('change_password');?></a>
-    <?php echo __('change_base_currency');?>
-    <select id="baseCurrency">
-        <?php
-            foreach($currencies as $currency) {
-                $selected = ($currency == $this->Session->read("baseCurrency")) ? "selected='selected'" : "";
-                echo "<option value='".$currency."' ".$selected.">".$currency."</option>";
-            }
-        ?>
-    </select>
+    <h1><?php echo __("hello");?> <?=$this->Session->read("userName");?>!</h1>
+    <a href="change-password-form" id="changePassword"><?php echo __("change_password");?></a>
+    <div class="changeCurrencyDiv">
+        <?php echo __("change_base_currency");?>
+        <select id="baseCurrency">
+            <?php
+                foreach($currencies as $currency) {
+                    $selected = ($currency == $this->Session->read("baseCurrency")) ? "selected=\"selected\"" : "";
+                    echo "<option value=\"$currency\" $selected>$currency</option>";
+                }
+            ?>
+        </select>
+    </div>
+    
 </div>
 <div class="chart">
     <canvas id="myChart"></canvas>
 </div>
 <script>
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener("DOMContentLoaded", function() {
     var select = document.querySelector("select#baseCurrency");
-    select.addEventListener('change', function () {
+    select.addEventListener("change", function () {
         var currency = select.options[select.selectedIndex].value;
         var req = new XMLHttpRequest();
-        req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/change-base-currency?currency='+currency, false);
+        req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/change-base-currency?currency="+currency, false);
         req.send(null);
         if (req.status == 200) {
             Swal.fire({
-                icon: 'success',
-                title: 'Your base currency has changed to ' + currency + '!',
-                text: 'Please login to see changes.',
+                icon: "success",
+                title: "Your base currency has changed to " + currency + "!",
+                text: "Please login to see changes.",
                 showConfirmButton: false,
                 timer: 5000,
                 timerProgressBar: true,
@@ -45,9 +47,9 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    var currencies = ['USD', 'EUR', 'CHF', 'PLN', 'GBP', 'JPY', 'CAD', 'RUB', 'CNY', 'CZK', 'TRY', 'NOK', 'HUF'];
-    var currentRates = "<?php echo(str_replace('"', '\'', json_encode($apiResult))); ?>";
-    currentRates = JSON.parse(currentRates.replaceAll('\'', '"'));
+    var currencies = ["USD", "EUR", "CHF", "PLN", "GBP", "JPY", "CAD", "RUB", "CNY", "CZK", "TRY", "NOK", "HUF"];
+    var currentRates = "<?php echo(str_replace("\"", "'", json_encode($apiResult))); ?>";
+    currentRates = JSON.parse(currentRates.replaceAll("\'", "\""));
 
     var date = new Date();
     date.setDate(date.getDate()-2);
@@ -59,7 +61,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     function historyApiCall() {
-        req.open('GET', 'https://api.ratesapi.io/api/history?start_at='+date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()+'&end_at='+date.getUTCFullYear()+'-'+(date.getUTCMonth()+1)+'-'+date.getUTCDate()+'&base='+select.options[select.selectedIndex].value.toUpperCase(), false);
+        req.open("GET", "https://api.ratesapi.io/api/history?start_at="+date.getUTCFullYear()+"-"+(date.getUTCMonth()+1)+"-"+date.getUTCDate()+"&end_at="+date.getUTCFullYear()+"-"+(date.getUTCMonth()+1)+"-"+date.getUTCDate()+"&base="+select.options[select.selectedIndex].value.toUpperCase(), false);
         req.send(null);
         if (req.status == 200) {
             response = JSON.parse(req.responseText);
@@ -82,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     function pad(number) {
-        return number < 10 ? '0' + number : '' + number;
+        return number < 10 ? "0" + number : "" + number;
     }
 
     function compare() {
@@ -90,11 +92,11 @@ window.addEventListener('DOMContentLoaded', function() {
         var lastRate;
         var percent = 0;
         for(var i = 0; i < currencies.length; i++) {
-            historyRate = (typeof(historyRates.rates[date.getUTCFullYear()+'-'+pad(date.getUTCMonth()+1)+'-'+pad(date.getUTCDate())][currencies[i]]) == undefined) ? 1 : historyRates.rates[date.getUTCFullYear()+'-'+pad(date.getUTCMonth()+1)+'-'+pad(date.getUTCDate())][currencies[i]];
+            historyRate = (typeof(historyRates.rates[date.getUTCFullYear()+"-"+pad(date.getUTCMonth()+1)+"-"+pad(date.getUTCDate())][currencies[i]]) == undefined) ? 1 : historyRates.rates[date.getUTCFullYear()+"-"+pad(date.getUTCMonth()+1)+"-"+pad(date.getUTCDate())][currencies[i]];
             lastRate = (currentRates.rates[currencies[i]] == undefined) ? 1 : currentRates.rates[currencies[i]];
             if (lastRate < historyRate * 0.995 || lastRate > historyRate * 1.005) {
                 percent = (lastRate / historyRate) * 100 - 100;
-                req.open('GET', 'http://localhost/wallency/Vendor/cakephp/cakephp/send_currency_change_notification/'+currencies[i]+'/'+Math.round(percent * 100) / 100+'/', false);
+                req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/send_currency_change_notification/"+currencies[i]+"/"+Math.round(percent * 100) / 100+"/", false);
                 req.send(null);
             }
         }
@@ -103,7 +105,7 @@ window.addEventListener('DOMContentLoaded', function() {
     var index = 1;
     var data = [];
     var labels = [];
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById("myChart").getContext("2d");
     var curDate;
     var histData;
     var dateToPush;
@@ -111,15 +113,15 @@ window.addEventListener('DOMContentLoaded', function() {
 
     function pad(value) {
         if (value < 10) {
-            return '0' + value;
+            return "0" + value;
         } else {
             return value;
         }
     }
     
     for(var i = 0; i < history.length; i++) {
-        labels[i] = history[i]['History']['date'];
-        data[i] = history[i]['History']['sum'];
+        labels[i] = history[i]["History"]["date"];
+        data[i] = history[i]["History"]["sum"];
     }
     while(data.length > 5) {
         data.shift();
@@ -131,7 +133,7 @@ window.addEventListener('DOMContentLoaded', function() {
         "data": {
             "labels": labels,
             "datasets": [{
-                "label": "Profile worth history",
+                "label": "<?php echo __("profile_worth");?>",
                 "data": data,
                 "fill": false,
                 "borderColor": (data[data.length-1] >= data[data.length-2]) ? "#00ff00" : "#ff0000",

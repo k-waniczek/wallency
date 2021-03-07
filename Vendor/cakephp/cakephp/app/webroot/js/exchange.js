@@ -21,7 +21,10 @@ window.addEventListener("DOMContentLoaded", function () {
         checkCurrencies(this, exchangeSelect);
         exchange();
     });
-    amountInput.addEventListener("keyup", function () {checkInput(amountInput);});
+    amountInput.addEventListener("keyup", function () {
+        this.value = this.value.replace(/[^0-9.]/g, "");
+        checkInput(amountInput);
+    });
     amountInput.addEventListener("change", function () {checkInput(amountInput);});
     document.querySelector("form").addEventListener("submit", function(e) {
         e.preventDefault();

@@ -20,7 +20,7 @@ nav {
     padding: 0 50px 0 50px;
 }
 
-#langSelect {
+.langSelect {
 	float: left;
 	padding: 7px;
     font-size: 15px;
@@ -55,23 +55,29 @@ nav div.menu {
     text-align: center;
 }
 
-ul {
+.menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: inline-block;
 }
 
-ul > li {
+.menu ul > li {
     float: left;
     line-height: 75px;
     margin: 0 10px 0 10px;
     font-size: 16px;
 }
 
-ul > li > a {
+.menu ul > li > a, .slideMenu ul > li > a {
     color: #979797;
     text-decoration: none;
+    transition: all .5s ease-in-out;
+    border-bottom: 2px solid #276b9c00;
+}
+
+.menu ul > li > a:hover, .slideMenu ul > li > a:hover {
+    border-bottom: 2px solid #276b9cff;
 }
 
 .registerForm > * {
@@ -195,20 +201,38 @@ button#accept, button#denie {
     float: left;
     text-align: right;
     margin-top: 10px;
+    color: rgb(155, 155, 155);
 }
 
-@media (max-width: 770px) {
+#freepikCopyright * {
+    color: rgb(155, 155, 155);
+}
+
+.currentLink {
+    border-bottom: 2px solid #276b9c !important;
+}
+
+@media (max-width: 1300px) {
+
+    div.menu {
+        width: 50% !important;
+    }
+
+    .logo {
+        width: 30% !important;
+    }
+
     li.hamburgerMenu, div.slideMenu {
         display: block;
     }
 
-    nav ul li:not(.hamburgerMenu), .registerAndLogin {
+    nav ul li:not(.hamburgerMenu), .registerAndLogin, .menu ul select.langSelect {
         display: none;
     }
 
     .hamburgerMenu {
         position: absolute;
-        right: 0;
+        right: -20%;
         font-size: 30px;
         color: #ffffff;
         cursor: pointer;
@@ -220,8 +244,9 @@ button#accept, button#denie {
         color: #ffffff;
         font-weight: bold;
         font-size: 40px;
-        margin-right: 40px;
-        margin-top: 30px;
+        position: absolute;
+        right: 40px;
+        top: 30px;
         cursor: pointer;
     }
 
@@ -234,20 +259,34 @@ button#accept, button#denie {
     .slideMenu {
         background-color: #000000;
         height: 100%;
-        width: 70%;
+        width: 50%;
         position: absolute;
         right: -70%;
         transition: all .5s ease-in-out;
         z-index: 51;
     }
+    
+    .slideMenu ul {
+        width: 100%;
+        margin-top: 50px;
+    }
 
     .slideMenu ul li {
-        width: 100%;
+        width: 100% ;
         text-align: center;
         line-height: 70px;
         height: 70px;
         font-size: 20px;
         font-weight: bold;
+        margin-left: 0;
+    }
+
+    .slideMenu ul li .langSelect {
+        position: relative;
+        margin: 0;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
     }
 
     .slideMenu ul li a {
@@ -256,5 +295,15 @@ button#accept, button#denie {
 
     .slideMenu ul li a:hover {
         color: #ffffff !important;
+    }
+}
+
+@media (max-width: 620px) {
+    .footer * {
+        font-size: 10px !important;
+    }
+
+    .footer .text .menu ul li {
+        line-height: 20px;
     }
 }

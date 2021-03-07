@@ -11,6 +11,9 @@ body {
     transform: translate(-50%, -50%);
     top: 15%;
     left: 50%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
 }
 
 .btn {
@@ -30,21 +33,46 @@ body {
     background-color: #49687c;
 }
 
-@media only screen and (min-width: 900px) and (max-width: 1000px) {
+@media (max-width: 1650px) {
+    .buttons {
+        top: 25%;
+    }
+
+    .walletHistory {
+        top: 50% !important;
+    }
+
+    .walletHistory * {
+        font-size: 15px;
+    }
+
     .container {
-        height: 1200px;
+        text-align: center;
+        clear: both;
+        margin-bottom: 900px;
     }
 }
 
-@media only screen and (min-width: 700px) and (max-width: 900px) {
+@media (max-width: 1650px) and (max-height: 570px) {
+    .buttons {
+        top: 150px;
+    }
+
+    .walletHistory {
+        top: 200px;
+    }
+
+    .walletHistory * {
+        font-size: 15px;
+    }
+
+    .walletHistory tr th {
+        line-height: 40px;
+    }
+
     .container {
-        height: 1300px;
+        text-align: center;
+        clear: both;
+        margin-bottom: 1100px;
     }
 }
-
-@media only screen and (min-width:438px) and (max-width: 699px) {
-    .container {
-        height: 1400px;
-    }
-}
-

@@ -2,7 +2,7 @@
 
 .withdrawForm {
 	height: 450px;
-	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
+	background: url('../app/webroot/img/background.jpg') no-repeat center center fixed;
 	background-attachment: scroll;
 	position: relative;
 	margin: auto;
@@ -87,6 +87,40 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type=text] {
   -moz-appearance: textfield;
+}
+
+div.col input::placeholder {
+    font-size: 12px;
+}
+
+@media (max-height: 890px) {
+    .container {
+        margin-bottom: 150px;
+    }
+}
+
+@media (max-height: 900px) and (max-width: 510px) {
+    .container {
+        text-align: center;
+        clear: both;
+        margin-bottom: 450px;
+    }
+}
+
+@media (max-height: 750px) {
+    .container {
+        text-align: center;
+        clear: both;
+        margin-bottom: 400px;
+    }
+}
+
+@media (max-height: 700px) and (max-width: 480px) {
+    .container {
+        text-align: center;
+        clear: both;
+        margin-bottom: 400px;
+    }
 }

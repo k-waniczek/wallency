@@ -1,0 +1,11 @@
+.main {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+    height: 100px;
+    background-color: #2a4352;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+}

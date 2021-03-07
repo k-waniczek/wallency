@@ -9,17 +9,17 @@
 
 ?>
 
-<div class="rules">
+<div class="rules col-8k-6 col-4k-6 col-wqhd-6 col-fhd-6 col-hd-8 col-480p-8 col-360p-9 col-sd-10">
     <ol>
-        <li>Your login cannot contain any swear word. If an administrator will notice that your account has one, your account may be temporarily blocked, or terminated.</li>
-        <li>If you find any exploit in the website, please contact owner by the contact page.</li>
-        <li>On this website money you deposit and withdraw from your account, is not real money, this website is only for educational purposes.</li>
-        <li>In order to use our website you need to create an account, with the registration you have to accept terms and conditions.</li>
-        <li>Any activities that are not expressly permitted by the Regulations, in particular are prohibited:
+        <li class="rule"><?php echo __("rule1");?></li>
+        <li class="rule"><?php echo __("rule2");?></li>
+        <li class="rule"><?php echo __("rule3");?></li>
+        <li class="rule"><?php echo __("rule4");?></li>
+        <li class="rule"><?php echo __("rule5");?>
             <ul>
-                <li>activities which can destibilize website functionality,</li>
-                <li>usage of viruses, bots, bugs, or other computer scripts, files or programs (in particular, automating script and application processes or other codes, files or tools),</li>
-                <li>use of any content posted on the site in a manner other than only for personal personal use</li>
+                <li class="subrule"><?php echo __("rule5sub1");?></li>
+                <li class="subrule"><?php echo __("rule5sub2");?></li>
+                <li class="subrule"><?php echo __("rule5sub3");?></li>
             </ul>
         </li>
     </ol>

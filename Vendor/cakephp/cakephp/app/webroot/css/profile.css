@@ -10,8 +10,9 @@ body {
 }
 
 h1 {
-    width: 300px;
+    width: 100%;
     display: inline-block;
+    font-size: 100%;
 }
 
 canvas#canvas {
@@ -23,6 +24,7 @@ canvas#canvas {
     color: white;
     display: inline-block;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 #baseCurrency {
@@ -37,6 +39,10 @@ canvas#canvas {
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
+}
+
+.changeCurrencyDiv {
+    width: 100%;
 }
 
 .sidebar {
@@ -57,4 +63,15 @@ div.chart {
     background-color: #2a4352;
     border-radius: 20px;
     padding: 20px;
+}
+
+@media (max-width: 500px) {
+    .sidebar {
+        width: 25%;
+    }
+
+    div.chart {
+        width: 58%;
+        left: 30%;
+    }
 }

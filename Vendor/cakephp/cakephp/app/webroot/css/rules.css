@@ -4,7 +4,7 @@ div.rules {
     transform: translate(-50%, -50%);
     top: 40%;
     left: 50%;
-    height: 400px;
+    height: 40%;
     background-color: #2a4352;
     border-radius: 10px;
 }
@@ -12,16 +12,54 @@ div.rules {
 ol {
     margin: 0;
     color: white;
-    height: 100%;
+    height: auto;
     text-align: left;
     position: relative;
     top: 25px;
 }
 
-li {
+.rule, .subrule {
     height: auto;
 }
 
-ul li {
-    height: 60px;
+.subrule {
+    margin: 60px 0 60px 0;
+    height: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+
+    div.rules {
+        height: auto;
+        top: 500px;
+    }
+
+    .container {
+        text-align: center;
+        clear: both;
+        margin-bottom: 400px;
+    }
+
+    .subrule {
+        height: 20px;
+        line-height: 20px;
+    }
+}
+
+@media only screen and (max-height: 900px) {
+
+    div.rules {
+        height: 80%;
+        top: 500px;
+    }
+
+    .container {
+        text-align: center;
+        clear: both;
+        margin-bottom: 400px;
+    }
+
+    .subrule {
+        height: 20px;
+    }
 }

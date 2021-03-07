@@ -45,9 +45,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
     var resourceValues = document.querySelectorAll(".resourceValue");
     var resourceFinalValues = document.querySelectorAll(".resourceBase");
 
-    calculateCurrencies();
+    //calculateCurrencies();
     setCalculationRate();
-    calculate();
+    //calculate();
 
     select.addEventListener("change", function () {
         calculateWallet();
@@ -73,6 +73,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
 
     calculateFrom.addEventListener("keyup", function(e) {
+        this.value = this.value.replace(/[^0-9]/g, "");
         calculate();
     });
 

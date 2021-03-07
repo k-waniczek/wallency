@@ -17,7 +17,12 @@ class MainController extends AppController {
 		} else { 
 			$this->layout = "default";
 		}
-		Configure::write("Config.language", $this->Session->read("language"));
+		if($this->Session->read("language") != null) {
+			Configure::write("Config.language", $this->Session->read("language"));
+		} else {
+			Configure::write("Config.language", "eng");
+			$this->Session->write("language", "eng");
+		}
 		$locale = $this->Session->read("language");
         if ($locale && file_exists(APP . "View" . DS . $locale . DS . $this->viewPath . DS . $this->view . $this->ext)) {
             $this->viewPath = $locale . DS . $this->viewPath;
@@ -88,40 +93,9 @@ class MainController extends AppController {
 		$this->Cookie->write("rodo_accepted", true, true, "6 months");
 		$this->set("rodoCookie", $this->Cookie->read("rodo_accepted"));
 	}
-
-	public function wallet () {
-		if ($this->Session->read("loggedIn")) {
-
-			$cryptoCurrencies = ["bitcoin", "ethereum", "lumen", "XRP", "litecoin", "eos", "Yearn-finance"];
-			$resources = ["oil", "gold", "copper", "silver", "palladium", "platinum", "nickel", "aluminum"];
-
-			$wallet = $this->Wallet->find("first", array("conditions" => array("userUUID" => $this->Session->read("userUUID"))));
-
-			$this->set("wallet", $wallet);
-			$this->set("currencies", Configure::read("currencies"));
-			$this->set("cryptoCurrencies", $cryptoCurrencies);
-			$this->set("resources", $resources);
-
-		}
-
-		App::uses("HttpSocket", "Network/Http");
-		$httpSocket = new HttpSocket();
-		$response = $httpSocket->get("https://www.bankier.pl/surowce/notowania");
-		$html = file_get_contents("https://stackoverflow.com/questions/ask");
-		$this->set("response", str_replace("\"", "'", str_replace("\n", "", htmlentities($response))));
-		
-	}
 	
 	public function rules () {
 		
-	}
-
-	public function history () {
-		$wallet = $this->Wallet->find("first", array("conditions" => array("userUUID" => $this->Session->read("userUUID"))));
-		$history = $this->TransactionHistory->find("all", array("conditions" => array("wallet_id" => $wallet["Wallet"]["id"]), "order" => array("transaction_date" => "desc"), "limit" => 8));
-		$this->set("history", $history);
-		$historyCount = $this->TransactionHistory->find("count", array("conditions" => array("wallet_id" => $wallet["Wallet"]["id"])));
-		$this->set("rowCount", $historyCount);
 	}
 
 	public function getHistoryRows () {
@@ -161,8 +135,12 @@ class MainController extends AppController {
 		try {
 			if (filter_var($response["Contact"]["emailFrom"], FILTER_VALIDATE_EMAIL)) {
 				$emailDomain = explode("@", $response["Contact"]["emailFrom"]);
-				if (filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]["target"]), FILTER_VALIDATE_IP)) {
-					$emailValid = true;
+				if(isset(dns_get_record($emailDomain[1], DNS_MX)[0]["target"])) {
+					if (filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]["target"]), FILTER_VALIDATE_IP)) {
+						$emailValid = true;
+					} else {
+						$emailValid = false;
+					}		
 				} else {
 					$emailValid = false;
 				}
@@ -201,5 +179,13 @@ class MainController extends AppController {
 				->subject("Contact message from Wallency")
 				->send();
 			}
+	}
+
+	public function login () {
+
+	}
+
+	public function register () {
+		$this->set("currencies", Configure::read("currencies"));
 	}
 }

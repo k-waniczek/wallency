@@ -2,7 +2,7 @@
 
 .loginForm {
 	height: 450px;
-	background: url('../app/webroot/img/background3.jpg') no-repeat center center fixed;
+	background: url('../app/webroot/img/background.jpg') no-repeat center center fixed;
 	background-attachment: scroll;
 	position: relative;
 	margin: auto;
@@ -70,4 +70,36 @@ div.submit input {
     border: 1px solid #cccccc;
     background-color: transparent;
     color: #000;
+}
+
+@media (max-height: 900px) and (max-width: 510px) {
+    .container {
+        text-align: center;
+        clear: both;
+        margin-bottom: 450px;
+    }
+}
+
+@media (max-height: 900px) {
+    .container {
+        text-align: center;
+        clear: both;
+        margin-bottom: 250px;
+    }
+}
+
+@media (max-height: 650px) {
+    .container {
+        text-align: center;
+        clear: both;
+        margin-bottom: 400px;
+    }
+}
+
+@media (max-height: 700px) and (max-width: 480px) {
+    .container {
+        text-align: center;
+        clear: both;
+        margin-bottom: 400px;
+    }
 }

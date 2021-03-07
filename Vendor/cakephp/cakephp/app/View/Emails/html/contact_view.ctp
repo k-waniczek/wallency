@@ -3,17 +3,17 @@
         <td style="padding:13px;"><img src="cid:logo" alt="logo" style="width: 80px;vertical-align: middle;margin-top: -10px;"/></td>
         <td style="padding:13px;">
             <ul style="list-style: none;margin: 0;padding: 0;display: inline-block; float: right;">
-                <li style="float: left;line-height: 75px;margin: 0 10px 0 10px;font-size: 16px;"><a style="text-decoration:none;color:white;" href="localhost/wallency/Vendor/cakephp/cakephp/home"><?php echo __('home');?></a></li>
-                <li style="float: left;line-height: 75px;margin: 0 10px 0 10px;font-size: 16px;"><a style="text-decoration:none;color:white;" href="localhost/wallency/Vendor/cakephp/cakephp/about"><?php echo __('about');?></a></li>
+                <li style="float: left;line-height: 75px;margin: 0 10px 0 10px;font-size: 16px;"><a style="text-decoration:none;color:white;" href="localhost/wallency/Vendor/cakephp/cakephp/home"><?php echo __("home");?></a></li>
+                <li style="float: left;line-height: 75px;margin: 0 10px 0 10px;font-size: 16px;"><a style="text-decoration:none;color:white;" href="localhost/wallency/Vendor/cakephp/cakephp/about"><?php echo __("about");?></a></li>
                 <li style="float: left;line-height: 75px;margin: 0 10px 0 10px;font-size: 16px;"><a style="text-decoration:none;color:white;" href="localhost/wallency/Vendor/cakephp/cakephp/faq">FAQ</a></li>
             </ul>
         </td>
     </tr>
     <tr style="color: white;text-align: center;">
-        <td style="padding:13px;" colspan="2"><span style="font-size: 30px;"><?=$senderName;?>(email: <?=$emailFrom;?>) <?php echo __('wrote');?>:</span> <p><?=$message?></p></td>
+        <td style="padding:13px;" colspan="2"><span style="font-size: 30px;"><?=$senderName;?>(email: <?=$emailFrom;?>) <?php echo __("wrote");?>:</span> <p><?=$message?></p></td>
     </tr>
     <tr style="background-color: #276b9c; height: 50px;">
-        <td style="padding:13px;" colspan="2"><?php echo __('copyright');?> © <?=date('Y');?> Wallency. Wallency <?php echo __('copyright_rest');?>.</td>
+        <td style="padding:13px;" colspan="2"><?php echo __("copyright");?> © <?=date("Y");?> Wallency. Wallency <?php echo __("copyright_rest");?>.</td>
     </tr>
 </table>
 

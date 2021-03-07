@@ -29,7 +29,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			div.removeChild(div.querySelector(".fa-check"));
         }
 	}
-    
+
+	validateText(loginInput, "login", loginInput.parentNode);
+    validateText(nameInput, "name", nameInput.parentNode);
+	validateText(surnameInput, "surname", surnameInput.parentNode);
+	validatePassword(passwordInput, passwordInput.parentNode);
+	checkPasswords(passwordInput, repeatPasswordInput, repeatPasswordInput.parentNode);
+	validateBirthDate(birthDateInput, birthDateInput.parentNode);
+	validateEmail(emailInput, emailInput.parentNode);
+
     loginInput.addEventListener("keyup", function () {
 		 validateText(this, "login", this.parentNode);
     });
@@ -44,6 +52,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     passwordInput.addEventListener("keyup", function () {
 		validatePassword(this, this.parentNode);
+		checkPasswords(this, repeatPasswordInput, repeatPasswordInput.parentNode);
     });
 
     repeatPasswordInput.addEventListener("keyup", function () {
@@ -74,7 +83,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			createCheck(div);
 		} else {
             createWrong(div);
-            div.querySelector(".fa-times").setAttribute("title", "Password must contain at least: 1 big letter, 1 special character and 1 number.");
+            div.querySelector(".fa-times").setAttribute("title", "New password must contain at least: 1 big letter, 1 special character, 1 number and needs to be at least 8 characters long.");
 		}
 	}
 
@@ -113,5 +122,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		}
 
 	}
+
+	document.querySelector("div.submit input").addEventListener("click", function(e) {
+		if (document.querySelectorAll(".fa-times").length > 0) {
+			e.preventDefault();
+		}
+	});
+	
 
 });

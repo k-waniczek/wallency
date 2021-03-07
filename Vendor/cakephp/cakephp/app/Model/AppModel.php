@@ -19,7 +19,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('Model', 'Model');
+App::uses("Model", "Model");
 
 /**
  * Application model for Cake.
@@ -32,20 +32,20 @@ App::uses('Model', 'Model');
 class AppModel extends Model {
 
     public $validate = array(
-        'login' => array (
-          'alphaNumeric' => array(
-            'rule' => 'alphaNumeric',
-            'required' => true,
-            'message' => 'Letters and numbers only'
+        "login" => array (
+          "alphaNumeric" => array(
+            "rule" => "alphaNumeric",
+            "required" => true,
+            "message" => "Letters and numbers only"
           ),
-          'between' => array(
-              'rule' => array('lengthBetween', 3, 20),
-              'message' => 'Between 3 to 20 characters'
+          "between" => array(
+              "rule" => array("lengthBetween", 3, 20),
+              "message" => "Between 3 to 20 characters"
           )
         ),
-        'email' => array (
-            'rule' => 'email',
-            'message' => 'invalid email'
+        "email" => array (
+            "rule" => "email",
+            "message" => "invalid email"
         )
     );
 }

@@ -38,14 +38,14 @@
 	Router::connect('/contact', array('controller' => 'main', 'action' => 'contact'));
 	Router::connect('/career', array('controller' => 'main', 'action' => 'career'));
 	Router::connect('/createRodoCookie', array('controller' => 'main', 'action' => 'createRodoCookie'));
-	Router::connect('/wallet', array('controller' => 'main', 'action' => 'wallet'));
 	Router::connect('/rules', array('controller' => 'main', 'action' => 'rules'));
 	Router::connect('/privacy-policy', array('controller' => 'main', 'action' => 'privacyPolicy'));
-	Router::connect('/history', array('controller' => 'main', 'action' => 'history'));
 	Router::connect('/get-history-rows/:limit', array('controller' => 'main', 'action' => 'getHistoryRows'));
 	Router::connect('/faq', array('controller' => 'main', 'action' => 'faq'));
 	Router::connect('/change-language/:lang', array('controller' => 'main', 'action' => 'changeLanguage'));
 	Router::connect('/send-email', array('controller' => 'main', 'action' => 'sendEmail'));
+	Router::connect('/login', array('controller' => 'main', 'action' => 'login'));
+	Router::connect('/register', array('controller' => 'main', 'action' => 'register'));
 
 	/*----------TRANSACTION CONTROLLER----------*/
 	Router::connect('/add-to-transaction-history/:sum', array('controller' => 'transaction', 'action' => 'addToTransactionHistory'));
@@ -76,8 +76,8 @@
 	Router::connect('/change-password', array('controller' => 'user', 'action' => 'changePassword'));
 	Router::connect('/change-password-form', array('controller' => 'user', 'action' => 'changePasswordForm'));
 	Router::connect('/profile', array('controller' => 'user', 'action' => 'profile'));
-	Router::connect('/login', array('controller' => 'user', 'action' => 'login'));
-	Router::connect('/register', array('controller' => 'user', 'action' => 'register'));
+	Router::connect('/history', array('controller' => 'user', 'action' => 'history'));
+	Router::connect('/wallet', array('controller' => 'user', 'action' => 'wallet'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

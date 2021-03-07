@@ -14,8 +14,10 @@ body {
 }
 
 .container {
-    height: 1900px;
+    height: auto;
     text-align: center;
+    margin-bottom: 100px;
+    width: 100%;
 }
 
 div#mainText {
@@ -44,38 +46,38 @@ h1 {
 }
 
 .screenshots {
-    width: 1008px;
-    height: 600px;
-    background-color: #333333;
+    width: 100%;
+    height: 100%;
+    background-color: #33333300;
+    border-radius: 0.2px;
+}
+
+svg {
+    width: 60%;
     margin: auto;
     margin-top: 100px;
-    border-radius: 20px;
 }
 
 .screenshots .nav {
     background-color: #214076;
-    height: var(--screenshots-nav-height);
-    border-radius: 20px 20px 0 0;
+    height: 0.50px;
+    border-radius: 0.2px 0.2px 0 0;
 }
 
 .screenshots .images {
-    width: 1008px;
-    height: 567px;
     overflow: hidden;
 }
 
 .screenshots .nav .circle {
     border-radius: 50%;
-    height: 12px;
-    width: 12px;
+    height: 0.2px;
+    width: 0.2px;
     float: left;
-    margin-top: calc((var(--screenshots-nav-height) - 12.5px)/2);
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-left: 0.2px;
+    margin-top: calc((0.5px - 0.2px)/2);
 }
 
 .screenshots .nav .circle:nth-of-type(1) {
-    margin-left: 20px;
     background-color: rgb(231, 35, 35);
 }
 
@@ -88,9 +90,9 @@ h1 {
 }
 
 .img1, .img2, .img3 {
-    width: 1008px;
-    height: 567px;
-    border-radius: 0 0 20px 20px;
+    height: 100%;
+    width: 100%;
+    border-radius: 0 0 0.2px 0.2px;
     float: left;
     transition: all 1s ease-out;
 }
@@ -115,4 +117,20 @@ div.chart {
 @keyframes fade {
     from {opacity: .5} 
     to {opacity: 1}
+}
+
+@media (max-width: 750px) {
+    div.chart {
+        display: none;
+    }
+
+    .container {
+        height: 600px !important;
+    }
+}
+
+@media (max-width: 1300px) {
+    .container {
+        height: 1550px;
+    }
 }

@@ -7,7 +7,7 @@
 div.offer {
     width: 80%;
     height: 200px;
-    background-color: #386cfa;
+    background-color: #49687c;
     border-radius: 50px;
     color: white;
     margin: 40px auto;
@@ -23,23 +23,23 @@ div.main {
 }
 
 div.description {
-    height: 50px;
+    height: auto;
     width: 100%;
-    line-height: 50px;
+    text-align: center;
 }
 
 div.description span {
-    text-align: left; 
+    display: inline-block;
+    text-align: center;
+    width: 100%; 
+    box-sizing: border-box;
     padding: 40px;
+    /* height: 100px; */
+    margin-top: -100px;
 }
 
-div.offer div.main img {
-    float: left;
-    margin-left: 40px;
-}
-
-div.offer div.main div {
-    width: 400px;
+div.info {
+    width: 35%;
     height: 100%;
     float: left;
 }
@@ -53,9 +53,48 @@ div.offer div.main div {
 
 .technologies {
     width: auto;
-    height: 50px;
+    height: 20px;
     padding: 8px;
     background-color: rgb(119, 144, 255);
     margin: 5px;
     border-radius: 20px;
+    float: left;
+    line-height: 20px;
+    margin-top: 20px;
+}
+
+.logoImgCareerDiv {
+	float: left;
+    width: 20%;
+}
+
+img {
+    width: 50%;
+    height: 50%;
+    margin-top: calc((200px - 50%) / 2);
+}
+
+div.tech {
+    width: 45%;
+    float: left;
+}
+
+@media (max-width: 1140px) {
+    .logoImgCareerDiv {
+        display: none;
+    }
+
+    .info, .tech {
+        width: 50% !important;
+        text-align: center;
+    }
+
+    .info {
+        font-size: 10px;
+    }
+
+    div.description span {
+        margin-top: 0;
+    }
+
 }
