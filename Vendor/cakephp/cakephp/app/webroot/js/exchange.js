@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", function () {
         exchange();
     });
     amountInput.addEventListener("keyup", function () {
-        this.value = this.value.replace(/[^0-9.]/g, "");
+        this.value = this.value.replace(/[^0-9.]/g, "").replace(/^[0]{0,}/, "");
         checkInput(amountInput);
     });
     amountInput.addEventListener("change", function () {checkInput(amountInput);});
@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", function () {
         req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/exchange?currencyToExchange="+exchangeSelect.value+"&exchangeAmout="+(Math.floor((amountInput.value)/rate * 100) / 100)+"&currencyToBuy="+buySelect.value+"&buyAmount="+amountInput.value, false);
         req.send(null);
         if (req.status == 200) {
-            window.location = "http://localhost/wallency/Vendor/cakephp/cakephp/wallet?currencyToExchange="+exchangeSelect.value+"&exchangeAmout="+(Math.floor((amountInput.value)/rate * 100) / 100)+"&currencyToBuy="+buySelect.value+"&buyAmount="+amountInput.value+"&showModal=true";
+            window.location = "http://localhost/wallency/Vendor/cakephp/cakephp/wallet?currencyToExchange="+exchangeSelect.value+"&exchangeAmout="+(Math.floor((amountInput.value)/rate * 100) / 100)+"&currencyToBuy="+buySelect.value+"&buyAmount="+amountInput.value+"&showModal=true&type=exchange";
         }    
         
     });

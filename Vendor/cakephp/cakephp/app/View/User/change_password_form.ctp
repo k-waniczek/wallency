@@ -33,7 +33,14 @@
         swal = Swal.mixin({
             toast: true,
             text: "New password must contain at least: 1 big letter, 1 special character, 1 number and needs to be at least 8 characters long.",
-            showConfirmButton: false
+            showConfirmButton: false,
+            showClass: {
+                popup: '',
+                icon: ''
+            },
+            hideClass: {
+                popup: '',
+            }
         })
         swal.fire();
     });

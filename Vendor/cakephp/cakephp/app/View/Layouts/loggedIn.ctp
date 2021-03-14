@@ -30,7 +30,7 @@
 					<li><a href="exchange-form"><?php echo __("exchange");?></a></li>
 					<li><a href="transfer-form"><?php echo __("transfer");?></a></li>
 					<li><a href="history"><?php echo __("history");?></a></li>
-					<li><a href="faq">FAQ</a></li>
+					<li><a href="contact"><?php echo __("contact");?></a></li>
 					<li><a href="logout"><?php echo __("logout");?></a></li>
 					<li>
 						<select class="langSelect">
@@ -58,7 +58,7 @@
 						<li><a href="exchange-form"><?php echo __("exchange");?></a></li>
 						<li><a href="transfer-form"><?php echo __("transfer");?></a></li>
 						<li><a href="history"><?php echo __("history");?></a></li>
-						<li><a href="faq">FAQ</a></li>
+						<li><a href="contact"><?php echo __("contact");?></a></li>
 						<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
 						<select class="langSelect">
 							<?php
@@ -95,10 +95,10 @@
 						</ul>
 					</div>
 					<span class="logo col-fhd-2 col-hd-2 col-480p-2 col-360p-2 col-sd-2">WALLENCY</span>
-					<span><?php echo __("copyright");?> &copy; <?= date("Y")?> Wallency.
+					<span class="copyright"><?php echo __("copyright");?> &copy; <?= date("Y")?> Wallency.
 					Wallency <?php echo __("copyright_rest");?>.</span>
 					<span class="privacy-policy">
-						<a href="privacy-policy" target="_blank"><?php echo __("privacy_policy");?></a>
+						<a href="privacy-policy"><?php echo __("privacy_policy");?></a>
 						<a href="terms-of-service"><?php echo __("terms_of_service");?></a>
 					</span>
 				</div>	

@@ -15,7 +15,7 @@
 		</div>
 		<div class="info">
 			<span class="jobTitle">Middle Backend Developer</span>
-			<span class="sallary">7000 - 12000 PLN brutto</span>
+			<span class="sallary"><?php echo __("price1");?></span>
 			<span class="place">Katowice</span>
 		</div>
 		<div class="tech">
@@ -39,7 +39,7 @@
 		</div>
 		<div class="info">
 			<span class="jobTitle">Junior Python Developer</span>
-			<span class="sallary">5000 - 8000 netto + VAT</span>
+			<span class="sallary"><?php echo __("price2");?></span>
 			<span class="place">Warszawa</span>
 		</div>
 		<div class="tech">
@@ -64,7 +64,7 @@
 		</div>
 		<div class="info">
 			<span class="jobTitle">Senior Fullstack Developer</span>
-			<span class="sallary">20000 - 30000 PLN brutto</span>
+			<span class="sallary"><?php echo __("price3");?></span>
 			<span class="place">Gdańsk</span>
 		</div>
 		<div class="tech">

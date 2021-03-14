@@ -26,7 +26,7 @@ msgid "privacy_policy"
 msgstr "Polityka Prywatności"
 
 msgid "terms_of_service"
-msgstr "Zasady Użytkowania"
+msgstr "Regulamin Serwisu"
 
 msgid "profile"
 msgstr "Profil"
@@ -56,7 +56,7 @@ msgid "value"
 msgstr "Wartość"
 
 msgid "base_currency"
-msgstr "Główna waluta"
+msgstr "Waluta w "
 
 msgid "login"
 msgstr "Zaloguj się"
@@ -199,9 +199,6 @@ msgstr "Powtórz hasło"
 msgid "birthdate"
 msgstr "Data urodzenia"
 
-msgid "base_currency"
-msgstr "Główna waluta"
-
 msgid "amount"
 msgstr "Ilość"
 
@@ -287,7 +284,7 @@ msgid "change_base_currency"
 msgstr "Zmień walutę główną"
 
 msgid "about_text"
-msgstr "Wallency inc. to nowa firma, która będzie świadczyć swoim klientom wysokiej jakości usługi z zakresu inżynierii technicznej i ochrony środowiska. Wallency inc. ma rozpocząć działalność 1 marca 2021 r. Wallency inc. będzie spółką osobową, której właścicielem i operatorem będzie Kamil Waniczek."
+msgstr "Wallency to nowa firma, która będzie świadczyć swoim klientom wysokiej jakości usługi z zakresu inżynierii technicznej i ochrony środowiska. Wallency ma rozpocząć działalność 1 marca 2021 r. Wallency będzie spółką osobową, której prezesem będzie Kamil Waniczek."
 
 msgid "message_sent"
 msgstr "Twoja wiadomość została wysłana."
@@ -366,6 +363,15 @@ msgstr "wykorzystanie wirusów, botów, bugów lub innych skryptów komputerowyc
 
 msgid "rule5sub3"
 msgstr "wykorzystanie jakichkolwiek treści zamieszczonych w serwisie w sposób inny niż tylko do użytku osobistego"
+
+msgid "price1"
+msgstr "7000 - 12000 PLN brutto"
+
+msgid "price2"
+msgstr "5000 - 8000 PLN netto + VAT"
+
+msgid "price3"
+msgstr "20000 - 30000 PLN brutto"
 
 
 

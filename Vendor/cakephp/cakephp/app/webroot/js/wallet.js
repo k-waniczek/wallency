@@ -12,9 +12,40 @@ window.addEventListener("DOMContentLoaded", (event) => {
     var queryString = window.location.search;
     var urlParams = new URLSearchParams(queryString);
     var showModal = urlParams.get("showModal");
+    var type = urlParams.get("type");
 
-    if (showModal) {
-        var modalText = "<p style=\"color: red; margin-right: 10px; display: inline-block; font-weight: bold;\">-" + document.querySelector("#hidden2").value + " " + document.querySelector("#hidden1").value + "</p>|<p style=\"color: #5fd137; margin-left: 10px; display: inline-block; font-weight: bold;\">" + "+" + document.querySelector("#hidden4").value + " " + document.querySelector("#hidden3").value + "</p>";
+    if (showModal && type == "exchange") {
+        var modalText = "<p style=\"color: red; margin-right: 10px; display: inline-block; font-weight: bold;\">-" + urlParams.get("exchangeAmout") + " " + urlParams.get("currencyToExchange") + "</p>|<p style=\"color: #5fd137; margin-left: 10px; display: inline-block; font-weight: bold;\">" + "+" + urlParams.get("buyAmount") + " " + urlParams.get("currencyToBuy") + "</p>";
+        Swal.fire({
+            icon: "success",
+            title: "Your balance has changed!",
+            html: modalText,
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true
+        });
+    } else if(showModal && type == "deposit") {
+        var modalText = "<p style=\"color: #5fd137; margin-left: 10px; display: inline-block; font-weight: bold;\">+" + urlParams.get("amountBought") + " " + urlParams.get("currencyBought") + "</p>";
+        Swal.fire({
+            icon: "success",
+            title: "Your balance has changed!",
+            html: modalText,
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true
+        });
+    } else if(showModal && type == "withdraw") {
+        var modalText = "<p style=\"color: red; margin-left: 10px; display: inline-block; font-weight: bold;\">-" + urlParams.get("amountSold") + " " + urlParams.get("currencySold") + "</p>";
+        Swal.fire({
+            icon: "success",
+            title: "Your balance has changed!",
+            html: modalText,
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true
+        });
+    } else if(showModal && type == "transfer") {
+        var modalText = "<p style=\"color: #5fd137; margin-left: 10px; display: inline-block; font-weight: bold;\">You sent " + urlParams.get("amountSent") + " " + urlParams.get("currencySent") + " to " + urlParams.get("recipientLogin") + "</p>";
         Swal.fire({
             icon: "success",
             title: "Your balance has changed!",
@@ -24,6 +55,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             timerProgressBar: true
         });
     }
+
 
     var req = new XMLHttpRequest();
     var response;
@@ -44,14 +76,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
     var cryptoFinalValues = document.querySelectorAll(".cryptoBase");
     var resourceValues = document.querySelectorAll(".resourceValue");
     var resourceFinalValues = document.querySelectorAll(".resourceBase");
+    var baseCurrencyHeader = document.querySelector("#baseCurrencyHeader");
 
-    //calculateCurrencies();
+    baseCurrencyHeader.textContent = lang.base_currency + select.options[select.selectedIndex].value;
+
+    calculateCurrencies();
     setCalculationRate();
-    //calculate();
+    calculate();
+    calculateWallet();
 
     select.addEventListener("change", function () {
-        calculateWallet();
+        baseCurrencyHeader.textContent = lang.base_currency + select.options[select.selectedIndex].value;
         calculateCurrencies();
+        calculateWallet();
     });
 
     currencyFrom.addEventListener("change", function () {
@@ -129,26 +166,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         //RESOURCES
 
-        req.open("GET", "https://api.ratesapi.io/api/latest?base=USD", false);
-        req.send(null);
-        if (req.status == 200) {
-            resourcesResponse = JSON.parse(req.responseText).rates;
-        }
+        // req.open("GET", "https://api.ratesapi.io/api/latest?base=USD", false);
+        // req.send(null);
+        // if (req.status == 200) {
+        //     resourcesResponse = JSON.parse(req.responseText).rates;
+        // }
 
-        var div = document.createElement("div");
-        var proxy = "https://cors-anywhere.herokuapp.com/";
+        // var div = document.createElement("div");
+        // var proxy = "https://cors-anywhere.herokuapp.com/";
 
-        req.open("GET", proxy + "https://www.bankier.pl/surowce/notowania", false);
-        req.send(null);
-        if (req.status == 200) {
-            div.innerHTML = req.responseText;
-        }
+        // req.open("GET", proxy + "https://www.bankier.pl/surowce/notowania", false);
+        // req.setRequestHeader("origin", "x-requested-with");
+        // req.send(null);
+        // if (req.status == 200) {
+        //     div.innerHTML = req.responseText;
+        // }
 
-        for(var i = 0; i < 8; i++) {
-            resourceFinalValues[i].innerHTML = Math.round(parseFloat(resourceValues[i].innerHTML) * parseFloat(div.getElementsByClassName("colKurs change")[i].innerHTML.trim().replace(",", ".").replace("&nbsp;", "")) * resourcesResponse[chosen.toUpperCase()] * 100) / 100; 
-        }
-
-        calculateWallet();
+        // for(var i = 0; i < 8; i++) {
+        //     resourceFinalValues[i].innerHTML = Math.round(parseFloat(resourceValues[i].innerHTML) * parseFloat(div.getElementsByClassName("colKurs change")[i].innerHTML.trim().replace(",", ".").replace("&nbsp;", "")) * resourcesResponse[chosen.toUpperCase()] * 100) / 100; 
+        // }
     }
 
     function setCalculationRate() {
@@ -165,7 +201,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     function calculate() {
-        calculateTo.value = parseFloat(calculateFrom.value) * setCalculationRate();
+        calculateTo.value = (Math.round(parseFloat(calculateFrom.value) * setCalculationRate() * 100) / 100);
     }
 
     function calculateWallet () {
@@ -176,11 +212,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
         document.querySelectorAll(".cryptoBase").forEach(function(cryptoBase) {
             sum += parseFloat(cryptoBase.textContent.trim());
         })
-        document.querySelectorAll(".resourceBase").forEach(function(resourceBase) {
-            sum += parseFloat(resourceBase.textContent.trim());
-        })
+        // document.querySelectorAll(".resourceBase").forEach(function(resourceBase) {
+        //     sum += parseFloat(resourceBase.textContent.trim());
+        // })
+        req.open("GET", "https://api.ratesapi.io/api/latest?base="+select.options[select.selectedIndex].value.toUpperCase(), false);
+        req.send(null);
+        if (req.status == 200) {
+            var sumInUsd = Math.round(JSON.parse(req.responseText).rates.USD * sum * 100) / 100;
+        }
         document.querySelector("#sum").innerHTML = lang.wallet_worth + "<b>"+(Math.round(parseFloat(sum) * 100) / 100).toLocaleString()+"</b> "+select.options[select.selectedIndex].value;
-        req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/add-to-transaction-history/"+sum, false);
+        req.open("GET", "http://localhost/wallency/Vendor/cakephp/cakephp/add-to-transaction-history/"+sumInUsd, false);
         req.send(null);
     }
     

@@ -56,7 +56,7 @@ msgid "value"
 msgstr "Value"
 
 msgid "base_currency"
-msgstr "Base currency"
+msgstr "Currency in "
 
 msgid "login"
 msgstr "Login"
@@ -198,9 +198,6 @@ msgstr "Repeat password"
 
 msgid "birthdate"
 msgstr "Birthdate"
-
-msgid "base_currency"
-msgstr "Base currency"
 
 msgid "amount"
 msgstr "Amount"
@@ -366,3 +363,12 @@ msgstr "usage of viruses, bots, bugs, or other computer scripts, files or progra
 
 msgid "rule5sub3"
 msgstr "use of any content posted on the site in a manner other than only for personal use"
+
+msgid "price1"
+msgstr "1500 - 3000 USD"
+
+msgid "price2"
+msgstr "1200 - 2000 USD net + TAX"
+
+msgid "price3"
+msgstr "5000 - 7500 USD"

@@ -15,7 +15,7 @@
 
 ?>
 
-<div class="limiterHistory">
+<div class="limiterHistory col-8k-3 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-6 col-480p-8 col-360p-10 col-sd-10">
     <table class="walletHistory">
         <thead>
             <tr>

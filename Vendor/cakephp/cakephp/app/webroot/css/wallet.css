@@ -52,7 +52,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=text] {
+input[type=text], input[type=number] {
   -moz-appearance: textfield;
 }
 
@@ -142,7 +142,21 @@ span#rate {
 
 @media (max-width: 1279px) {
 	.container {
+		height: 1300px;
+	}
+
+	.currencyCalculator {
+		height: 400px;
+	}
+}
+
+@media (max-width: 980px) {
+	.container {
 		height: 1500px;
+	}
+
+	.currencyCalculator {
+		height: 600px;
 	}
 }
 

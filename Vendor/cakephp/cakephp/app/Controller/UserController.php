@@ -60,6 +60,11 @@ class UserController extends AppController {
 	public function registerUser() {
 		$this->autoRender = false;
 		$data = $this->request->data["RegisterUser"];
+		$this->Session->write("login", $data["login"]);
+		$this->Session->write("name", $data["name"]);
+		$this->Session->write("surname", $data["surname"]);
+		$this->Session->write("email", $data["email"]);
+		$this->Session->write("birthdate", $data["birth_date"]);
 		$this->loadModel("Wallet");
 		$this->User->set($data);
 		$uuid = CakeText::uuid();
@@ -80,6 +85,12 @@ class UserController extends AppController {
 		$context  = stream_context_create($options);
 		$json_result = file_get_contents($url, false, $context);
 		$result = json_decode($json_result);
+
+		
+		if(!empty($this->User->find("all", array("conditions" => array("email" => $data["email"]))))) {
+			$this->Session->write("emailUniqueError", true);
+			$this->redirect("/register");
+		}
 		
 		if ($result->success) {
 			try {
@@ -92,8 +103,12 @@ class UserController extends AppController {
 			try {
 				if (filter_var($data["email"], FILTER_VALIDATE_EMAIL)) {
 					$emailDomain = explode("@", $data["email"]);
-					if (filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]["target"]), FILTER_VALIDATE_IP)) {
-						$emailValid = true;
+					if(!empty(dns_get_record($emailDomain[1], DNS_MX))) {
+						if (filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]["target"]), FILTER_VALIDATE_IP)) {
+							$emailValid = true;
+						} else {
+							$emailValid = false;
+						}
 					} else {
 						$emailValid = false;
 					}
@@ -102,6 +117,11 @@ class UserController extends AppController {
 				}
 			} catch (Exception $e) {
 				echo $e->getMessage();
+			}
+
+			if(!$emailValid) {
+				$this->Session->write("emailError", true);
+				$this->redirect("/register");
 			}
 
 			if ($this->User->validates() && $adult) {
@@ -187,11 +207,10 @@ class UserController extends AppController {
 			$this->set("resources", $resources);
 			$this->set("userBaseCurrency", $userBaseCurrency);
 
-			App::uses("HttpSocket", "Network/Http");
-			$httpSocket = new HttpSocket();
-			$response = $httpSocket->get("https://www.bankier.pl/surowce/notowania");
-			$html = file_get_contents("https://stackoverflow.com/questions/ask");
-			$this->set("response", str_replace("\"", "'", str_replace("\n", "", htmlentities($response))));
+			// App::uses("HttpSocket", "Network/Http");
+			// $httpSocket = new HttpSocket();
+			// $response = $httpSocket->get("https://www.bankier.pl/surowce/notowania");
+			// $this->set("response", str_replace("\"", "'", str_replace("\n", "", htmlentities($response))));
 
 		} else {
 			$this->redirect("/home");

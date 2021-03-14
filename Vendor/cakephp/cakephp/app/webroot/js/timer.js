@@ -3,7 +3,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
 	setInterval(function () {
 		if (parseInt(seconds.innerText) == 1) {
-			location.replace("http://localhost/wallency/Vendor/cakephp/cakephp/wallet");
+			var link = (document.querySelector("input#link")) ? document.querySelector("input#link").value : "http://localhost/wallency/Vendor/cakephp/cakephp/wallet";
+			location.replace(link);
 		}
 		seconds.innerText = parseInt(seconds.innerText) - 1;
 	}, 1000);

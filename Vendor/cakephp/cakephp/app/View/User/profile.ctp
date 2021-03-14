@@ -92,7 +92,7 @@ window.addEventListener("DOMContentLoaded", function() {
         var lastRate;
         var percent = 0;
         for(var i = 0; i < currencies.length; i++) {
-            historyRate = (typeof(historyRates.rates[date.getUTCFullYear()+"-"+pad(date.getUTCMonth()+1)+"-"+pad(date.getUTCDate())][currencies[i]]) == undefined) ? 1 : historyRates.rates[date.getUTCFullYear()+"-"+pad(date.getUTCMonth()+1)+"-"+pad(date.getUTCDate())][currencies[i]];
+            historyRate = (Object.entries(historyRates.rates).length == 0) ? 1 : historyRates.rates[date.getUTCFullYear()+"-"+pad(date.getUTCMonth()+1)+"-"+pad(date.getUTCDate())][currencies[i]];
             lastRate = (currentRates.rates[currencies[i]] == undefined) ? 1 : currentRates.rates[currencies[i]];
             if (lastRate < historyRate * 0.995 || lastRate > historyRate * 1.005) {
                 percent = (lastRate / historyRate) * 100 - 100;

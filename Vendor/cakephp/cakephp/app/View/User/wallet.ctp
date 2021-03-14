@@ -23,7 +23,7 @@
                     <tr>    
                         <th><?php echo __("currency");?></th>
                         <th><?php echo __("value");?></th>
-                        <th><?php echo __("base_currency");?></th>
+                        <th id="baseCurrencyHeader"></th>
                     </tr>
                 </thead>
                 <?php
@@ -65,19 +65,6 @@
         <button aria-label="Next" class="glider-next">»</button>
         <div role="tablist" class="dots"></div>
     </div>
-    <?php
-        if (!empty($this->params["url"])) {
-            $currencyToExchange = $this->params["url"]["currencyToExchange"];
-            $exchangeAmout = $this->params["url"]["exchangeAmout"];
-            $currencyToBuy = $this->params["url"]["currencyToBuy"];
-            $buyAmount = $this->params["url"]["buyAmount"];
-
-            echo "<input type=\"hidden\" id=\"hidden1\" value=\"$currencyToExchange\">";
-            echo "<input type=\"hidden\" id=\"hidden2\" value=\"$exchangeAmout\">";
-            echo "<input type=\"hidden\" id=\"hidden3\" value=\"$currencyToBuy\">";
-            echo "<input type=\"hidden\" id=\"hidden4\" value=\"$buyAmount\">";
-        }
-    ?>
     <div class="walletWorth col-8k-4 col-4k-4 col-wqhd-4 col-fhd-4 col-hd-4 col-480p-10 col-360p-10 col-sd-10">
         <select id="baseValue">
             <?php

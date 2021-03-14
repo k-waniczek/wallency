@@ -30,13 +30,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
 	}
 
-	validateText(loginInput, "login", loginInput.parentNode);
-    validateText(nameInput, "name", nameInput.parentNode);
-	validateText(surnameInput, "surname", surnameInput.parentNode);
-	validatePassword(passwordInput, passwordInput.parentNode);
-	checkPasswords(passwordInput, repeatPasswordInput, repeatPasswordInput.parentNode);
-	validateBirthDate(birthDateInput, birthDateInput.parentNode);
-	validateEmail(emailInput, emailInput.parentNode);
+	// validateText(loginInput, "login", loginInput.parentNode);
+    // validateText(nameInput, "name", nameInput.parentNode);
+	// validateText(surnameInput, "surname", surnameInput.parentNode);
+	// validatePassword(passwordInput, passwordInput.parentNode);
+	// checkPasswords(passwordInput, repeatPasswordInput, repeatPasswordInput.parentNode);
+	// validateBirthDate(birthDateInput, birthDateInput.parentNode);
+	// validateEmail(emailInput, emailInput.parentNode);
 
     loginInput.addEventListener("keyup", function () {
 		 validateText(this, "login", this.parentNode);

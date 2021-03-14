@@ -2,11 +2,11 @@
 .container {
     text-align: center;
 	clear: both;
-	margin-bottom: 150px;
+	margin-bottom: 200px;
 }
 
 .registerForm {
-	height: 1000px;
+	height: 1050px;
 	background: url('../app/webroot/img/background.jpg') no-repeat center center fixed;
 	background-attachment: scroll;
 	position: relative;

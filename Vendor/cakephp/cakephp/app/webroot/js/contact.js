@@ -5,13 +5,19 @@ window.addEventListener("DOMContentLoaded", function () {
     var inputSubmit = document.querySelector("div.submit input");
 
     checkMessageLength();
-
     inputs.forEach(input => {
-        if(input.textContent.length == 0) {
+        checkInput(input);
+        input.addEventListener("keyup", function() {
+            checkInput(this);
+        });
+    });
+
+    function checkInput(input) {
+        if(input.value.length == 0) {
             inputSubmit.setAttribute("disabled", true);
             inputSubmit.style.cursor = "default";
         }
-    });
+    }
 
     textArea.addEventListener("keyup", function () {
         checkMessageLength();

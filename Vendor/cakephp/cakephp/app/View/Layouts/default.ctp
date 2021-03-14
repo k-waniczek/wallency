@@ -27,6 +27,7 @@
 					<li><a href="about"><?php echo __("about");?></a></li>
 					<li><a href="contact"><?php echo __("contact");?></a></li>
 					<li><a href="career"><?php echo __("career");?></a></li>
+					<li><a href="faq">FAQ</a></li>
 					<li><a href="register"><?php echo __("register");?></a></li>
 					<li><a href="login"><?php echo __("login");?></a></li>
 					<li>
@@ -52,6 +53,7 @@
 						<li><a href="about"><?php echo __("about");?></a></li>
 						<li><a href="contact"><?php echo __("contact");?></a></li>
 						<li><a href="career"><?php echo __("career");?></a></li>
+						<li><a href="faq">FAQ</a></li>
 						<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
 						<select class="langSelect">
 							<?php
@@ -87,7 +89,7 @@
 					<span><?php echo __("copyright");?> &copy; <?= date("Y")?> Wallency.
 					Wallency <?php echo __("copyright_rest");?>.</span>
 					<span class="privacy-policy">
-						<a href="privacy-policy" target="_blank"><?php echo __("privacy_policy");?></a>
+						<a href="privacy-policy"><?php echo __("privacy_policy");?></a>
 						<a href="terms-of-service"><?php echo __("terms_of_service");?></a>
 					</span>
 					<div id="freepikCopyright">Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

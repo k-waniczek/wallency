@@ -79,6 +79,8 @@ class TransactionController extends AppController {
 			"transaction_date" => date("Y-m-d H:i:s"),
 			"wallet_id" => $wallet["Wallet"]["id"]
 		));
+		$this->set("amountBought", $data["amount"]);
+		$this->set("currencyBought", $data["currency"]);
 	}
 	
 	public function withdraw () {
@@ -106,6 +108,8 @@ class TransactionController extends AppController {
 			"transaction_date" => date("Y-m-d H:i:s"),
 			"wallet_id" => $wallet["Wallet"]["id"]
 		));
+		$this->set("amountSold", $data["amount"]);
+		$this->set("currencySold", $data["currency"]);
 	}
 
 	public function exchangeForm () {
@@ -219,6 +223,9 @@ class TransactionController extends AppController {
 			"transaction_date" => date("Y-m-d H:i:s"),
 			"wallet_id" => $sender["Wallet"]["id"]
 		));
+		$this->set("currencySent", $data["currencyToSend"]);
+		$this->set("amountSent", $data["amountToSend"]);
+		$this->set("recipientLogin", $recipient["User"]["login"]);
 	}
 
 	public function addToTransactionHistory() {

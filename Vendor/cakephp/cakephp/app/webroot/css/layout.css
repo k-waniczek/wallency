@@ -62,9 +62,16 @@ nav div.menu {
     display: inline-block;
 }
 
-.menu ul > li {
+nav .menu ul > li {
     float: left;
     line-height: 75px;
+    margin: 0 10px 0 10px;
+    font-size: 16px;
+}
+
+.menu ul > li {
+    float: left;
+    line-height: 40px;
     margin: 0 10px 0 10px;
     font-size: 16px;
 }
@@ -141,7 +148,6 @@ li.hamburgerMenu, div.slideMenu {
 .footer .text .logo {
     margin: 10px;
     padding-right: 40px;
-    border-right: 1px solid #8a8a8a;
 }
 
 .footer .text span:not(.logo) {
@@ -250,7 +256,7 @@ button#accept, button#denie {
         cursor: pointer;
     }
 
-    div.menu ul {
+    nav div.menu ul {
         position: relative;
         width: 100%;
         float: right;
@@ -298,12 +304,23 @@ button#accept, button#denie {
     }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 780px) {
     .footer * {
-        font-size: 10px !important;
+        font-size: 15px !important;
     }
 
-    .footer .text .menu ul li {
-        line-height: 20px;
+    .footer .text .menu ul {
+        display: none;
     }
+
+    .footer .text {
+        margin-top: 20px;
+    }
+
+    .footer .text .copyright, .footer .text .privacy-policy {
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
 }

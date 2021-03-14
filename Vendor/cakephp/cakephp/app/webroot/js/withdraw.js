@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }     
 
     amountInput.addEventListener("keyup", function () {
-        this.value = this.value.replace(/[^0-9.]/g, "");
+        this.value = this.value.replace(/[^0-9.]/g, "").replace(/^[0]{0,}/, "");
         if (parseFloat(amountInput.value) > response[currency]) {
             amountInput.value = response[currency];
         }

@@ -13,5 +13,6 @@
     <p>
         You will be redirected in <span id="timer">5</span> seconds.
     </p>
+    <input type="hidden" id="link" value="http://localhost/wallency/Vendor/cakephp/cakephp/wallet?amountBought=<?=$amountBought?>&currencyBought=<?=$currencyBought?>&showModal=true&type=deposit"/>
 </div>
 
