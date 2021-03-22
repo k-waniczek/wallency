@@ -20,16 +20,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
         response = JSON.parse(req.responseText).Wallet;
         amountInput.setAttribute("max", response[currency]);
         amountInput.setAttribute("placeholder", lang.max_transfer_amount+response[currency]);
-    }     
+    }   
+    
+    amountInput.setAttribute("maxlength", response[currency].length);
 
     amountInput.addEventListener("keyup", function () {
-        this.value = this.value.replace(/[^0-9.]/g, "").replace(/^[0]{0,}/, "");
-        if (parseFloat(amountInput.value) > parseFloat(response[currency])) {
-            amountInput.value = parseFloat(response[currency]);
-        }
-        if (amountInput.value < 0 || amountInput.value == "" || parseFloat(amountInput.value) > parseInt(response[currency])) {
+        if (this.value.match(/^[1-9][0-9]{0,}$|^[1-9][0-9]{0,}(\.[0-9]{1,2})$/gm) == null || parseFloat(amountInput.value) < 0 || amountInput.value == "" || parseFloat(amountInput.value) > response[currency]) {
             document.querySelector("div.submit input").setAttribute("disabled", true);
         } else {
+            document.querySelector("div.submit input").removeAttribute("disabled");
+        }
+        if (parseFloat(amountInput.value) > response[currency]) {
+            amountInput.value = response[currency];
             document.querySelector("div.submit input").removeAttribute("disabled");
         }
     });

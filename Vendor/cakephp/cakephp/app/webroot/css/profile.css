@@ -21,7 +21,7 @@ canvas#canvas {
 
 #changePassword {
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
     display: inline-block;
     margin-bottom: 20px;
     width: 100%;
@@ -35,7 +35,7 @@ canvas#canvas {
 	border: none;
 	appearance: none;
 	cursor: pointer;
-	background-color: #49687c;
+	background-color: rgb(73, 104, 124);
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
@@ -49,7 +49,7 @@ canvas#canvas {
     text-align: center;
     height: 100%;
     width: 18%;
-    background-color: #2a4352;
+    background-color: rgb(42, 67, 82);
     float: left;
     border-right: 2px solid black;
 }
@@ -60,7 +60,7 @@ div.chart {
     position: absolute;
     top: 100px;
     left: 25%;
-    background-color: #2a4352;
+    background-color: rgb(42, 67, 82);
     border-radius: 20px;
     padding: 20px;
 }

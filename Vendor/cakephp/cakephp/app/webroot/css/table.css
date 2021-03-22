@@ -38,15 +38,15 @@ table.walletHistory tr th:nth-of-type(4) {
 	width: 300px;
 }
 
-table#table1 {
+table#currencyTable {
 	border-radius: 2% 0 2% 2%;
 }
 
-table#table2 {	
+table#cryptoCurrencyTable {	
 	border-radius: 0;
 }
 
-table#table3 {	
+table#resourcesTable {	
 	border-radius: 0 2% 2% 2%;
 }
 
@@ -67,15 +67,15 @@ th {
 }
 
 tr:nth-child(even) {
-	background: white;
+	background: rgb(255, 255, 255);
 }
 
 tr:nth-child(odd) {
-	background: #dfdfdf;
+	background: rgb(223, 223, 223);
 }
 
 thead > tr {
- 	background-color: #2a4352 !important;
-	color: white;
+ 	background-color: rgb(42, 67, 82) !important;
+	color: rgb(255, 255, 255);
 }
 

@@ -7,6 +7,7 @@ class MainController extends AppController {
 	public $components = array("Cookie");
 
 	public function beforeFilter() {
+		parent::beforeFilter();
 		$this->loadModel("Wallet");
 		$this->loadModel("User");
 		$this->loadModel("TransactionHistory");
@@ -112,73 +113,6 @@ class MainController extends AppController {
 	public function changeLanguage() {
 		$this->autoRender = false;
 		$this->Session->write("language", $this->params["lang"]);
-	}
-
-	public function sendEmail () {
-		$response = $this->request["data"];
-		$privatekey = "6Ld7zQMaAAAAACtEa7wfbJODYKNU09FxI8aazRLP";
-		$url = "https://www.google.com/recaptcha/api/siteverify";
-		$data = array("secret" => $privatekey, "response" => $response["g-recaptcha-response"]);
-
-		$options = array(
-			"http" => array(
-				"header"  => "Content-type: application/x-www-form-urlencoded\r\n",
-				"method"  => "POST",
-				"content" => http_build_query($data),
-			),
-		);
-
-		$context  = stream_context_create($options);
-		$json_result = file_get_contents($url, false, $context);
-		$result = json_decode($json_result);
-
-		try {
-			if (filter_var($response["Contact"]["emailFrom"], FILTER_VALIDATE_EMAIL)) {
-				$emailDomain = explode("@", $response["Contact"]["emailFrom"]);
-				if(isset(dns_get_record($emailDomain[1], DNS_MX)[0]["target"])) {
-					if (filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]["target"]), FILTER_VALIDATE_IP)) {
-						$emailValid = true;
-					} else {
-						$emailValid = false;
-					}		
-				} else {
-					$emailValid = false;
-				}
-			} else {
-				$emailValid = false;
-			}
-		} catch (Exception $e) {
-			echo $e->getMessage();
-		}
-		
-		if (!$result->success) {
-			$this->Session->write("captchaError", true);
-			$this->redirect("/contact");
-		} else if (!$emailValid) {
-			$this->Session->write("emailError", true);
-			$this->redirect("/contact");
-		} else {
-			$email = new CakeEmail("default");
-			$email->emailFormat("html")
-				->to("kamil.wan05@gmail.com")                            
-				->from($response["Contact"]["emailFrom"])
-				->viewVars(array("message" => $response["Contact"]["message"], "senderName" => $response["Contact"]["senderName"], "emailFrom" => $response["Contact"]["emailFrom"]))
-				->template("contact_view", "mytemplate")
-				->attachments(array(
-					array(         
-						"file" => ROOT."/app/webroot/img/bg-pattern.jpg",
-						"mimetype" => "image/jpg",
-						"contentId" => "background"
-					),
-					array(         
-						"file" => ROOT."/app/webroot/img/wallet.png",
-						"mimetype" => "image/png",
-						"contentId" => "logo"
-					)
-				))
-				->subject("Contact message from Wallency")
-				->send();
-			}
 	}
 
 	public function login () {

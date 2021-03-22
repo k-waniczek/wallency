@@ -1,18 +1,21 @@
 div.rules {
+    float: left;
     text-align: left;
-    position: absolute;
+    /* position: absolute;
     transform: translate(-50%, -50%);
     top: 500px;
-    left: 50%;
-    height: 20%;
-    background-color: #2a4352;
+    left: 50%;*/
+    background-color: rgb(42, 67, 82);
     border-radius: 10px;
     padding-bottom: 100px;
+    margin-left: 50%;
+    margin-top: 10%;
+    transform: translateX(-50%);
 }
 
 ol {
     margin: 0;
-    color: white;
+    color: rgb(255, 255, 255);
     height: auto;
     text-align: left;
     position: relative;
@@ -23,34 +26,7 @@ ol {
     height: auto;
 }
 
-@media only screen and (max-width: 800px) {
-
-    div.rules {
-        height: auto;
-        top: 300px;
-    }
-
-    .container {
-        text-align: center;
-        clear: both;
-    }
-}
-
-@media only screen and (max-height: 900px) {
-
-    div.rules {
-        height: auto;
-        top: 375px;
-    }
-
-    .container {
-        text-align: center;
-        clear: both;
-    }
-}
-
-@media only screen and (max-height: 700px) {
-
+@media (max-height: 840px) and (max-width: 440px) and (min-height: 731px) and (min-width: 351px) {
     .container {
         text-align: center;
         clear: both;
@@ -58,8 +34,7 @@ ol {
     }
 }
 
-@media only screen and (max-height: 600px) {
-
+@media (max-height: 950px) and (max-width: 400px) {
     .container {
         text-align: center;
         clear: both;
@@ -67,34 +42,7 @@ ol {
     }
 }
 
-@media only screen and (max-height: 500px) {
-
-    .container {
-        text-align: center;
-        clear: both;
-        margin-bottom: 400px;
-    }
-}
-
-@media (max-height: 850px) and (max-width: 400px) {
-    div.rules {
-        height: auto;
-        top: 500px;
-    }
-
-    .container {
-        text-align: center;
-        clear: both;
-        margin-bottom: 700px;
-    }
-}
-
-@media (max-height: 1000px) and (max-width: 420px) {
-    div.rules {
-        height: auto;
-        top: 500px;
-    }
-
+@media (max-height: 730px) and (max-width: 350px) {
     .container {
         text-align: center;
         clear: both;

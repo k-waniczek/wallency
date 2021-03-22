@@ -38,7 +38,7 @@
     <?=$this->Form->end(__("send"), array("class" => "submitBtn"));?>
 </div>
 <?php
-if ($this->Session->read("transferError") === true) {
+if ($this->Session->read("transferError") == true) {
 echo "<script>Swal.fire({icon: \"error\",text: \"You cannot transfer money to yourself!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
 $_SESSION["transferError"] = false;
 }?>

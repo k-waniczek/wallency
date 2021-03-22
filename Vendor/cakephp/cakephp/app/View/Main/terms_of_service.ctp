@@ -15,12 +15,11 @@
         <li class="rule"><?php echo __("rule2");?></li>
         <li class="rule"><?php echo __("rule3");?></li>
         <li class="rule"><?php echo __("rule4");?></li>
-        <li class="rule"><?php echo __("rule5");?>
+        <li class="rule"><?php echo __("rule5");?></li>
             <ul>
                 <li class="subrule"><?php echo __("rule5sub1");?></li>
                 <li class="subrule"><?php echo __("rule5sub2");?></li>
                 <li class="subrule"><?php echo __("rule5sub3");?></li>
             </ul>
-        </li>
     </ol>
 </div>

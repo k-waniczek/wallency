@@ -19,9 +19,9 @@
 	</head>
 	<body>
 		<input type="hidden" id="language" value="<?php echo $this->Session->read("language");?>"/>
-		<div class="blur">
-			<div class="slideMenu">
-				<span class="close">x</span>
+		<div id="blur">
+			<div id="slideMenu">
+				<span id="close">x</span>
 				<ul>
 					<li><a href="home"><?php echo __("home");?></a></li>
 					<li><a href="about"><?php echo __("about");?></a></li>
@@ -54,7 +54,7 @@
 						<li><a href="contact"><?php echo __("contact");?></a></li>
 						<li><a href="career"><?php echo __("career");?></a></li>
 						<li><a href="faq">FAQ</a></li>
-						<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
+						<li id="hamburgerMenu"><i class="fas fa-bars"></i></li>
 						<select class="langSelect">
 							<?php
 								if ($this->Session->read("language") == "eng") {
@@ -92,7 +92,6 @@
 						<a href="privacy-policy"><?php echo __("privacy_policy");?></a>
 						<a href="terms-of-service"><?php echo __("terms_of_service");?></a>
 					</span>
-					<div id="freepikCopyright">Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 				</div>	
 			</div>
 		</div>

@@ -8,6 +8,7 @@ class TransactionController extends AppController {
 	public $components = array("Cookie");
 
 	public function beforeFilter() {
+		parent::beforeFilter();
 		if(!$this->Session->read('loggedIn')) {
 			$this->redirect("/home");
 		}
@@ -16,10 +17,11 @@ class TransactionController extends AppController {
 		$this->loadModel("TransactionHistory");
 		App::uses("CakeEmail", "Network/Email");
 		$this->TransactionHistory->validator()->remove("login");
-		if ($this->Session->read("loggedIn"))
+		if ($this->Session->read("loggedIn")) {
 			$this->layout = "loggedIn";
-		else 
+		} else {
 			$this->layout = "default";
+		}
 		Configure::write("Config.language", $this->Session->read("language"));
 		$locale = $this->Session->read("language");
         if ($locale && file_exists(APP . "View" . DS . $locale . DS . $this->viewPath . DS . $this->view . $this->ext)) {
@@ -61,7 +63,7 @@ class TransactionController extends AppController {
 	}
 
 	public function deposit () {
-		$this->set("currencies", Configure::read("currencies"));
+		$this->set("currencies", array_merge(Configure::read("currencies"), Configure::read("cryptoCurrencies")));
 	}
 
 	public function addMoney () {
@@ -84,7 +86,7 @@ class TransactionController extends AppController {
 	}
 	
 	public function withdraw () {
-		$this->set("currencies", Configure::read("currencies"));
+		$this->set("currencies", array_merge(Configure::read("currencies"), Configure::read("cryptoCurrencies")));
 	}
 
 	public function checkMoney () {
@@ -207,25 +209,26 @@ class TransactionController extends AppController {
 				$this->Wallet->updateAll(array($data["currencyToSend"] => $amount), array("userUUID" => $this->Session->read("userUUID")));
 				$amount = $recipient["Wallet"][$data["currencyToSend"]] + intval($data["amountToSend"]);
 				$this->Wallet->updateAll(array($data["currencyToSend"] => $amount), array("userUUID" => $recipient["User"]["UUID"]));
+
+				$this->TransactionHistory->save(array(
+					"id" => null,
+					"type" => "transfer",
+					"currency_plus" => "",
+					"currency_minus" => $data["currencyToSend"],
+					"money_on_plus" => 0,
+					"money_on_minus" => $data["amountToSend"],
+					"transaction_date" => date("Y-m-d H:i:s"),
+					"wallet_id" => $sender["Wallet"]["id"]
+				));
+				$this->set("currencySent", $data["currencyToSend"]);
+				$this->set("amountSent", $data["amountToSend"]);
+				$this->set("recipientLogin", $recipient["User"]["login"]);
 			} catch (Exception $e) {
 				$this->Session->write("dbError", "Error ".$e->getCode()." occured");
 			}
 		} else {
 			$this->Session->write("dbError", "Recipient with such login was not found.");
 		}
-		$this->TransactionHistory->save(array(
-			"id" => null,
-			"type" => "transfer",
-			"currency_plus" => "",
-			"currency_minus" => $data["currencyToSend"],
-			"money_on_plus" => 0,
-			"money_on_minus" => $data["amountToSend"],
-			"transaction_date" => date("Y-m-d H:i:s"),
-			"wallet_id" => $sender["Wallet"]["id"]
-		));
-		$this->set("currencySent", $data["currencyToSend"]);
-		$this->set("amountSent", $data["amountToSend"]);
-		$this->set("recipientLogin", $recipient["User"]["login"]);
 	}
 
 	public function addToTransactionHistory() {

@@ -164,6 +164,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
             }
         });
 
+        // COMMENTED BECAUSE MISSING GOOD RESOURCES RATES API
+
         //RESOURCES
 
         // req.open("GET", "https://api.ratesapi.io/api/latest?base=USD", false);

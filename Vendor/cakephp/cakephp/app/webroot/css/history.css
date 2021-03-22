@@ -23,14 +23,14 @@ body {
     width: 50px;
     outline: none;
     border: none;
-    background-color: #2a4352;
-    color: white;
+    background-color: rgb(42, 67, 82);
+    color: rgb(255, 255, 255);
     transition: all .5s ease-in-out;
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #49687c;
+    background-color: rgb(73, 104, 124);
 }
 
 @media (max-width: 1650px) {

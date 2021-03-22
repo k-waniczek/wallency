@@ -18,7 +18,7 @@
 ?>
     <div class="limiter glider-contain col-8k-5 col-4k-5 col-wqhd-5 col-fhd-5 col-hd-5 col-480p-10 col-360p-10 col-sd-10">
         <div class="glider">
-            <table class="wallet" id="table1">
+            <table class="wallet" id="currencyTable">
                 <thead>
                     <tr>    
                         <th><?php echo __("currency");?></th>
@@ -32,7 +32,7 @@
                     }
                 ?>
             </table>
-            <table class="wallet" id="table2">
+            <table class="wallet" id="cryptoCurrencyTable">
                 <thead>
                     <tr>    
                         <th><?php echo __("crypto_currency");?></th>
@@ -46,7 +46,7 @@
                     }
                 ?>
             </table>
-            <table class="wallet" id="table3">
+            <table class="wallet" id="resourcesTable">
                 <thead>
                     <tr>    
                         <th><?php echo __("resources");?></th>

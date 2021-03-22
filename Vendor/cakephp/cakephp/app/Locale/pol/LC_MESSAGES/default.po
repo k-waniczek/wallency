@@ -272,7 +272,7 @@ msgid "aluminum"
 msgstr "aluminium"
 
 msgid "isAdult"
-msgstr "Czy masz 18 lat lub więcej oraz czy akceptujesz regulamin?"
+msgstr "Czy masz 18 lat lub więcej oraz czy akceptujesz <a href=\"terms-of-service\">regulamin</a>?"
 
 msgid "hello"
 msgstr "Cześć"

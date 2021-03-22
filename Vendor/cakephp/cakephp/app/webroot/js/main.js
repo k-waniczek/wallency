@@ -7,17 +7,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	}
 	  
 	if (document.cookie.substring(document.cookie.length - 1, document.cookie.indexOf("=") + 1)) {
-		document.querySelector("div.blur").style.filter = "blur(0px)";
+		document.querySelector("div#blur").style.filter = "blur(0px)";
 	} else {
 		window.addEventListener("scroll", noScroll);
-		document.querySelector("div.blur").style.backgroundColor = "rgba(255, 255, 255, 0.5)";
-		document.querySelector("div.blur").style.filter = "blur(3px)";
+		document.querySelector("div#blur").style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+		document.querySelector("div#blur").style.filter = "blur(3px)";
 		document.querySelector("button#accept").addEventListener("click", function () {
 			window.removeEventListener("scroll", noScroll);
 			document.querySelector("div.rodoModal").style.display = "none";
 			request.send();
-			document.querySelector("div.blur").style.backgroundColor = "transparent";
-			document.querySelector("div.blur").style.filter = "blur(0px)";
+			document.querySelector("div#blur").style.backgroundColor = "transparent";
+			document.querySelector("div#blur").style.filter = "blur(0px)";
 		});
 
 		document.querySelector("button#denie").addEventListener("click", function () {
@@ -26,8 +26,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	}
 
 	var hamburgerIcon = document.querySelector("i.fa-bars");
-	var slideMenu = document.querySelector("div.slideMenu");
-	var closeIcon = document.querySelector("span.close");
+	var slideMenu = document.querySelector("div#slideMenu");
+	var closeIcon = document.querySelector("span#close");
 	var shown = false;
 
 	hamburgerIcon.addEventListener("click", function() {
@@ -63,7 +63,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	});
 	
 	var currentLink = window.location.href.split("/");
-	document.querySelectorAll(".menu ul li a, .slideMenu ul li a").forEach((link) => {
+	document.querySelectorAll(".menu ul li a, #slideMenu ul li a").forEach((link) => {
 		if(currentLink[currentLink.length - 1] == link.attributes.href.nodeValue) {
 			link.classList.add("currentLink");
 		} else {

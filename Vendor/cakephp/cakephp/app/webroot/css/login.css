@@ -27,7 +27,7 @@ form {
 	position: absolute;
 	right: 8px;
 	top: 25px;
-	color: white;
+	color: rgb(255, 255, 255);
 	cursor: pointer;
 }
 
@@ -41,7 +41,7 @@ div.col {
 div.col input {
 	border: 0;
 	padding: 7px 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgb(204, 204, 204);
     width: 100%;
     background-color: transparent;
 }
@@ -52,7 +52,7 @@ div.col input~.focus-border {
 	left: 50%;
 	width: 0;
 	height: 2px;
-	background-color: #3399FF;
+	background-color: rgb(51, 153, 255);
 	transition: 0.4s;
 }
 
@@ -67,9 +67,9 @@ div.submit input {
     margin-top: 20px;
     padding: 10px 45px 10px 45px;
     border-radius: 20px;
-    border: 1px solid #cccccc;
+    border: 1px solid rgb(204, 204, 204);
     background-color: transparent;
-    color: #000;
+    color: rgb(0, 0, 0);
 }
 
 @media (max-height: 900px) and (max-width: 510px) {

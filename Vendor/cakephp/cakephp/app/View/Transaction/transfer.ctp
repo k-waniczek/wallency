@@ -15,13 +15,14 @@
     <?php
         if ($this->Session->read("dbError") == true) {
             echo "<h4>".$this->Session->read("dbError")."</h4>";
+            echo "<input type=\"hidden\" id=\"link\" value=\"http://localhost/wallency/Vendor/cakephp/cakephp/transfer-form\"/>";
         } else {
             echo "<h4>Your money has been transfered!</h4>";
+            echo "<input type=\"hidden\" id=\"link\" value=\"http://localhost/wallency/Vendor/cakephp/cakephp/wallet?amountSent=$amountSent&currencySent=$currencySent&recipientLogin=$recipientLogin&showModal=true&type=transfer\"/>";
         }
     ?>
     <p>
         You will be redirected in <span id="timer">5</span> seconds.
     </p>
-    <input type="hidden" id="link" value="http://localhost/wallency/Vendor/cakephp/cakephp/wallet?amountSent=<?=$amountSent?>&currencySent=<?=$currencySent?>&recipientLogin=<?=$recipientLogin?>&showModal=true&type=transfer"/>
 </div>
     

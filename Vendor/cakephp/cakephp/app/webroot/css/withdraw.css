@@ -35,7 +35,7 @@ div.col label {
 
 div.col input {
 	padding: 7px 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgb(204, 204, 204);
     width: 100%;
     margin-top: 10px;
     background-color: transparent;
@@ -47,7 +47,7 @@ div.col input~.focus-border {
 	left: 50%;
 	width: 0;
 	height: 2px;
-	background-color: #3399FF;
+	background-color: rgb(51, 153, 255);
 	transition: 0.4s;
 }
 
@@ -63,7 +63,7 @@ div.submit input {
     padding: 10px 45px 10px 45px;
     border: none;
     border-radius: 20px;
-    border: 1px solid #cccccc;
+    border: 1px solid rgb(204, 204, 204);
     background-color: transparent;
     color: #000;
 }
@@ -73,7 +73,7 @@ div.select select {
     -webkit-appearance: none;
     -moz-appearance: none;
     border: none;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid rgb(204, 204, 204);
     outline: none;
     background-color: transparent;
     padding: 2px 5px 2px 5px;

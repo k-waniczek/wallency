@@ -8,9 +8,9 @@ window.addEventListener("DOMContentLoaded", function () {
                     this.style.height = "300px";
                 } else if (window.innerWidth < 800) {
                     if(this.children[0].children[2].clientHeight > this.children[0].clientHeight) {
-                        this.style.height = this.children[0].children[2].clientHeight + this.children[1].children[0].clientHeight + "px";
+                        this.style.height = this.children[0].children[2].clientHeight + this.children[1].children[0].clientHeight + 20 + "px";
                     } else {
-                        this.style.height = this.children[0].clientHeight + this.children[1].children[0].clientHeight + "px";
+                        this.style.height = this.children[0].clientHeight + this.children[1].children[0].clientHeight + 20 + "px";
                     }
                 } else {
                     this.style.height = "350px";

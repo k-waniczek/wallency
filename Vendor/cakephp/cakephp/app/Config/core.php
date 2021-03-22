@@ -34,8 +34,9 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 2);
-	Configure::write('currencies', array('usd' => 'usd', 'eur' => 'eur', 'chf' => 'chf', 'pln' => 'pln', 'gbp' => 'gbp', 'jpy' => 'jpy', 'cad' => 'cad', 'rub' => 'rub', 'cny' => 'cny', 'czk' => 'czk', 'try' => 'try', 'nok' => 'nok', 'huf' => 'huf'));
+	Configure::write("debug", 2);
+	Configure::write("currencies", array("usd" => "usd", "eur" => "eur", "chf" => "chf", "pln" => "pln", "gbp" => "gbp", "jpy" => "jpy", "cad" => "cad", "rub" => "rub", "cny" => "cny", "czk" => "czk", "try" => "try", "nok" => "nok", "huf" => "huf"));
+	Configure::write("cryptoCurrencies", array("bitcoin" => "bitcoin", "ethereum" => "ethereum", "lumen" => "lumen", "XRP" => "XRP", "litecoin" => "litecoin", "eos" => "eos", "Yearn-finance" => "Yearn-finance"));
 /**
  * Configure the Error handler used to handle errors for your application. By default
  * ErrorHandler::handleError() is used. It will display errors using Debugger, when debug > 0

@@ -67,7 +67,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 					data[i] = histData[i].high;
 				}           
 				if (data.length > 20) {
-					// Remove the oldest data and label
 					data.shift();
 					labels.shift();
 				}
@@ -83,7 +82,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 				myChart.update();
 			}
 		}
-	}, 1000);
+	}, 1000 * 60);
 
 	var myChart = new Chart(ctx, {
 		"type": "line",

@@ -3,13 +3,13 @@ body {
 }
 
 label {
-	color: #adadad;
+	color: rgb(173, 173, 173);
 	text-align: left;
 }
 
 div.container div h2 {
     color: rgb(255, 255, 255);
-    text-shadow: 2px 2px 2.5px #1b1b1b;
+    text-shadow: 2px 2px 2.5px rgb(27, 27, 27);
 	position: absolute;
 	top: 50px;
 	left: 50%;
@@ -37,7 +37,7 @@ div.col {
 div.col input {
 	border: 0;
 	padding: 5px 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgb(204, 204, 204);
     width: 100%;
     background-color: transparent;
 }

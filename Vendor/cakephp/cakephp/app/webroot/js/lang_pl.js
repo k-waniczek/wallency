@@ -8,6 +8,7 @@ lang = {
     max_withdraw_amount: "Możesz wypłacić maksymalnie ",
     max_exchange_amount: "Możesz wymienić maksymalnie ",
     btc_value: "Wartość Bitcoina w dolarach amerykańskich",
-    base_currency: "Waluta w "
+    base_currency: "Waluta w ",
+    withdraw_amount_none: "Nie masz wystarczająco tej waluty, żeby wypłacić."
 
 }

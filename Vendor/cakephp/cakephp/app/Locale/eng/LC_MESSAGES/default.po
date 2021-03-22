@@ -272,7 +272,7 @@ msgid "aluminum"
 msgstr "aluminum"
 
 msgid "isAdult"
-msgstr "Are you 18 years old or older and do you accept terms of service?"
+msgstr "Are you 18 years old or older and do you accept <a href=\"terms-of-service\">terms of service</a>?"
 
 msgid "hello"
 msgstr "Hello"

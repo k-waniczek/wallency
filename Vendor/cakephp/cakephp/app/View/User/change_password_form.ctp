@@ -49,16 +49,16 @@
     });
 </script>
 <?php
-if ($this->Session->read("passwordChanged") === true) {
+if ($this->Session->read("passwordChanged") == true) {
     echo "<script>Swal.fire({icon: \"success\",text: \"Your password has been changed! You'll be now logged out.\",showConfirmButton: true,timer: 5000,timerProgressBar: true, onClose: () => { window.location.replace(\"http://localhost/wallency/Vendor/cakephp/cakephp/logout\"); }});</script>";
     $_SESSION["passwordChanged"] = false;
-} else if ($this->Session->read("passwordRegexError") === true) {
+} else if ($this->Session->read("passwordRegexError") == true) {
     echo "<script>Swal.fire({icon: \"error\",text: \"New password must contain at least: 1 big letter, 1 special character and 1 number.\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
     $_SESSION["passwordRegexError"] = false;
-} else if ($this->Session->read("oldPasswordError") === true) {
+} else if ($this->Session->read("oldPasswordError") == true) {
     echo "<script>Swal.fire({icon: \"error\",text: \"Your current password is wrong.\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
     $_SESSION["oldPasswordError"] = false;
-} else if ($this->Session->read("passwordMatchError") === true) {
+} else if ($this->Session->read("passwordMatchError") == true) {
     echo "<script>Swal.fire({icon: \"error\",text: \"New passwords doesn't match.\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
     $_SESSION["passwordMatchError"] = false;
 }

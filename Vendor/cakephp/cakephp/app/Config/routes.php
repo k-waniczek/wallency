@@ -43,7 +43,7 @@
 	Router::connect('/get-history-rows/:limit', array('controller' => 'main', 'action' => 'getHistoryRows'));
 	Router::connect('/faq', array('controller' => 'main', 'action' => 'faq'));
 	Router::connect('/change-language/:lang', array('controller' => 'main', 'action' => 'changeLanguage'));
-	Router::connect('/send-email', array('controller' => 'main', 'action' => 'sendEmail'));
+	Router::connect('/send-email', array('controller' => 'email', 'action' => 'sendEmail'));
 	Router::connect('/login', array('controller' => 'main', 'action' => 'login'));
 	Router::connect('/register', array('controller' => 'main', 'action' => 'register'));
 

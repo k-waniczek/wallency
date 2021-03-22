@@ -49,13 +49,13 @@
     <?=$this->Form->end(__("register"));?>
 </div>
 <?php
-if ($this->Session->read("captchaError") === true) {
+if ($this->Session->read("captchaError") == true) {
 echo "<script>Swal.fire({icon: \"error\",text: \"Please confirm that you are not a bot, by verifying reCaptcha!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
 $_SESSION["captchaError"] = false;
-} else if ($this->Session->read("emailError") === true) {
+} else if ($this->Session->read("emailError") == true) {
 echo "<script>Swal.fire({icon: \"error\",text: \"Please put in a real email address!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
 $_SESSION["emailError"] = false;
-} else if ($this->Session->read("emailUniqueError") === true) {
+} else if ($this->Session->read("emailUniqueError") == true) {
 echo "<script>Swal.fire({icon: \"error\",text: \"This email is already taken!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
 $_SESSION["emailUniqueError"] = false;
 }?>

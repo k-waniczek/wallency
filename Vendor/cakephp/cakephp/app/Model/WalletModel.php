@@ -30,5 +30,5 @@ App::uses("AppModel", "Model");
  * @package       app.Model
  */
 class WalletModel extends AppModel {
-    
+    //Table used: wallets
 }

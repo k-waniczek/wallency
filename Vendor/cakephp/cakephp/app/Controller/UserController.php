@@ -19,7 +19,6 @@ class UserController extends AppController {
 		Configure::write("Config.language", $this->Session->read("language"));
         $locale = $this->Session->read("language");
         if ($locale && file_exists(APP . "View" . DS . $locale . DS . $this->viewPath . DS . $this->view . $this->ext)) {
-            // e.g. use /app/View/fra/Pages/tos.ctp instead of /app/View/Pages/tos.ctp
             $this->viewPath = $locale . DS . $this->viewPath;
         }
 	}
@@ -58,7 +57,6 @@ class UserController extends AppController {
 	}
 
 	public function registerUser() {
-		$this->autoRender = false;
 		$data = $this->request->data["RegisterUser"];
 		$this->Session->write("login", $data["login"]);
 		$this->Session->write("name", $data["name"]);
@@ -100,24 +98,8 @@ class UserController extends AppController {
 				echo $e->getMessage();
 			}
 
-			try {
-				if (filter_var($data["email"], FILTER_VALIDATE_EMAIL)) {
-					$emailDomain = explode("@", $data["email"]);
-					if(!empty(dns_get_record($emailDomain[1], DNS_MX))) {
-						if (filter_var(gethostbyname(dns_get_record($emailDomain[1], DNS_MX)[0]["target"]), FILTER_VALIDATE_IP)) {
-							$emailValid = true;
-						} else {
-							$emailValid = false;
-						}
-					} else {
-						$emailValid = false;
-					}
-				} else {
-					$emailValid = false;
-				}
-			} catch (Exception $e) {
-				echo $e->getMessage();
-			}
+			$this->EmailValidator = $this->Components->load('ValidateEmail');
+			$emailValid = $this->EmailValidator->validate($data["email"]);
 
 			if(!$emailValid) {
 				$this->Session->write("emailError", true);
@@ -182,7 +164,6 @@ class UserController extends AppController {
 					))
 					->subject("subject")
 					->send();
-				$this->redirect("/login");
 			} else {
 				$this->log(print_r($this->User->validationErrors, true), "validation");
 			}
@@ -206,12 +187,6 @@ class UserController extends AppController {
 			$this->set("cryptoCurrencies", $cryptoCurrencies);
 			$this->set("resources", $resources);
 			$this->set("userBaseCurrency", $userBaseCurrency);
-
-			// App::uses("HttpSocket", "Network/Http");
-			// $httpSocket = new HttpSocket();
-			// $response = $httpSocket->get("https://www.bankier.pl/surowce/notowania");
-			// $this->set("response", str_replace("\"", "'", str_replace("\n", "", htmlentities($response))));
-
 		} else {
 			$this->redirect("/home");
 		}
@@ -239,7 +214,6 @@ class UserController extends AppController {
 
 		$walletId = $this->Wallet->find("first", array("conditions" => array("userUUID" => $userData["User"]["UUID"]), "fields" => "id"));
 
-		
 		$this->Session->write("loggedIn", true);
 		$this->Session->write("userName", $userData["User"]["login"]);
 		$this->Session->write("userUUID", $userData["User"]["UUID"]);
@@ -279,8 +253,6 @@ class UserController extends AppController {
 		$data = $this->request->data["changePassword"];
 		$user = $this->User->find("first", array("conditions" => array("password" => hash("SHA384", md5($data["currentPassword"])))));
 
-		
-
 		if (!empty($user) && isset($user)) {
 			if ($data["newPasswordConfirm"] == $data["newPassword"]) {
 				$regex = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-._]).{8,}$/";
@@ -288,20 +260,16 @@ class UserController extends AppController {
 				if ($match) {
 					$this->User->updateAll(array("password" => "'".hash("SHA384", md5($data["newPassword"]))."'"),array("password" => hash("SHA384", md5($data["currentPassword"]))));
 					$this->Session->write("passwordChanged", true);
-					$this->redirect("/change-password-form");
 				} else {
 					$this->Session->write("passwordRegexError", true);
-					$this->redirect("/change-password-form");
 				}
-				
 			} else {
 				$this->Session->write("passwordMatchError", true);
-				$this->redirect("/change-password-form");
 			}
 		} else {
 			$this->Session->write("oldPasswordError", true);
-			$this->redirect("/change-password-form");
 		}
+		$this->redirect("/change-password-form");
 	}
 
 	public function profile () {

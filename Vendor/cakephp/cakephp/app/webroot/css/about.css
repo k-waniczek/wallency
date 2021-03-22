@@ -2,11 +2,11 @@ p {
     margin: auto;
     padding: 20px;
     width: 50%;
-    background-color: #2a4352;
+    background-color: rgb(42, 67, 82);
     top: 230px;
     position: relative;
     font-size: 22px;
-    color: white;
+    color: rgb(255, 255, 255);
     border-radius: 20px;
     line-height: 40px;
 }

@@ -27,10 +27,10 @@
     <?php echo $this->Form->end(__("login"));?>
 </div>
 <?php
-if ($this->Session->read("loginError") === true) {
+if ($this->Session->read("loginError") == true) {
     echo "<script>Swal.fire({icon: \"error\",text: \"Wrong login credentials!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
     $_SESSION["loginError"] = false;
-} else if ($this->Session->read("verificationError") === true) {
+} else if ($this->Session->read("verificationError") == true) {
     echo "<script>Swal.fire({icon: \"error\",text: \"You have to verify your account first!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
     $_SESSION["verificationError"] = false;
 }

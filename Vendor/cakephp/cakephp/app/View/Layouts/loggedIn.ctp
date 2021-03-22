@@ -19,9 +19,9 @@
 	</head>
 	<body>
 		<input type="hidden" id="language" value="<?php echo $this->Session->read("language");?>"/>
-		<div class="blur">
-			<div class="slideMenu">
-				<span class="close">x</span>
+		<div id="blur">
+			<div id="slideMenu">
+				<span id="close">x</span>
 				<ul>
 					<li><a href="profile"><?php echo __("profile");?></a></li>
 					<li><a href="wallet"><?php echo __("wallet");?></a></li>

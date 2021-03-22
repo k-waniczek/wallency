@@ -31,7 +31,7 @@ form {
 input[type=checkbox] {
     background-color: transparent;
     outline: none;
-    border: 1px solid #000000;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 2px;
 }
 
@@ -49,7 +49,7 @@ div.col {
 div.col input {
 	border: 0;
 	padding: 5px 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgb(204, 204, 204);
     width: 100%;
     background-color: transparent;
 }
@@ -60,7 +60,7 @@ div.col input~.focus-border {
 	left: 50%;
 	width: 0;
 	height: 2px;
-	background-color: #3399FF;
+	background-color: rgb(51, 153, 255);
 	transition: 0.4s;
 }
 
@@ -75,7 +75,7 @@ div.select select {
     -webkit-appearance: none;
     -moz-appearance: none;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgb(204, 204, 204);
     outline: none;
     background-color: transparent;
     padding: 2px 5px 2px 5px;
@@ -88,9 +88,9 @@ div.submit input {
     margin-top: 20px;
     padding: 10px 45px 10px 45px;
     border-radius: 20px;
-    border: 1px solid #cccccc;
+    border: 1px solid rgb(204, 204, 204);
     background-color: transparent;
-    color: #000;
+    color: rgb(0, 0, 0);
 }
 
 i.fa-check, i.fa-times {
@@ -100,9 +100,9 @@ i.fa-check, i.fa-times {
 }
 
 i.fa-check {
-    color: #00d300;
+    color: rgb(0, 211, 0);
 }
 
 i.fa-times {
-    color: #ff0000;
+    color: rgb(255, 0, 0);
 }

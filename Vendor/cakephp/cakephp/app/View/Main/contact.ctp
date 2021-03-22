@@ -33,10 +33,10 @@
 </div>
 
 <?php
-if ($this->Session->read("captchaError") === true) {
+if ($this->Session->read("captchaError") == true) {
 echo "<script>Swal.fire({icon: \"error\",text: \"Please confirm that you are not a bot, by verifying reCaptcha!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
 $_SESSION["captchaError"] = false;
-} else if ($this->Session->read("emailError") === true) {
+} else if ($this->Session->read("emailError") == true) {
     echo "<script>Swal.fire({icon: \"error\",text: \"You have to put real email address in email input!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
     $_SESSION["emailError"] = false;
 }?>

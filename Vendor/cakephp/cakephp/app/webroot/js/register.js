@@ -30,41 +30,48 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
 	}
 
-	// validateText(loginInput, "login", loginInput.parentNode);
-    // validateText(nameInput, "name", nameInput.parentNode);
-	// validateText(surnameInput, "surname", surnameInput.parentNode);
-	// validatePassword(passwordInput, passwordInput.parentNode);
-	// checkPasswords(passwordInput, repeatPasswordInput, repeatPasswordInput.parentNode);
-	// validateBirthDate(birthDateInput, birthDateInput.parentNode);
-	// validateEmail(emailInput, emailInput.parentNode);
+	validateText(loginInput, "login", loginInput.parentNode);
+	validateText(nameInput, "name", nameInput.parentNode);
+	validateText(surnameInput, "surname", surnameInput.parentNode);
+	validatePassword(passwordInput, passwordInput.parentNode);
+	checkPasswords(passwordInput, repeatPasswordInput, repeatPasswordInput.parentNode);
+	validateBirthDate(birthDateInput, birthDateInput.parentNode);
+	validateEmail(emailInput, emailInput.parentNode);
 
     loginInput.addEventListener("keyup", function () {
-		 validateText(this, "login", this.parentNode);
+		validateText(this, "login", this.parentNode);
+		checkIfAbleToSubmit();
     });
 
     nameInput.addEventListener("keyup", function () {
 		validateText(this, "name", this.parentNode);
+		checkIfAbleToSubmit();
     });
 
     surnameInput.addEventListener("keyup", function () {
 		validateText(this, "surname", this.parentNode);
+		checkIfAbleToSubmit();
     });
 
     passwordInput.addEventListener("keyup", function () {
 		validatePassword(this, this.parentNode);
 		checkPasswords(this, repeatPasswordInput, repeatPasswordInput.parentNode);
+		checkIfAbleToSubmit();
     });
 
     repeatPasswordInput.addEventListener("keyup", function () {
 		checkPasswords(passwordInput, this, this.parentNode);
+		checkIfAbleToSubmit();
     });
 
     birthDateInput.addEventListener("keyup", function () {
 		validateBirthDate(this, this.parentNode);
+		checkIfAbleToSubmit();
     });
 
 	emailInput.addEventListener("keyup", function () {
 		validateEmail(this, this.parentNode);
+		checkIfAbleToSubmit();
     });	
 		 
 	function validateText(input, type, div) {
@@ -123,11 +130,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 	}
 
-	document.querySelector("div.submit input").addEventListener("click", function(e) {
-		if (document.querySelectorAll(".fa-times").length > 0) {
-			e.preventDefault();
+	function checkIfAbleToSubmit() {
+		if (document.querySelectorAll(".fa-times").length > 0 || document.querySelector("#RegisterUserIsAdult").checked == false) {
+			this.setAttribute("disabled", true);
+		} else {
+			this.removeAttribute("disabled");
 		}
-	});
-	
-
+	}
 });

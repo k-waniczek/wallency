@@ -30,5 +30,5 @@ App::uses("AppModel", "Model");
  * @package       app.Model
  */
 class TransactionHistoryModel extends AppModel {
-
+    //Table used: transaction_histories
 }
