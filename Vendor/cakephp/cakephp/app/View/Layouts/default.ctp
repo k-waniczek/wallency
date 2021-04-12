@@ -54,7 +54,7 @@
 						<li><a href="contact"><?php echo __("contact");?></a></li>
 						<li><a href="career"><?php echo __("career");?></a></li>
 						<li><a href="faq">FAQ</a></li>
-						<li id="hamburgerMenu"><i class="fas fa-bars"></i></li>
+						<li class="hamburgerMenu"><i class="fas fa-bars"></i></li>
 						<select class="langSelect">
 							<?php
 								if ($this->Session->read("language") == "eng") {

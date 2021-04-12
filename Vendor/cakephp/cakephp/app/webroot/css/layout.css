@@ -128,7 +128,7 @@ nav > span {
     border-top: 1px solid rgb(138, 138, 138);
 }
 
-li#hamburgerMenu, div#slideMenu {
+li.hamburgerMenu, div#slideMenu {
     display: none;
 }
 

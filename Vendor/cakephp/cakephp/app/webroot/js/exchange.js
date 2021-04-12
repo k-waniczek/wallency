@@ -22,7 +22,6 @@ window.addEventListener("DOMContentLoaded", function () {
         exchange();
     });
     amountInput.addEventListener("keyup", function () {
-        this.value = this.value.replace(/[^0-9.]/g, "").replace(/^[0]{0,}/, "");
         checkInput(amountInput);
     });
     amountInput.addEventListener("change", function () {checkInput(amountInput);});
@@ -58,12 +57,14 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     function checkInput (input) {
-        if (parseFloat(input.value) > Math.floor(parseFloat(value) * rate * 1) / 1) {
-            input.value = Math.floor(parseFloat(value) * rate * 1) / 1;
-        }
-        if (input.value <= 0 || input.value.trim() == "" || input.value > Math.floor(parseFloat(value) * rate * 1) / 1) {
-            submitBtn.setAttribute("disabled", true);
+        if (input.value.match(/^[1-9][0-9]{0,}$|^[1-9][0-9]{0,}(\.[0-9]{1,2})$/gm) == null || parseFloat(input.value) < 0 || input.value == "" || parseFloat(input.value) > Math.floor(parseFloat(value) * rate * 1) / 1) {
+            document.querySelector("div.submit input").setAttribute("disabled", true);
         } else {
+            document.querySelector("div.submit input").removeAttribute("disabled");
+        }
+
+        if (input.value > Math.floor(parseFloat(value) * rate * 1) / 1) {
+            input.value = Math.floor(parseFloat(value) * rate * 1) / 1;
             submitBtn.removeAttribute("disabled");
         }
     }

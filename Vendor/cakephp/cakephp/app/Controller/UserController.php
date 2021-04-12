@@ -92,10 +92,21 @@ class UserController extends AppController {
 		
 		if ($result->success) {
 			try {
-				$dateDiff = date_diff(new DateTime($data["birth_date"]), new DateTime("NOW"));
-				$adult = $dateDiff->y >= 18 ? true : false;
+				$birthDate = new DateTime($data["birth_date"]);
+				$curDate = new DateTime("NOW");
+				$dateDiff = date_diff($birthDate, $curDate);
+				if (intval($birthDate->getTimestamp()) < intval($curDate->getTimestamp())) {
+					$adult = $dateDiff->y >= 18 ? true : false;
+				} else {
+					$adult = false;
+				}
 			} catch (Exception $e) {
 				echo $e->getMessage();
+			}
+
+			if(!$adult) {
+				$this->Session->write("adultError", true);
+				$this->redirect("/register");
 			}
 
 			$this->EmailValidator = $this->Components->load('ValidateEmail');

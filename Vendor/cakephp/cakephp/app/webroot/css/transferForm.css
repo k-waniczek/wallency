@@ -1,11 +1,11 @@
 /* Background pattern from Toptal Subtle Patterns */
 .transferForm {
-	height: 550px;
+	height: 600px;
 	background: url('../app/webroot/img/background.jpg') no-repeat center center fixed;
 	background-attachment: scroll;
 	position: relative;
 	margin: auto;
-	top: 100px;
+	top: 50px;
     border-radius: 20px;
     -webkit-box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 25px 25px 19px 0px rgba(0,0,0,0.75);
@@ -66,6 +66,7 @@ div.submit input {
     border: 1px solid rgb(204, 204, 204);
     background-color: transparent;
     color: rgb(0, 0, 0);
+    cursor: pointer;
 }
 
 div.select select {

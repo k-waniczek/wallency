@@ -58,7 +58,7 @@ div.col input:focus~.focus-border {
 	left: 0;
 }
 
-div.submit input {
+ {
     margin: 5px;
     margin-top: 20px;
     padding: 10px 45px 10px 45px;
@@ -67,6 +67,7 @@ div.submit input {
     border: 1px solid #cccccc;
     background-color: transparent;
     color: #000;
+    cursor: pointer;
 }
 
 div.select select {

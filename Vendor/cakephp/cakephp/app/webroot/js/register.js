@@ -7,6 +7,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	var repeatPasswordInput = document.querySelector("input#RegisterUserRepeatPassword");
 	var birthDateInput = document.querySelector("input#RegisterUserBirthDate");
 	var emailInput = document.querySelector("input#RegisterUserEmail");
+	var submitInput = document.querySelector("div.submit input");
+
+	var inputsValidated = {loginInput: "", nameInput: "", surnameInput: "", emailInput: "", passwordInput: "", repeatPasswordInput: "", birthdateInput: ""};
 	
 	function createCheck(div) {
 		var check = document.createElement("i");
@@ -30,94 +33,129 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
 	}
 
-	validateText(loginInput, "login", loginInput.parentNode);
-	validateText(nameInput, "name", nameInput.parentNode);
-	validateText(surnameInput, "surname", surnameInput.parentNode);
-	validatePassword(passwordInput, passwordInput.parentNode);
-	checkPasswords(passwordInput, repeatPasswordInput, repeatPasswordInput.parentNode);
-	validateBirthDate(birthDateInput, birthDateInput.parentNode);
-	validateEmail(emailInput, emailInput.parentNode);
+	inputsValidated.loginInput = validateText(loginInput, "login", loginInput.parentNode), false;
+	inputsValidated.nameInput = validateText(nameInput, "name", nameInput.parentNode, false);
+	inputsValidated.surnameInput = validateText(surnameInput, "surname", surnameInput.parentNode, false);
+	inputsValidated.passwordInput = validatePassword(passwordInput, passwordInput.parentNode, false);
+	inputsValidated.repeatPasswordInput = checkPasswords(passwordInput, repeatPasswordInput, repeatPasswordInput.parentNode, false);
+	inputsValidated.birthdateInput = validateBirthDate(birthDateInput, birthDateInput.parentNode, false);
+	inputsValidated.emailInput = validateEmail(emailInput, emailInput.parentNode, false);
+	checkIfAbleToSubmit();
 
     loginInput.addEventListener("keyup", function () {
-		validateText(this, "login", this.parentNode);
+		inputsValidated.loginInput = validateText(this, "login", this.parentNode, true);
 		checkIfAbleToSubmit();
     });
 
     nameInput.addEventListener("keyup", function () {
-		validateText(this, "name", this.parentNode);
+		inputsValidated.nameInput = validateText(this, "name", this.parentNode, true);
 		checkIfAbleToSubmit();
     });
 
     surnameInput.addEventListener("keyup", function () {
-		validateText(this, "surname", this.parentNode);
+		inputsValidated.surnameInput = validateText(this, "surname", this.parentNode, true);
 		checkIfAbleToSubmit();
     });
 
     passwordInput.addEventListener("keyup", function () {
-		validatePassword(this, this.parentNode);
-		checkPasswords(this, repeatPasswordInput, repeatPasswordInput.parentNode);
+		inputsValidated.passwordInput = validatePassword(this, this.parentNode, true);
+		inputsValidated.repeatPasswordInput = checkPasswords(repeatPasswordInput, this, this.parentNode, false);
 		checkIfAbleToSubmit();
     });
 
     repeatPasswordInput.addEventListener("keyup", function () {
-		checkPasswords(passwordInput, this, this.parentNode);
+		inputsValidated.repeatPasswordInput = checkPasswords(passwordInput, this, this.parentNode, true);
 		checkIfAbleToSubmit();
     });
 
     birthDateInput.addEventListener("keyup", function () {
-		validateBirthDate(this, this.parentNode);
+		inputsValidated.birthdateInput = validateBirthDate(this, this.parentNode, true);
 		checkIfAbleToSubmit();
     });
 
 	emailInput.addEventListener("keyup", function () {
-		validateEmail(this, this.parentNode);
+		inputsValidated.emailInput = validateEmail(this, this.parentNode, true);
 		checkIfAbleToSubmit();
     });	
+
+	document.querySelector("#RegisterUserIsAdult").addEventListener("change", function() {
+		checkIfAbleToSubmit();
+	});
 		 
-	function validateText(input, type, div) {
+	function validateText(input, type, div, createElement) {
 		if (input.value.length < 3) {
-            createWrong(div);
-            div.querySelector(".fa-times").setAttribute("title", type.charAt(0).toUpperCase() + type.slice(1) + " must contain at least: 3 characters.");
+			if(createElement) {
+            	createWrong(div);
+            	div.querySelector(".fa-times").setAttribute("title", type.charAt(0).toUpperCase() + type.slice(1) + " must contain at least: 3 characters.");
+			}
+			return false;
 		} else {
-			createCheck(div);
+			if (createElement) {
+				createCheck(div);
+			}
+			return true;
 		}
 	}
 
-	function validatePassword(input, div) {
+	function validatePassword(input, div, createElement) {
 		const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-._]).{8,}$/gm;
 		match = regex.exec(input.value);
 		if (match) {
-			createCheck(div);
+			if (createElement) {
+				createCheck(div);
+			}
+			return true;
 		} else {
-            createWrong(div);
-            div.querySelector(".fa-times").setAttribute("title", "New password must contain at least: 1 big letter, 1 special character, 1 number and needs to be at least 8 characters long.");
+			if(createElement) {
+				createWrong(div);
+				div.querySelector(".fa-times").setAttribute("title", "New password must contain at least: 1 big letter, 1 special character, 1 number and needs to be at least 8 characters long.");
+			}
+			return false;
 		}
 	}
 
-	function validateBirthDate(input, div) {
+	function validateBirthDate(input, div, createElement) {
 	    if (isValidDate(input.value)) {
-			createCheck(div);
+			if (createElement) {
+				createCheck(div);
+			}
+			return true;
 	    } else {
-            createWrong(div);
-            div.querySelector(".fa-times").setAttribute("title", "Birthdate must be in this format: YYYY-MM-DD.");
+			if(createElement) {
+				createWrong(div);
+				div.querySelector(".fa-times").setAttribute("title", "Birthdate must be in this format: YYYY-MM-DD.");
+			}
+			return false;
 		}
 	}
 
-	function checkPasswords(password1, password2, div) {
+	function checkPasswords(password1, password2, div, createElement) {
 		if (password2.value == password1.value) {
-			createCheck(div);
+			if (createElement) {
+				createCheck(div);
+			}
+			return true;
 		} else {
-            createWrong(div);
-            div.querySelector(".fa-times").setAttribute("title", "Passwords must be the same.");
+			if(createElement) {
+				createWrong(div);
+				div.querySelector(".fa-times").setAttribute("title", "Passwords must be the same.");
+			}
+			return false;
 		}
 	}
 
-	function validateEmail(input, div) {
+	function validateEmail(input, div, createElement) {
 		if (/^[.-_=+\w]+@[a-zA-Z_0-9]+?\.[a-zA-Z]{2,3}$/.test(input.value)) {
-			createCheck(div);
+			if (createElement) {
+				createCheck(div);
+			}
+			return true;
 		} else {
-            createWrong(div);
-            div.querySelector(".fa-times").setAttribute("title", "Email must contain at least: 1 @ and 1 dot after domain.");
+			if(createElement) {
+				createWrong(div);
+				div.querySelector(".fa-times").setAttribute("title", "Email must contain at least: 1 @ and 1 dot after domain.");
+			}
+			return false;
 		}
 	}
 
@@ -127,14 +165,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		} else {
 			return false;
 		}
-
 	}
 
 	function checkIfAbleToSubmit() {
-		if (document.querySelectorAll(".fa-times").length > 0 || document.querySelector("#RegisterUserIsAdult").checked == false) {
-			this.setAttribute("disabled", true);
+		console.log(inputsValidated);
+		var count = 0;
+		for (var input in inputsValidated) {
+			if(inputsValidated[input]) {
+				count++;
+			}	
+		}
+		if (document.querySelectorAll(".fa-times").length > 0 || document.querySelector("#RegisterUserIsAdult").checked == false || count != 7) {
+			submitInput.setAttribute("disabled", true);			
 		} else {
-			this.removeAttribute("disabled");
+			submitInput.removeAttribute("disabled");
+			console.log("input enabled");
 		}
 	}
 });

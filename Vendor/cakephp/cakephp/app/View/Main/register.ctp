@@ -58,6 +58,9 @@ $_SESSION["emailError"] = false;
 } else if ($this->Session->read("emailUniqueError") == true) {
 echo "<script>Swal.fire({icon: \"error\",text: \"This email is already taken!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
 $_SESSION["emailUniqueError"] = false;
+} else if ($this->Session->read("adultError") == true) {
+echo "<script>Swal.fire({icon: \"error\",text: \"You have to be at least 18 years old to register on this site!\",showConfirmButton: true,timer: 5000,timerProgressBar: true});</script>";
+$_SESSION["adultError"] = false;
 }?>
 
 

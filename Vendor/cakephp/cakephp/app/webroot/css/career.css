@@ -48,6 +48,15 @@ div.info {
     float: left;
     height: calc(200px / 3);
     width: 100%;
+    font-weight: bold;
+}
+
+.place {
+    line-height: calc(200px / 5);
+}
+
+.jobTitle {
+    line-height: calc(200px / 2);
 }
 
 .technologies {
@@ -70,7 +79,7 @@ div.info {
 img {
     width: 50%;
     height: 50%;
-    margin-top: calc((200px - 50%) / 2);
+    margin-top: calc((180px - 50%) / 2);
 }
 
 div.tech {
