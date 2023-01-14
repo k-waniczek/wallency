@@ -1,7 +1,7 @@
 {
     "name": "wallency",
     "require": {
-        "cakephp/cakephp": "2.10.*"
+        "cakephp/cakephp": "3.10.*"
     },
     "config": {
         "vendor-dir": "Vendor/"
